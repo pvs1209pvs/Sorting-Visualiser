@@ -9,37 +9,38 @@
             xmlns:fx="http://javafx.com/fxml">
 
     <top>
+        <VBox alignment="TOP_CENTER">
+            <Label text="Sorting Algorithm"/>
+            <HBox alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
 
-        <HBox alignment="TOP_CENTER">
-
-            <padding>
-                <Insets top="20"/>
-            </padding>
-
-            <ComboBox fx:id="sortSelect" onMouseClicked="#selectedSort" style="-fx-effect:dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 ) ">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Heap Sort"/>
-                        <String fx:value="Merge Sort"/>
-                        <String fx:value="Shell Sort"/>
-                        <String fx:value="Counting Sort"/>
-                        <String fx:value="Insertion Sort"/>
-                        <String fx:value="Cycle Sort"/>
-                        <String fx:value="Bubble Sort"/>
-                        <String fx:value="Bucket Sort"/>
-                        <String fx:value="Radix Sort"/>
-                        <String fx:value="Cocktail Sort"/>
-                        <String fx:value="Selection Sort"/>
+                <ComboBox fx:id="sortSelect" onMouseClicked="#selectedSort"
+                          style="-fx-effect:dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 ) ">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Heap Sort"/>
+                            <String fx:value="Merge Sort"/>
+                            <String fx:value="Shell Sort"/>
+                            <String fx:value="Counting Sort"/>
+                            <String fx:value="Insertion Sort"/>
+                            <String fx:value="Cycle Sort"/>
+                            <String fx:value="Bubble Sort"/>
+                            <String fx:value="Bucket Sort"/>
+                            <String fx:value="Radix Sort"/>
+                            <String fx:value="Cocktail Sort"/>
+                            <String fx:value="Selection Sort"/>
+                            <String fx:value="Quick Sort"/>
+                        </FXCollections>
+                    </items>
+                    <value>
                         <String fx:value="Quick Sort"/>
-                    </FXCollections>
-                </items>
-                <value>
-                    <String fx:value="Quick Sort"/>
-                </value>
+                    </value>
 
-            </ComboBox>
-        </HBox>
-
+                </ComboBox>
+            </HBox>
+        </VBox>
     </top>
 
     <center>
@@ -53,7 +54,7 @@
             <VBox alignment="CENTER" spacing="10">
                 <Label text="Number of Samples"/>
 
-                <TextField fx:id="samples" text="50"/>
+                <TextField fx:id="samples" promptText="50"/>
 
             </VBox>
 
@@ -61,8 +62,8 @@
                 <Label text="Choose the range of numbers"/>
                 <HBox alignment="CENTER" spacing="10">
 
-                    <TextField fx:id="minValue" text="1"/>
-                    <TextField fx:id="maxValue" text="10"/>
+                    <TextField fx:id="minValue" promptText="1"/>
+                    <TextField fx:id="maxValue" promptText="10"/>
 
                 </HBox>
             </VBox>
@@ -73,21 +74,24 @@
                     <ToggleGroup fx:id="customInputOptions"/>
                 </fx:define>
 
-                <RadioButton fx:id="fromRandom" text="Randomly generated values" toggleGroup="$customInputOptions" onAction="#userInput"/>
-                <RadioButton fx:id="fromArray" text="Use your own values" toggleGroup="$customInputOptions" onAction="#userInput"/>
+                <RadioButton fx:id="fromRandom" text="Randomly generated values" toggleGroup="$customInputOptions"
+                             onAction="#userInput"/>
+                <RadioButton fx:id="fromArray" text="Use your own values" toggleGroup="$customInputOptions"
+                             onAction="#userInput"/>
 
 
             </HBox>
 
             <HBox fx:id="userCustomInput" alignment="CENTER">
-                <TextField fx:id="numbers" text="Enter number" prefWidth="500" editable="false"/>
+                <TextField fx:id="numbers" promptText="Enter your input" prefWidth="500" editable="false"/>
                 <Button fx:id="fileSelect" visible="false" text="Select File" onMouseClicked="#sortIt"></Button>
             </HBox>
 
 
             <Label text="Sorting Speed"/>
-            <Slider fx:id="speedSlider" min="1" max="100" showTickMarks="false" minorTickCount="100" snapToTicks="true" HBox.hgrow="ALWAYS"
-                    prefWidth="20" maxWidth="100"/>
+            <Slider fx:id="speedSlider" min="1" max="100" showTickMarks="false" minorTickCount="100" snapToTicks="true"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="200"/>
 
         </VBox>
 

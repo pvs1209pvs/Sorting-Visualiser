@@ -176,6 +176,7 @@ public class Controller {
                 minValue.setDisable(true);
                 maxValue.setDisable(true);
                 numbers.setDisable(false);
+                numbers.setEditable(true);
                 fileSelect.setVisible(true);
                 break;
 
