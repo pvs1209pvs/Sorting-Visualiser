@@ -1,9 +1,13 @@
+
+
+
+
 package sortingalgorithms;
 
 public class SelectionSort<T extends Comparable<T>> implements ComparativeSorter<T> {
-    
 
-    
+
+
     @Override
     public void sort(T[] array) {
         int y = array.length;
@@ -22,7 +26,17 @@ public class SelectionSort<T extends Comparable<T>> implements ComparativeSorter
 
         }
 
+
+        for(int i = 0; i<y; i++){
+            System.out.println((Integer) array[i]);
+        }
+
     }
-    
-    
+
+
 }
+
+
+
+
+

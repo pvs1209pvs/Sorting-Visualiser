@@ -5,14 +5,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.*?>
-
-
-
 <BorderPane fx:controller="visuals.Controller"
-            xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css" style=" -fx-background-color: linear-gradient(to right, black, #626262);">
+            xmlns:fx="http://javafx.com/fxml">
 
     <top>
-
         <VBox alignment="TOP_CENTER">
             <Label text="Sorting Algorithm"/>
             <HBox alignment="TOP_CENTER">
@@ -39,7 +35,6 @@
                         </FXCollections>
                     </items>
                     <value>
-
                         <String fx:value="Quick Sort"/>
                     </value>
 
@@ -50,7 +45,7 @@
 
     <center>
 
-        <VBox alignment="CENTER" spacing="10"  >
+        <VBox alignment="CENTER" spacing="10">
 
             <padding>
                 <Insets top="40" bottom="40" left="20" right="20"/>
@@ -94,11 +89,9 @@
 
 
             <Label text="Sorting Speed"/>
-
             <Slider fx:id="speedSlider" min="1" max="100" showTickMarks="false" minorTickCount="100" snapToTicks="true"
                     HBox.hgrow="ALWAYS"
                     maxWidth="200"/>
-
 
         </VBox>
 
@@ -111,8 +104,8 @@
             </padding>
 
             <Button fx:id="Sort" text="Sort" onAction="#Sort" prefWidth="60" onMouseClicked="#play"/>
-            <Button fx:id="Exit" text="Close" onAction="#close" prefWidth="60"/>
 
+            <Button fx:id="Exit" text="Close" onAction="#close" prefWidth="60"/>
         </HBox>
     </bottom>
 </BorderPane>

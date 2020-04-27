@@ -50,7 +50,6 @@ public class RadixSort implements NonComparativeSorter<Integer> {
         //Kind of returining
         for (int i = 0; i < puppet.length; i++) {
             array[i] = Integer.parseInt(puppet[i]);
-            System.out.println(array[i]);
         }
 
     }
@@ -60,8 +59,8 @@ public class RadixSort implements NonComparativeSorter<Integer> {
         for (int i = 0; i < baguette.size(); i++) {
             if(baguette.get(i).isEmpty()) continue;
             for (int j = 0; j < baguette.get(i).size() ; j++) {
-                  puppet[counter] = baguette.get(i).get(j);
-                  counter++;
+                puppet[counter] = baguette.get(i).get(j);
+                counter++;
             }
         }
 
@@ -70,3 +69,4 @@ public class RadixSort implements NonComparativeSorter<Integer> {
         }
     }
 }
+
