@@ -3,9 +3,7 @@ package sortingalgorithms;
 
 public class InsertionSort<T extends Comparable<T>> implements ComparativeSorter<T> {
 
-    public T[] tempArray;
-
-    public void sort(T[] array) {
+     public void sort(T[] array) {
 
         for (int i = 1; i < array.length; i++) {
             T temp = array[i];
@@ -16,8 +14,6 @@ public class InsertionSort<T extends Comparable<T>> implements ComparativeSorter
                 j--;
 
             }
-
-            tempArray = array;
             array[j + 1] = temp;
 
         }
