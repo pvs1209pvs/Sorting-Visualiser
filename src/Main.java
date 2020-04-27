@@ -9,11 +9,11 @@ public class Main {
 
     private Main() {
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
 
             Random randomGen = new Random(i);
 
-            int[] array = new int[Math.abs(randomGen.nextInt()) % 100 + 1];
+            int[] array = new int[Math.abs(randomGen.nextInt()) % 10 + 1];
 
             Integer[] arr = new Integer[array.length];
 
@@ -26,7 +26,7 @@ public class Main {
             }
 
 
-            ComparativeSorter<Integer> s = new CocktailSort<>();
+            ComparativeSorter<Integer> s = new QuickSort<>();
             s.sort(arr);
 
 
