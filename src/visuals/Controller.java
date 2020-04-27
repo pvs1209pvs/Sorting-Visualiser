@@ -60,12 +60,12 @@ public class Controller {
             bars[i] = new Bar(i * 20, 50, 10, ((int) (Math.random() * maxValue() + minValue())) * 8);
         }
 
-        AnimationSequence animationSequence = new AnimationSequence(bars, 20, 0.01);
+        AnimationSequence animationSequence = new AnimationSequence(bars, 20, 1/getSpeed());
         animationSequence.getSequenceTransition().play();
 
         Pane p = new Pane();
-        for (int i = 0; i < bars.length; i++) {
-            p.getChildren().add(bars[i]);
+        for (Bar bar : bars) {
+            p.getChildren().add(bar);
         }
 
         Stage myStage = new Stage();
@@ -76,34 +76,29 @@ public class Controller {
         myStage.setScene(myScene);
         myStage.show();
 
+
     }
 
 
     public void Sort() {
-//        System.out.println("User Parameters");
-//        selectedSort();
-//        getSampleSize();
-//        range();
-//        getSpeed();
-
 
     }
 
     @FXML
-    private void sortit() {
+    private void sortIt() {
 
     }
 
-    private void fileselect() {
+    private void fileSelect() {
         FileChooser fileChooser = new FileChooser();
         File inputFile = fileChooser.showOpenDialog(primaryStage);
 
-        Integer[] numArray = sortit(inputFile);
+        Integer[] numArray = sortIt(inputFile);
 
         System.out.println(Arrays.toString(numArray));
     }
 
-    private Integer[] sortit(File inputFile) {
+    private Integer[] sortIt(File inputFile) {
         try {
 
             Scanner scanner = new Scanner(inputFile);
@@ -145,7 +140,7 @@ public class Controller {
     }
 
     @FXML
-    int getSampleSize() {
+    private int getSampleSize() {
         return Integer.parseInt(samples.getText());
 
     }
@@ -176,9 +171,9 @@ public class Controller {
     }
 
 
-    private void getSpeed() {
-        int value = (int) speedSlider.getValue();
-        System.out.println(value);
+    private double getSpeed() {
+        return speedSlider.getValue();
+
     }
 
     public void close() {

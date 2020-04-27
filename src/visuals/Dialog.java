@@ -7,8 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-//To check if the values are working click sort and it will call the corresponding methods
-
 public class Dialog extends Application {
 
     static Stage primaryStage;
@@ -23,29 +21,6 @@ public class Dialog extends Application {
     @Override
     public void start(Stage s) throws Exception {
 
-//        Bar[] bars = new Bar[10];
-//        for (int i = 0; i < bars.length; i++) {
-//            bars[i] = new Bar(i * gap, 50, width, ((int) (Math.random() * 15 + 1))*8);
-//        }
-//
-//        AnimationSequence animationSequence = new AnimationSequence(bars,gap, seconds);
-//
-//        Stage myStage = new Stage();
-//        myStage.setWidth(700);
-//        myStage.setHeight(300);
-//
-//        Pane p = new Pane();
-//        for (int i = 0; i < bars.length; i++) {
-//            p.getChildren().add(bars[i]);
-//        }
-//
-//        animationSequence.getSequenceTransition().play();
-//
-//        Scene myScene = new Scene(p);
-//        myStage.setScene(myScene);
-        //myStage.show();
-
-
         primaryStage = new Stage();
 
         Parent pane = FXMLLoader.load(getClass().getResource("Dialog.fxml"));
@@ -56,5 +31,6 @@ public class Dialog extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();
+
     }
 }

@@ -81,12 +81,12 @@
 
             <HBox fx:id="userCustomInput" alignment="CENTER">
                 <TextField fx:id="numbers" text="Enter number" prefWidth="500" editable="false"/>
-                <Button fx:id="fileSelect" visible="false" text="Select File" onMouseClicked="#sortit"></Button>
+                <Button fx:id="fileSelect" visible="false" text="Select File" onMouseClicked="#sortIt"></Button>
             </HBox>
 
 
             <Label text="Sorting Speed"/>
-            <Slider fx:id="speedSlider" min="0" max="5" showTickMarks="false" minorTickCount="100" snapToTicks="true" HBox.hgrow="ALWAYS"
+            <Slider fx:id="speedSlider" min="1" max="100" showTickMarks="false" minorTickCount="100" snapToTicks="true" HBox.hgrow="ALWAYS"
                     prefWidth="20" maxWidth="100"/>
 
         </VBox>
