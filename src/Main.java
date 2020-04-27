@@ -1,5 +1,4 @@
-import sortingalgorithms.ComparativeSorter;
-import sortingalgorithms.InsertionSort;
+import sortingalgorithms.*;
 
 import java.util.Random;
 
@@ -7,7 +6,7 @@ public class Main {
 
     private Main() {
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1; i++) {
 
             Random randomGen = new Random(i);
 
@@ -24,8 +23,10 @@ public class Main {
             }
 
 
-            ComparativeSorter<Integer> s = new InsertionSort<>();
+            ComparativeSorter<Integer> s = new SelectionSort<>();
             s.sort(arr);
+
+
 
             if (!isSorted(arr)) {
                 System.out.println("Fails at seed " + i);
