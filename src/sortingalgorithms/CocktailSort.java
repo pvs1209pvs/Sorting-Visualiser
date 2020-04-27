@@ -1,5 +1,10 @@
 package sortingalgorithms;
 
+import javafx.animation.Animation;
+import visuals.Bar;
+
+import java.util.List;
+
 public class CocktailSort<T extends Comparable<T>> implements ComparativeSorter<T>  {
     @Override
     public void sort(T[] array) {
@@ -53,6 +58,11 @@ public class CocktailSort<T extends Comparable<T>> implements ComparativeSorter<
             ++begin;
 
         }
+
+    }
+
+    @Override
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
     }
 }

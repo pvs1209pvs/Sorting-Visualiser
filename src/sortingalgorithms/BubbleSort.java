@@ -55,6 +55,7 @@ public class BubbleSort<T extends Comparable<T>> implements ComparativeSorter<T>
 
 
 
+
                     isSorted = false;
                 }
             }

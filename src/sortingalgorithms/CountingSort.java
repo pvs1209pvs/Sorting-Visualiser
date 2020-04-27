@@ -1,5 +1,10 @@
 package sortingalgorithms;
 
+import javafx.animation.Animation;
+import visuals.Bar;
+
+import java.util.List;
+
 public class CountingSort implements NonComparativeSorter<Integer>{
 
     public void sort(Integer[] array) {
@@ -76,6 +81,11 @@ public class CountingSort implements NonComparativeSorter<Integer>{
         }
 
         return max;
+
+    }
+
+    @Override
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
     }
 }

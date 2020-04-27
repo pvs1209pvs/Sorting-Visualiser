@@ -1,5 +1,9 @@
 package sortingalgorithms;
+import javafx.animation.Animation;
+import visuals.Bar;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class RadixSort implements NonComparativeSorter<Integer> {
 
@@ -67,6 +71,11 @@ public class RadixSort implements NonComparativeSorter<Integer> {
         for (int i = 0; i < baguette.size() ; i++) {
             baguette.get(i).clear();
         }
+    }
+
+    @Override
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
+
     }
 }
 

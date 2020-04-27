@@ -2,29 +2,22 @@ package visuals;
 
 import javafx.animation.Animation;
 import javafx.animation.SequentialTransition;
-import sortingalgorithms.BubbleSort;
+import sortingalgorithms.Sorter;
+import sortingalgorithms.SorterFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimationSequence {
+class AnimationSequence {
 
-    List<Animation> trans;
-    BubbleSort<Bar> sorter;
+    SequentialTransition getSequenceTransition(SorterFactory.ALGORITHMS algorithm, Bar[] bars,  int gap, double sec) {
 
-    public AnimationSequence(Bar[] bars, int gap, double seconds) {
+        List<Animation> trans = new ArrayList<>();
 
-        trans = new ArrayList<>();
-        sorter = new BubbleSort<>();
+        Sorter s = SorterFactory.getSorter(algorithm);
+        s.sort(bars, trans, gap, sec);
 
-        sorter.sort(bars, trans, gap, seconds);
-    }
-
-    public List<Animation> getTrans() {
-        return this.trans;
-    }
-
-    public SequentialTransition getSequenceTransition(){
         return new SequentialTransition(trans.toArray(new Animation[0]));
+
     }
 }

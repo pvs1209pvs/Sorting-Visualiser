@@ -29,8 +29,6 @@ public class Main {
             ComparativeSorter<Integer> s = new QuickSort<>();
             s.sort(arr);
 
-
-
             if (!isSorted(arr)) {
                 System.out.println("Fails at seed " + i);
             }

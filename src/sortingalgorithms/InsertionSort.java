@@ -1,6 +1,11 @@
 package sortingalgorithms;
 
 
+import javafx.animation.Animation;
+import visuals.Bar;
+
+import java.util.List;
+
 public class InsertionSort<T extends Comparable<T>> implements ComparativeSorter<T> {
 
      public void sort(T[] array) {
@@ -20,4 +25,8 @@ public class InsertionSort<T extends Comparable<T>> implements ComparativeSorter
 
     }
 
+    @Override
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
+
+    }
 }
