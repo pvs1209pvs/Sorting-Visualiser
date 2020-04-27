@@ -1,7 +1,9 @@
 
 package sortingalgorithms;
 
+import javafx.animation.Animation;
 import sortingalgorithms.ComparativeSorter;
+import visuals.Bar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,6 +108,11 @@ public class HeapSort<T extends Comparable<T>> implements ComparativeSorter<T> {
         T temp = minHeap.get(x);
         minHeap.set(x, minHeap.get(y));
         minHeap.set(y, temp);
+    }
+
+    @Override
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
+
     }
 }
 

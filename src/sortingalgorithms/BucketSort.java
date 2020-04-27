@@ -1,10 +1,17 @@
 package sortingalgorithms;
 
+import visuals.Bar;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class BucketSort {
+public class BucketSort implements Sorter{
     private Bucket[] list;
+
+    @Override
+    public void sort(Bar[] bars, List trans, int gap, double seconds) {
+
+    }
 
     class Bucket {
         List<Double> bucket;
