@@ -94,8 +94,8 @@ public class Controller {
         VBox vBox = new VBox(p, playPause);
 
         Stage myStage = new Stage();
-        myStage.setWidth(800);
-        myStage.setHeight(300);
+        myStage.setWidth(1000);
+        myStage.setHeight(800);
 
         Scene myScene = new Scene(vBox);
 
