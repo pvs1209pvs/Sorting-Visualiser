@@ -23,7 +23,7 @@ Fahad [Basically he is audience of repo.]
 
 Categories
 
-* --A: counting, bucket, radix, bubble--
+* ~~A: counting, bucket, radix, bubble~~
 * B: merge, quick selection, cocktail
 * C: heap, shell, insertion, cycle
 
