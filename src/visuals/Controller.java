@@ -126,11 +126,6 @@ public class Controller {
         System.out.println(sortSelect.getValue());
     }
 
-    private void range() {
-
-        System.out.println( minValue.getText()+ " to " + maxValue.getText());
-    }
-
     private int minValue(){
         return Integer.parseInt(minValue.getText());
     }
