@@ -21,7 +21,9 @@ Fahad [Basically audience of repo.]
 * Selection sort
 * Quick sort
 
-* A: counting, bucket, radix, bubble
+Categories
+
+* A: counting, bucket, radix, bubble 
 * B: merge, quick selection, cocktail
 * C: heap, shell, insertion, cycle
 
