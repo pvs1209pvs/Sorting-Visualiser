@@ -15,7 +15,7 @@ Simar
 * Bubble sort
 * Bucket Sort
 
-Fahad [Basically audience of repo.]
+Fahad [Basically he is audience of repo.]
 * Radix Sort
 * Cocktail sort
 * Selection sort
