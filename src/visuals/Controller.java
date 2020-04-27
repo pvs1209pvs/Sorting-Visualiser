@@ -7,14 +7,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sortingalgorithms.SorterFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.*;
 
-import static visuals.Dialog.primaryStage;
+import static visuals.Main.primaryStage;
 
 public class Controller {
 

@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Dialog extends Application {
+public class Main extends Application {
 
     static Stage primaryStage;
     private int gap = 20;

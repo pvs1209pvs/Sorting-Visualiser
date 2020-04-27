@@ -1,14 +1,10 @@
-import com.sun.scenario.effect.Merge;
 import sortingalgorithms.*;
-import sortingalgorithms.ComparativeSorter;
-import sortingalgorithms.InsertionSort;
-import sortingalgorithms.ShellSort;
 
 import java.util.Random;
 
-public class Main {
+public class Test {
 
-    private Main() {
+    private Test() {
 
         for (int i = 0; i < 10; i++) {
 
@@ -16,20 +12,12 @@ public class Main {
 
 
             int n = Math.abs(randomGen.nextInt()) % 100 + 1;
-            n = 10;
             Integer[] array = new Integer[n];
 
 
             for (int j = 0; j < array.length; j++) {
                 array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
             }
-
-//            array[0] = 15;
-//            array[1] = 10;
-//            array[2] = 20;
-//            array[3] = 5;
-
-
 
             MergeSort<Integer> s = new MergeSort<>();
             s.sort(array);
@@ -64,6 +52,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Main();
+        new Test();
     }
 }

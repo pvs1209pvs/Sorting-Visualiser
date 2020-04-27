@@ -10,7 +10,6 @@ import java.util.List;
 
 class AnimationSequence {
 
-    //Sorted.Factor.Algo
     SequentialTransition getSequenceTransition(String algorithm, Bar[] bars,  int gap, double sec) {
 
         List<Animation> trans = new ArrayList<>();
