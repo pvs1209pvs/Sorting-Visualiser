@@ -2,6 +2,7 @@ package sortingalgorithms;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import visuals.Bar;
 
@@ -43,6 +44,8 @@ public class BubbleSort<T extends Comparable<T>> implements ComparativeSorter<T>
                     bars[i] = bars[i + 1];
                     bars[i + 1] = temp;
 
+//                    bars[i].setFill(Color.RED);
+//                    bars[i+1].setFill(Color.RED);
 
                     TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), bars[i]);
                     a.setByX(-1*gap);
@@ -52,7 +55,6 @@ public class BubbleSort<T extends Comparable<T>> implements ComparativeSorter<T>
 
                     trans.add(a);
                     trans.add(b);
-
 
 
 

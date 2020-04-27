@@ -62,16 +62,15 @@ public class ShellSort<T extends Comparable<T>> implements ComparativeSorter<T> 
 
     private void swapbars(Bar[] array, int i, int j, int gaps, double seconds, List<Animation> trans) {
         Bar temp = array[i];
-        System.out.println("Before " + array[i].getX() + " " + array[j].getX());
         array[i] = array[j];
         array[j] = temp;
-        System.out.println("After " + array[i].getX() + " " + array[j].getX());
+
 
         TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), array[i]);
-        a.setByX(array[j].getX());
+        a.setByX(-1*Math.abs(i-j)*gaps);
 
         TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), array[j]);
-        b.setByX(array[i].getX());
+        b.setByX(Math.abs(i-j)*gaps);
 
         trans.add(a);
         trans.add(b);

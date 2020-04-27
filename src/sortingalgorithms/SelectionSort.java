@@ -40,6 +40,7 @@ public class SelectionSort<T extends Comparable<T>> implements ComparativeSorter
     }
 
     public void sort(Bar[] array, List<Animation> trans, int gap, double seconds) {
+
         int y = array.length;
 
         for (int i = 0; i <y-1 ; i++) {

@@ -1,3 +1,4 @@
+import com.sun.scenario.effect.Merge;
 import sortingalgorithms.*;
 import sortingalgorithms.ComparativeSorter;
 import sortingalgorithms.InsertionSort;
@@ -13,26 +14,32 @@ public class Main {
 
             Random randomGen = new Random(i);
 
-            int[] array = new int[Math.abs(randomGen.nextInt()) % 100 + 1];
-
-            Integer[] arr = new Integer[array.length];
+            int n = Math.abs(randomGen.nextInt()) % 100 + 1;
+            n = 10;
+            Integer[] array = new Integer[n];
 
             for (int j = 0; j < array.length; j++) {
-                array[j] = Math.abs(randomGen.nextInt() % 10 + 1);
+                array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
             }
 
-            for (int j = 0; j < arr.length; j++) {
-                arr[j] = array[j];
-            }
+//            array[0] = 15;
+//            array[1] = 10;
+//            array[2] = 20;
+//            array[3] = 5;
 
 
-            ComparativeSorter<Integer> s = new CocktailSort<>();
-            s.sort(arr);
+            MergeSort<Integer> s = new MergeSort<>();
+            s.sort(array);
 
-            if (!isSorted(arr)) {
+            if (!isSorted(array)) {
                 System.out.println("Fails at seed " + i);
             }
         }
+
+
+        Integer a = 15;
+        Integer b = 20;
+        System.out.println(a.compareTo(b)<0);
     }
 
     private boolean isSorted(int[] array) {

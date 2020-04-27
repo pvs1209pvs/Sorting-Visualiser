@@ -1,7 +1,6 @@
 package visuals;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
@@ -12,11 +11,8 @@ import sortingalgorithms.SorterFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
+import java.lang.reflect.Array;
+import java.util.*;
 
 import static visuals.Dialog.primaryStage;
 
@@ -59,16 +55,20 @@ public class Controller {
     @FXML
     public void play() {
 
+        //System.out.println(sortSelect.getValue().toUpperCase());
+
         int gap = 20;
         int width = 10;
 
-        Bar[] bars = new Bar[getSampleSize()];
+        int n = getSampleSize();
+        Bar[] bars = new Bar[n];
+
         for (int i = 0; i < bars.length; i++) {
-            bars[i] = new Bar(i * gap, 50, width, ((int) (Math.random() * maxValue() + minValue())) * 15);
+            bars[i] = new Bar(i * gap, 50, width, (Math.random()*maxValue()+minValue())*15);
         }
 
         animationSequence = new AnimationSequence();
-        animationSequence.getSequenceTransition(SorterFactory.ALGORITHMS.BUBBLE, bars, 20, 1/getSpeed()).play();
+        animationSequence.getSequenceTransition(sortSelect.getValue().toUpperCase(), bars, gap, 1 / getSpeed()).play();
 
         Pane p = new Pane();
         for (Bar bar : bars) {
@@ -81,8 +81,8 @@ public class Controller {
         VBox vBox = new VBox(p, playPause);
 
         Stage myStage = new Stage();
-        myStage.setWidth(800);
-        myStage.setHeight(300);
+        myStage.setWidth(1280);
+        myStage.setHeight(480);
 
         Scene myScene = new Scene(vBox);
 
@@ -93,7 +93,7 @@ public class Controller {
     }
 
     @FXML
-    private void stop(){
+    private void stop() {
 //        animationSequence.getSequenceTransition().stop();
     }
 
@@ -136,7 +136,8 @@ public class Controller {
             return nums.toArray(new Integer[0]);
 
 
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
 
             e.printStackTrace();
         }
@@ -144,15 +145,12 @@ public class Controller {
         return null;
     }
 
-    public void selectedSort() {
-        System.out.println(sortSelect.getValue());
-    }
 
-    private int minValue(){
+    private int minValue() {
         return Integer.parseInt(minValue.getText());
     }
 
-    private int maxValue(){
+    private int maxValue() {
         return Integer.parseInt(maxValue.getText());
     }
 

@@ -5,9 +5,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.*?>
-
-
-
 <BorderPane fx:controller="visuals.Controller"
             xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css" style=" -fx-background-color: linear-gradient(to right, black, #626262);">
 
@@ -20,27 +17,27 @@
                     <Insets top="10"/>
                 </padding>
 
-                <ComboBox fx:id="sortSelect" onMouseClicked="#selectedSort"
+                <ComboBox fx:id="sortSelect"
                           style="-fx-effect:dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 ) ">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Heap Sort"/>
-                            <String fx:value="Merge Sort"/>
-                            <String fx:value="Shell Sort"/>
-                            <String fx:value="Counting Sort"/>
-                            <String fx:value="Insertion Sort"/>
-                            <String fx:value="Cycle Sort"/>
-                            <String fx:value="Bubble Sort"/>
-                            <String fx:value="Bucket Sort"/>
-                            <String fx:value="Radix Sort"/>
-                            <String fx:value="Cocktail Sort"/>
-                            <String fx:value="Selection Sort"/>
-                            <String fx:value="Quick Sort"/>
+                            <String fx:value="Heap"/>
+                            <String fx:value="Merge"/>
+                            <String fx:value="Shell"/>
+                            <String fx:value="Counting"/>
+                            <String fx:value="Insertion"/>
+                            <String fx:value="Cycle"/>
+                            <String fx:value="Bubble"/>
+                            <String fx:value="Bucket"/>
+                            <String fx:value="Radix"/>
+                            <String fx:value="Cocktail"/>
+                            <String fx:value="Selection"/>
+                            <String fx:value="Quick"/>
                         </FXCollections>
                     </items>
                     <value>
 
-                        <String fx:value="Quick Sort"/>
+                        <String fx:value="Quick"/>
                     </value>
 
                 </ComboBox>
@@ -50,7 +47,7 @@
 
     <center>
 
-        <VBox alignment="CENTER" spacing="10"  >
+        <VBox alignment="CENTER" spacing="10">
 
             <padding>
                 <Insets top="40" bottom="40" left="20" right="20"/>

@@ -20,7 +20,17 @@ public class SorterFactory {
         SHELL
     }
 
-    public static Sorter getSorter(ALGORITHMS algorithms) {
+    public static Sorter getSorter(String algorithm) {
+
+
+        ALGORITHMS[] algoArray = ALGORITHMS.values();
+        ALGORITHMS algo = null;
+
+        for (ALGORITHMS a : algoArray) {
+            if (a.toString().equals(algorithm)) {
+                algo = a;
+            }
+        }
 
         Map<ALGORITHMS, Sorter> sorters = new HashMap<>();
 
@@ -37,7 +47,7 @@ public class SorterFactory {
         sorters.put(ALGORITHMS.SELECTION, new SelectionSort());
         sorters.put(ALGORITHMS.SHELL, new ShellSort());
 
-        return sorters.get(algorithms);
+        return sorters.get(algo);
 
     }
 }

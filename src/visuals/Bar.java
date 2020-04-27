@@ -4,6 +4,8 @@ import javafx.scene.shape.Rectangle;
 
 public class Bar extends Rectangle implements Comparable<Bar> {
 
+    public boolean isVisited = false;
+
     public Bar(double x, double y, double w, double h) {
         super(x, y, w, h);
     }
