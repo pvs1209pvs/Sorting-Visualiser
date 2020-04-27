@@ -26,7 +26,7 @@ public class Main {
             }
 
 
-            ComparativeSorter<Integer> s = new SelectionSort<>();
+            ComparativeSorter<Integer> s = new CocktailSort<>();
             s.sort(arr);
 
 
