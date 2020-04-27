@@ -155,7 +155,6 @@ public class Controller {
     @FXML
     private int getSampleSize() {
         return Integer.parseInt(samples.getText());
-
     }
 
     @FXML

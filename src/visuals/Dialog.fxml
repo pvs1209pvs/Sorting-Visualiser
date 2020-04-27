@@ -10,7 +10,7 @@
 
     <top>
         <VBox alignment="TOP_CENTER">
-            <Label text="Sorting Algorithm"/>
+            <Label text="Sorting Algorithm" style="-fx-font-size: 16"/>
             <HBox alignment="TOP_CENTER">
                 <padding>
                     <Insets top="10"/>
