@@ -187,7 +187,6 @@ public class Controller {
 
     private double getSpeed() {
         return speedSlider.getValue();
-
     }
 
     public void close() {

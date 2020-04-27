@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import sortingalgorithms.*;
+=======
+import sortingalgorithms.ComparativeSorter;
+import sortingalgorithms.InsertionSort;
+import sortingalgorithms.ShellSort;
+>>>>>>> 11e07975f6247af3a80a5654c0874ab1ddcb5a4f
 
 import java.util.Random;
 
@@ -23,7 +29,11 @@ public class Main {
             }
 
 
+<<<<<<< HEAD
             ComparativeSorter<Integer> s = new SelectionSort<>();
+=======
+            ComparativeSorter<Integer> s = new ShellSort<>();
+>>>>>>> 11e07975f6247af3a80a5654c0874ab1ddcb5a4f
             s.sort(arr);
 
 
