@@ -21,8 +21,8 @@ public class SelectionSort<T extends Comparable<T>> implements ComparativeSorter
 
         for (int i = 0; i <y-1 ; i++) {
             int miniIndex = i;
-            for (int j = i; j <y ; j++) {
-                if(array[j].compareTo(array[i]) > 0){
+            for (int j = i+1; j <y ; j++) {
+                if(array[j].compareTo(array[miniIndex]) < 0){
                     miniIndex = j;
                 }
             }
@@ -31,12 +31,11 @@ public class SelectionSort<T extends Comparable<T>> implements ComparativeSorter
             array[miniIndex] = array[i];
             array[i] = swap;
 
+
         }
 
 
-        for(int i = 0; i<y; i++){
-            System.out.println((Integer) array[i]);
-        }
+
 
     }
 

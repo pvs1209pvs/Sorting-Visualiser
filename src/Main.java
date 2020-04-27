@@ -9,7 +9,7 @@ public class Main {
 
     private Main() {
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 100; i++) {
 
             Random randomGen = new Random(i);
 
@@ -26,7 +26,7 @@ public class Main {
             }
 
 
-            ComparativeSorter<Integer> s = new SelectionSort<>();
+            ComparativeSorter<Integer> s = new CocktailSort<>();
             s.sort(arr);
 
             if (!isSorted(arr)) {
