@@ -15,7 +15,7 @@ Simar
 * Bubble sort
 * Bucket Sort
 
-Fahad [Basically audience of repo.]
+Fahad [Basically he is audience of repo.]
 * Radix Sort
 * Cocktail sort
 * Selection sort
@@ -23,7 +23,7 @@ Fahad [Basically audience of repo.]
 
 Categories
 
-* A: counting, bucket, radix, bubble 
+* ~~A: counting, bucket, radix, bubble~~
 * B: merge, quick selection, cocktail
 * C: heap, shell, insertion, cycle
 

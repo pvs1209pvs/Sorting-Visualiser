@@ -43,6 +43,7 @@ public class BubbleSort<T extends Comparable<T>> implements ComparativeSorter<T>
                     bars[i] = bars[i + 1];
                     bars[i + 1] = temp;
 
+
                     TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), bars[i]);
                     a.setByX(-1*gap);
 
@@ -51,6 +52,8 @@ public class BubbleSort<T extends Comparable<T>> implements ComparativeSorter<T>
 
                     trans.add(a);
                     trans.add(b);
+
+
 
 
                     isSorted = false;

@@ -5,8 +5,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import sortingalgorithms.SorterFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +21,8 @@ import java.util.Scanner;
 import static visuals.Dialog.primaryStage;
 
 public class Controller {
-    AnimationSequence animationSequence;
+
+    private AnimationSequence animationSequence;
 
     @FXML
     ComboBox<String> sortSelect;
@@ -56,27 +59,33 @@ public class Controller {
     @FXML
     public void play() {
 
+        int gap = 20;
+        int width = 10;
+
         Bar[] bars = new Bar[getSampleSize()];
         for (int i = 0; i < bars.length; i++) {
-            bars[i] = new Bar(i * 20, 50, 10, ((int) (Math.random() * maxValue() + minValue())) * 15);
+            bars[i] = new Bar(i * gap, 50, width, ((int) (Math.random() * maxValue() + minValue())) * 15);
         }
 
-        animationSequence = new AnimationSequence(bars, 20, 1/getSpeed());
-        animationSequence.getSequenceTransition().play();
+        animationSequence = new AnimationSequence();
+        animationSequence.getSequenceTransition(SorterFactory.ALGORITHMS.BUBBLE, bars, 20, 1/getSpeed()).play();
 
         Pane p = new Pane();
         for (Bar bar : bars) {
             p.getChildren().add(bar);
         }
 
-//        Button stop = new Button("Stop");
-//        stop.setOnAction(event -> );
+        Button playPause = new Button("Play/Pause");
+        //stop.setOnAction(event -> animationSequence.getSequenceTransition().pause());
+
+        VBox vBox = new VBox(p, playPause);
 
         Stage myStage = new Stage();
         myStage.setWidth(800);
         myStage.setHeight(300);
 
-        Scene myScene = new Scene(p);
+        Scene myScene = new Scene(vBox);
+
         myStage.setScene(myScene);
         myStage.show();
 
@@ -85,13 +94,13 @@ public class Controller {
 
     @FXML
     private void stop(){
-        animationSequence.getSequenceTransition().stop();
+//        animationSequence.getSequenceTransition().stop();
     }
 
     @FXML
-    private void pause(){
-        animationSequence.getSequenceTransition().pause();
-    }
+//    private void pause(){
+//        animationSequence.getSequenceTransition().pause();
+//    }
 
     public void Sort() {
 
@@ -137,11 +146,6 @@ public class Controller {
 
     public void selectedSort() {
         System.out.println(sortSelect.getValue());
-    }
-
-    private void range() {
-
-        System.out.println( minValue.getText()+ " to " + maxValue.getText());
     }
 
     private int minValue(){
