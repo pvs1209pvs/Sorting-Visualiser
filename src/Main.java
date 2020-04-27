@@ -1,5 +1,6 @@
 import sortingalgorithms.ComparativeSorter;
 import sortingalgorithms.InsertionSort;
+import sortingalgorithms.ShellSort;
 
 import java.util.Random;
 
@@ -24,7 +25,7 @@ public class Main {
             }
 
 
-            ComparativeSorter<Integer> s = new InsertionSort<>();
+            ComparativeSorter<Integer> s = new ShellSort<>();
             s.sort(arr);
 
             if (!isSorted(arr)) {
