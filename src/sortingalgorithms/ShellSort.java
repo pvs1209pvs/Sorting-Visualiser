@@ -65,12 +65,11 @@ public class ShellSort<T extends Comparable<T>> implements ComparativeSorter<T> 
         array[i] = array[j];
         array[j] = temp;
 
-
         TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), array[i]);
-        a.setByX(-1*Math.abs(i-j)*gaps);
+        a.setByX(Math.abs(i - j) * gaps);
 
         TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), array[j]);
-        b.setByX(Math.abs(i-j)*gaps);
+        b.setByX(-1 * Math.abs(i - j) * gaps);
 
         trans.add(a);
         trans.add(b);

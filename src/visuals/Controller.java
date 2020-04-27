@@ -68,7 +68,9 @@ public class Controller {
         }
 
         animationSequence = new AnimationSequence();
+
         animationSequence.getSequenceTransition(sortSelect.getValue().toUpperCase(), bars, gap, 1 / getSpeed()).play();
+
 
         Pane p = new Pane();
         for (Bar bar : bars) {
@@ -81,6 +83,7 @@ public class Controller {
         VBox vBox = new VBox(p, playPause);
 
         Stage myStage = new Stage();
+
         myStage.setWidth(1280);
         myStage.setHeight(480);
 
@@ -157,7 +160,6 @@ public class Controller {
     @FXML
     private int getSampleSize() {
         return Integer.parseInt(samples.getText());
-
     }
 
     @FXML
