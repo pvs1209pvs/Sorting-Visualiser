@@ -19,6 +19,7 @@ import java.util.Scanner;
 import static visuals.Dialog.primaryStage;
 
 public class Controller {
+    AnimationSequence animationSequence;
 
     @FXML
     ComboBox<String> sortSelect;
@@ -57,10 +58,10 @@ public class Controller {
 
         Bar[] bars = new Bar[getSampleSize()];
         for (int i = 0; i < bars.length; i++) {
-            bars[i] = new Bar(i * 20, 50, 10, ((int) (Math.random() * maxValue() + minValue())) * 8);
+            bars[i] = new Bar(i * 20, 50, 10, ((int) (Math.random() * maxValue() + minValue())) * 15);
         }
 
-        AnimationSequence animationSequence = new AnimationSequence(bars, 20, 1/getSpeed());
+        animationSequence = new AnimationSequence(bars, 20, 1/getSpeed());
         animationSequence.getSequenceTransition().play();
 
         Pane p = new Pane();
@@ -68,8 +69,11 @@ public class Controller {
             p.getChildren().add(bar);
         }
 
+//        Button stop = new Button("Stop");
+//        stop.setOnAction(event -> );
+
         Stage myStage = new Stage();
-        myStage.setWidth(700);
+        myStage.setWidth(800);
         myStage.setHeight(300);
 
         Scene myScene = new Scene(p);
@@ -79,6 +83,15 @@ public class Controller {
 
     }
 
+    @FXML
+    private void stop(){
+        animationSequence.getSequenceTransition().stop();
+    }
+
+    @FXML
+    private void pause(){
+        animationSequence.getSequenceTransition().pause();
+    }
 
     public void Sort() {
 

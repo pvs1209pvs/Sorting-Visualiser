@@ -18,7 +18,6 @@ public class AnimationSequence {
         sorter = new BubbleSort<>();
 
         sorter.sort(bars, trans, gap, seconds);
-
     }
 
     public List<Animation> getTrans() {
