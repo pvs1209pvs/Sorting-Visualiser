@@ -68,7 +68,20 @@ public class Controller {
         }
 
         animationSequence = new AnimationSequence();
-        animationSequence.getSequenceTransition(SorterFactory.ALGORITHMS.BUBBLE, bars, 20, 1/getSpeed()).play();
+
+        String algo = sortSelect.getValue();
+
+        switch (algo){
+            case "Bubble Sort":
+                animationSequence.getSequenceTransition(SorterFactory.ALGORITHMS.BUBBLE, bars, 20, 1/getSpeed()).play();
+                break;
+            case "Shell Sort":
+                animationSequence.getSequenceTransition(SorterFactory.ALGORITHMS.SHELL, bars, 20, 1/getSpeed()).play();
+                break;
+            default:
+                System.out.println("Yet to be implemented");
+                break;
+        }
 
         Pane p = new Pane();
         for (Bar bar : bars) {
