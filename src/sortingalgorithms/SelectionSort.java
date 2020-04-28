@@ -1,7 +1,3 @@
-
-
-
-
 package sortingalgorithms;
 
 import javafx.animation.Animation;
@@ -12,8 +8,6 @@ import visuals.Bar;
 import java.util.List;
 
 public class SelectionSort<T extends Comparable<T>> implements ComparativeSorter<T> {
-
-
 
     @Override
     public void sort(T[] array) {

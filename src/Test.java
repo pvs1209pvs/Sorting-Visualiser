@@ -18,8 +18,8 @@ public class Test {
                 array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
             }
 
-            CycleSort<Integer> s = new CycleSort<>();
-            s.sort(array);
+//            CycleSort<Integer> s = new CycleSort<>();
+//            s.sort(array);
 
             if (!isSorted(array)) {
                 System.out.println("Fails at seed " + i);
