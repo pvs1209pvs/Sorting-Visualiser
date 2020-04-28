@@ -6,6 +6,5 @@ import visuals.Bar;
 import java.util.List;
 
 public interface Sorter {
-
-    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds);
+    void sort(Bar[] bars, List<Animation> trans, int gap, double seconds);
 }
