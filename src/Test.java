@@ -10,7 +10,6 @@ public class Test {
 
             Random randomGen = new Random(i);
 
-
             int n = Math.abs(randomGen.nextInt()) % 100 + 1;
             Integer[] array = new Integer[n];
 
@@ -19,7 +18,7 @@ public class Test {
                 array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
             }
 
-            MergeSort<Integer> s = new MergeSort<>();
+            CycleSort<Integer> s = new CycleSort<>();
             s.sort(array);
 
             if (!isSorted(array)) {
@@ -27,10 +26,10 @@ public class Test {
             }
         }
 
-
-        Integer a = 15;
-        Integer b = 20;
-        System.out.println(a.compareTo(b)<0);
+//
+//        Integer a = 15;
+//        Integer b = 20;
+//        System.out.println(a.compareTo(b)<0);
     }
 
     private boolean isSorted(int[] array) {

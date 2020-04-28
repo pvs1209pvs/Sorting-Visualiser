@@ -52,9 +52,7 @@ public class Controller {
 
     @FXML
     public void play() {
-
-        //System.out.println(sortSelect.getValue().toUpperCase());
-
+        System.out.println(sortSelect.getValue().toUpperCase());
         int gap = 20;
         int width = 10;
 
@@ -66,9 +64,7 @@ public class Controller {
         }
 
         animationSequence = new AnimationSequence();
-
         animationSequence.getSequenceTransition(sortSelect.getValue().toUpperCase(), bars, gap, 1 / getSpeed()).play();
-
 
         Pane p = new Pane();
         for (Bar bar : bars) {
@@ -76,7 +72,7 @@ public class Controller {
         }
 
         Button playPause = new Button("Play/Pause");
-        //stop.setOnAction(event -> animationSequence.getSequenceTransition().pause());
+        //playPause.setOnAction(event -> animationSequence.getSequenceTransition().pause());
 
         VBox vBox = new VBox(p, playPause);
 
@@ -95,13 +91,7 @@ public class Controller {
 
     @FXML
     private void stop() {
-//        animationSequence.getSequenceTransition().stop();
     }
-
-    @FXML
-//    private void pause(){
-//        animationSequence.getSequenceTransition().pause();
-//    }
 
     public void Sort() {
 

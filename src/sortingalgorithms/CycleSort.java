@@ -2,11 +2,13 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.List;
 
-public class CycleSort<T extends  Comparable<T>> implements ComparativeSorter<T> {
+public class CycleSort<T extends Comparable<T>> implements ComparativeSorter<T> {
     public void sort(T[] array) {
 
         T item = null; //to hold the items that are being worked on
@@ -60,6 +62,6 @@ public class CycleSort<T extends  Comparable<T>> implements ComparativeSorter<T>
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-
+        
     }
 }
