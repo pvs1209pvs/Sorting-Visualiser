@@ -25,5 +25,5 @@ Categories(Visualization)
 
 * A: Counting, Bucket, Radix, cocktail
 * B: Quick Selection,
-* C: Heap, Insertion, Cycle
+* C: Heap, Cycle(Done, except issue with bar add in controller)
 
