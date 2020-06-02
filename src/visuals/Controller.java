@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -60,13 +62,14 @@ public class Controller {
         Bar[] bars = new Bar[n];
 
         switch (userInputOption()) {
+
             case "fromRandom": {
 
                 n = getSampleSize();
                 bars = new Bar[n];
 
                 for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap, 50, width, (Math.random() * maxValue() + minValue()) * 15);
+                    bars[i] = new Bar(i * gap + width, width, width, (int) (Math.random() * maxValue() + minValue()) * 15);
                 }
 
                 break;
@@ -78,7 +81,7 @@ public class Controller {
                 bars = new Bar[n];
 
                 for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap, 50, width, nums[i] * 15);
+                    bars[i] = new Bar(i * gap, 5, width, nums[i] * 15);
                 }
 
                 break;
@@ -90,7 +93,7 @@ public class Controller {
                 bars = new Bar[n];
 
                 for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap, 50, width, nums[i] * 15);
+                    bars[i] = new Bar(i * gap, 5, width, nums[i] * 15);
                 }
 
             }
@@ -99,22 +102,27 @@ public class Controller {
         animationSequence = new AnimationSequence();
         animationSequence.getSequenceTransition(sortSelect.getValue().toUpperCase(), bars, gap, 1 / getSpeed()).play();
 
-        Pane p = new Pane();
-        for (Bar bar : bars) {
-            p.getChildren().add(bar);
-        }
-
+        Pane pane = new Pane();
         Button playPause = new Button("Play/Pause");
-        //playPause.setOnAction(event -> animationSequence.getSequenceTransition().pause());
 
-        VBox vBox = new VBox(p, playPause);
+        VBox vBox = new VBox(pane);
+        vBox.setStyle("-fx-background-color: black");
 
         Stage myStage = new Stage();
 
-        myStage.setWidth(1280);
-        myStage.setHeight(480);
+        myStage.setWidth((gap) * n - width + (2 * width));
+        myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * width));
+
+        pane.setStyle("-fx-background-color: black");
+        for (Bar bar : bars) {
+            bar.setFill(Paint.valueOf("#000000"));
+            bar.setStroke(Paint.valueOf("#ffffff"));
+            pane.getChildren().add(bar);
+        }
+
 
         Scene myScene = new Scene(vBox);
+
 
         myStage.setScene(myScene);
         myStage.show();
