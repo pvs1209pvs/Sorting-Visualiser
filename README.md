@@ -22,18 +22,16 @@ Simar
 * Bubble sort
 * Bucket Sort
 
-Fahad [Basically he is audience of repo.]
+Fahad
 * Radix Sort
 * Cocktail sort
 * Selection sort
 * Quick sort
 
 Categories(Visualization)
-
-* A: Counting, Bucket, Radix, cocktail
-* B: Quick Selection,
+* A: Counting, Bucket, Radix, Cocktail
+* B:
 * C: Heap, Cycle(Done, except issue with bar add in controller)
-
 
 In-Progress
 * Bucket
