@@ -1,6 +1,6 @@
 # Sorting-Visualizer
 
-![](src/Screenshot%20from%202020-06-02%2015-27-48.png)
+<div align = "center">![](src/Screenshot%20from%202020-06-02%2015-27-48.png)</div>
 ![](src/Screenshot%20from%202020-06-02%2015-32-01.png)
 
 # Algorithms
