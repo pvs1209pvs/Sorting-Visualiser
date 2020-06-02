@@ -1,5 +1,6 @@
 import sortingalgorithms.*;
 
+import java.sql.SQLOutput;
 import java.util.Random;
 
 public class Test {
@@ -12,23 +13,21 @@ public class Test {
 
             int n = Math.abs(randomGen.nextInt()) % 100 + 1;
             Integer[] array = new Integer[n];
-            
+
             for (int j = 0; j < array.length; j++) {
                 array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
             }
 
-//            CycleSort<Integer> s = new CycleSort<>();
-//            s.sort(array);
+//            ComparativeSorter<Integer> sort = new SelectionSort<>();
+//            sort.sort(array);
 
             if (!isSorted(array)) {
                 System.out.println("Fails at seed " + i);
             }
         }
 
-//
-//        Integer a = 15;
-//        Integer b = 20;
-//        System.out.println(a.compareTo(b)<0);
+        System.out.println("Perfect Run!");
+
     }
 
     private boolean isSorted(int[] array) {
@@ -50,7 +49,6 @@ public class Test {
     }
 
     public static void main(String[] args) {
-
         new Test();
     }
 }

@@ -5,21 +5,21 @@ import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import visuals.Bar;
 
-import java.util.Arrays;
+
 import java.util.List;
 
 public class QuickSort implements Sorter {
 
     private void quickSort(Bar[] arr, int l, int h, List<Animation> trans, int gap, double seconds) {
         if (l < h) {
-            int broken = brokenHearts(arr, l, h, trans, gap, seconds);
+            int broken = partition(arr, l, h, trans, gap, seconds);
             quickSort(arr, l, broken - 1, trans, gap, seconds);
             quickSort(arr, broken + 1, h, trans, gap, seconds);
         }
 
     }
 
-    private int brokenHearts(Bar[] arr, int l, int h, List<Animation> trans, int gap, double seconds) {
+    private int partition(Bar[] arr, int l, int h, List<Animation> trans, int gap, double seconds) {
 
         TranslateTransition a, b;
         int barShift = 0;
@@ -39,7 +39,7 @@ public class QuickSort implements Sorter {
                     a.setByX(-1 * barShift * gap);
 
                     b = new TranslateTransition(Duration.seconds(seconds), arr[low]);
-                    b.setByX(1 * barShift * gap);
+                    b.setByX(barShift * gap);
 
                     trans.add(a);
                     trans.add(b);
@@ -56,10 +56,10 @@ public class QuickSort implements Sorter {
         if (barShift != 0) {
 
             a = new TranslateTransition(Duration.seconds(seconds), arr[low + 1]);
-            a.setByX(1 * Math.abs(low + 1 - h) * gap);
+            a.setByX(barShift * gap);
 
             b = new TranslateTransition(Duration.seconds(seconds), arr[h]);
-            b.setByX(-1 * Math.abs(low + 1 - h) * gap);
+            b.setByX(-1 * barShift * gap);
 
             trans.add(a);
             trans.add(b);

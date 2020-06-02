@@ -24,14 +24,15 @@ public class ShellSort implements Sorter{
         for (int i = gap; i < array.length; ++i) {
             for (int j = i; j >= gap; j = j - gap) {
                 if (array[j].compareTo(array[j - gap]) < 0) {
-                    swapbars(array, j, j - gap, gaps, s, trans);
+                    swapBars(array, j, j - gap, gaps, s, trans);
                 }
             }
         }
 
     }
 
-    private void swapbars(Bar[] array, int i, int j, int gaps, double seconds, List<Animation> trans) {
+    private void swapBars(Bar[] array, int i, int j, int gaps, double seconds, List<Animation> trans) {
+
         Bar temp = array[i];
         array[i] = array[j];
         array[j] = temp;
@@ -44,5 +45,6 @@ public class ShellSort implements Sorter{
 
         trans.add(a);
         trans.add(b);
+
     }
 }
