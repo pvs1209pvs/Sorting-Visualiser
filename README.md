@@ -1,5 +1,6 @@
 # Sorting-Visualizer
 
+![](src/Screenshot%20from%202020-06-02%2015-27-48.png)
 
 # Algorithms
 
