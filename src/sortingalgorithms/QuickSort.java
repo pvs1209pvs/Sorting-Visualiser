@@ -1,51 +1,81 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class QuickSort<T extends Comparable<T>> implements ComparativeSorter<T>  {
-    @Override
-    public void sort(T[] array) {
-        QuickSrt(array,0, array.length-1);
-    }
+public class QuickSort implements Sorter {
 
-    //Breaking and partition nested calls
-    private void QuickSrt(T[] arr, int l, int h){
-        if(l<h){
-            int broken = brokenHearts(arr,l,h);
-            QuickSrt(arr, l, broken-1);
-            QuickSrt(arr, broken+1, h);
+    private void quickSort(Bar[] arr, int l, int h, List<Animation> trans, int gap, double seconds) {
+        if (l < h) {
+            int broken = brokenHearts(arr, l, h, trans, gap, seconds);
+            quickSort(arr, l, broken - 1, trans, gap, seconds);
+            quickSort(arr, broken + 1, h, trans, gap, seconds);
         }
 
     }
 
-    //Breaking given array using high and low of that array
-    private int brokenHearts(T[] arr, int l, int h) {
+    private int brokenHearts(Bar[] arr, int l, int h, List<Animation> trans, int gap, double seconds) {
 
-        T pivot = arr[h];
+        TranslateTransition a, b;
+        int barShift = 0;
 
-        int low = l-1;
-        for (int i = l; i <h ; i++) {
+        Bar pivot = arr[h];
 
-            if(arr[i].compareTo(pivot)<=0){
+        int low = l - 1;
+        for (int i = l; i < h; i++) {
+
+            if (arr[i].compareTo(pivot) <= 0) {
                 low++;
-                T swap = arr[low];
+
+                barShift = Math.abs(low - i);
+
+                if (barShift != 0) {
+                    a = new TranslateTransition(Duration.seconds(seconds), arr[i]);
+                    a.setByX(-1 * barShift * gap);
+
+                    b = new TranslateTransition(Duration.seconds(seconds), arr[low]);
+                    b.setByX(1 * barShift * gap);
+
+                    trans.add(a);
+                    trans.add(b);
+                }
+
+                Bar swap = arr[low];
                 arr[low] = arr[i];
                 arr[i] = swap;
             }
         }
-        T swap = arr[low+1];
-        arr[low+1] = arr[h];
+
+        barShift = Math.abs(low + 1 - h);
+
+        if (barShift != 0) {
+
+            a = new TranslateTransition(Duration.seconds(seconds), arr[low + 1]);
+            a.setByX(1 * Math.abs(low + 1 - h) * gap);
+
+            b = new TranslateTransition(Duration.seconds(seconds), arr[h]);
+            b.setByX(-1 * Math.abs(low + 1 - h) * gap);
+
+            trans.add(a);
+            trans.add(b);
+
+        }
+
+        Bar swap = arr[low + 1];
+        arr[low + 1] = arr[h];
         arr[h] = swap;
 
-        return low+1;
+        return low + 1;
 
     }
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-
+        quickSort(bars, 0, bars.length - 1, trans, gap, seconds);
     }
 }

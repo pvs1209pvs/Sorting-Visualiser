@@ -12,8 +12,7 @@ public class Test {
 
             int n = Math.abs(randomGen.nextInt()) % 100 + 1;
             Integer[] array = new Integer[n];
-
-
+            
             for (int j = 0; j < array.length; j++) {
                 array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
             }
@@ -51,6 +50,7 @@ public class Test {
     }
 
     public static void main(String[] args) {
+
         new Test();
     }
 }
