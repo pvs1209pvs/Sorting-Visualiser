@@ -10,9 +10,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     static Stage primaryStage;
-    private int gap = 20;
-    private int width = 10;
-    private double seconds = 0.07;
 
     public static void main(String[] args) {
         launch(args);

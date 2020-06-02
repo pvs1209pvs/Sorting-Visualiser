@@ -8,7 +8,8 @@
 <?import javafx.util.*?>
 
 <BorderPane fx:controller="visuals.Controller"
-            xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css" style=" -fx-background-color: linear-gradient(to right, black, #626262);">
+            xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css"
+            style=" -fx-background-color: linear-gradient(to right, black, #626262);">
 
     <top>
 
@@ -79,18 +80,18 @@
                 </fx:define>
 
                 <RadioButton fx:id="fromRandom" text="Randomly generated values" toggleGroup="$customInputOptions"
-                             onAction="#userInput"/>
-                <RadioButton fx:id="fromArray" text="Use your own values" toggleGroup="$customInputOptions"
-                             onAction="#userInput"/>
-
+                             onAction="#userInputOption"/>
+                <RadioButton fx:id="fromArray" text="Enter values values" toggleGroup="$customInputOptions"
+                             onAction="#userInputOption"/>
+                <RadioButton fx:id="fromFile" text="Open file" toggleGroup="$customInputOptions"
+                             onAction="#userInputOption"/>
 
             </HBox>
 
             <HBox fx:id="userCustomInput" alignment="CENTER">
                 <TextField fx:id="numbers" promptText="Enter your input" prefWidth="500" editable="false"/>
-                <Button fx:id="fileSelect" visible="false" text="Select File" onMouseClicked="#sortIt"></Button>
+                <Button fx:id="fileSelect" visible="false" text="Select File" onMouseClicked="#playAnim"/>
             </HBox>
-
 
             <Label text="Sorting Speed"/>
 
@@ -109,8 +110,8 @@
                 <Insets bottom="20"/>
             </padding>
 
-            <Button fx:id="Sort" text="Sort" onAction="#Sort" prefWidth="60" onMouseClicked="#play"/>
-            <Button fx:id="Exit" text="Close" onAction="#close" prefWidth="60"/>
+            <Button fx:id="Sort" text="Sort" prefWidth="60" onMouseClicked="#playAnim"/>
+            <Button fx:id="Exit" text="Close" prefWidth="60" onAction="#close"/>
 
         </HBox>
     </bottom>

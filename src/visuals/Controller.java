@@ -46,21 +46,54 @@ public class Controller {
     @FXML
     public void initialize() {
         (customInputOptions.getToggles().get(0)).setSelected(true);
-        userInput();
+        fileSelect.setVisible(true);
+        userInputOption();
     }
 
-
     @FXML
-    public void play() {
-        System.out.println(sortSelect.getValue().toUpperCase());
+    public void playAnim() {
+
         int gap = 20;
         int width = 10;
 
-        int n = getSampleSize();
+        int n = 0;
         Bar[] bars = new Bar[n];
 
-        for (int i = 0; i < bars.length; i++) {
-            bars[i] = new Bar(i * gap, 50, width, (Math.random()*maxValue()+minValue())*15);
+        switch (userInputOption()) {
+            case "fromRandom": {
+
+                n = getSampleSize();
+                bars = new Bar[n];
+
+                for (int i = 0; i < bars.length; i++) {
+                    bars[i] = new Bar(i * gap, 50, width, (Math.random() * maxValue() + minValue()) * 15);
+                }
+
+                break;
+            }
+            case "fromArray": {
+
+                Integer[] nums = userEnteredArray();
+                n = nums.length;
+                bars = new Bar[n];
+
+                for (int i = 0; i < bars.length; i++) {
+                    bars[i] = new Bar(i * gap, 50, width, nums[i] * 15);
+                }
+
+                break;
+            }
+            case "fromFile": {
+
+                Integer[] nums = openFile();
+                n = nums.length;
+                bars = new Bar[n];
+
+                for (int i = 0; i < bars.length; i++) {
+                    bars[i] = new Bar(i * gap, 50, width, nums[i] * 15);
+                }
+
+            }
         }
 
         animationSequence = new AnimationSequence();
@@ -89,35 +122,26 @@ public class Controller {
 
     }
 
-    @FXML
-    private void stop() {
-    }
+    public Integer[] openFile() {
 
-    public void Sort() {
+        numbers.setDisable(true);
 
-    }
-
-    @FXML
-    private void sortIt() {
-
-    }
-
-    private void fileSelect() {
         FileChooser fileChooser = new FileChooser();
         File inputFile = fileChooser.showOpenDialog(primaryStage);
 
-        Integer[] numArray = sortIt(inputFile);
+        return readFromFile(inputFile);
 
-        System.out.println(Arrays.toString(numArray));
     }
 
-    private Integer[] sortIt(File inputFile) {
+    private Integer[] readFromFile(File inputFile) {
+
         try {
 
             Scanner scanner = new Scanner(inputFile);
             scanner.useDelimiter(" ");
 
             List<Integer> nums = new ArrayList<>();
+
             while (scanner.hasNext()) {
                 nums.add(Integer.parseInt(scanner.next().trim()));
             }
@@ -126,16 +150,54 @@ public class Controller {
 
             return nums.toArray(new Integer[0]);
 
-
-        }
-        catch (FileNotFoundException e) {
-
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         return null;
     }
 
+    private Integer[] userEnteredArray() {
+        return Arrays.stream(numbers.getText().split(" ")).map(Objects::toString).map(Integer::valueOf).toArray(Integer[]::new);
+    }
+
+    @FXML
+    private String userInputOption() {
+
+        String id = ((RadioButton) customInputOptions.getSelectedToggle()).getId();
+
+        switch (id) {
+            case "fromRandom":
+                samples.setDisable(false);
+                minValue.setDisable(false);
+                maxValue.setDisable(false);
+                numbers.setDisable(true);
+                fileSelect.setDisable(true);
+                break;
+
+            case "fromArray":
+                samples.setDisable(true);
+                minValue.setDisable(true);
+                maxValue.setDisable(true);
+                numbers.setDisable(false);
+                numbers.setEditable(true);
+                fileSelect.setDisable(true);
+                break;
+
+            case "fromFile":
+                samples.setDisable(true);
+                minValue.setDisable(true);
+                maxValue.setDisable(true);
+                numbers.setDisable(false);
+                numbers.setEditable(true);
+                fileSelect.setDisable(false);
+                break;
+
+        }
+
+        return id;
+
+    }
 
     private int minValue() {
         return Integer.parseInt(minValue.getText());
@@ -150,38 +212,14 @@ public class Controller {
         return Integer.parseInt(samples.getText());
     }
 
-    @FXML
-    private void userInput() {
-
-        String id = ((RadioButton) customInputOptions.getSelectedToggle()).getId();
-
-        switch (id) {
-            case "fromRandom":
-                samples.setDisable(false);
-                minValue.setDisable(false);
-                maxValue.setDisable(false);
-                numbers.setDisable(true);
-                fileSelect.setVisible(false);
-                break;
-            case "fromArray":
-                samples.setDisable(true);
-                minValue.setDisable(true);
-                maxValue.setDisable(true);
-                numbers.setDisable(false);
-                numbers.setEditable(true);
-                fileSelect.setVisible(true);
-                break;
-
-        }
-
-    }
-
-
     private double getSpeed() {
         return speedSlider.getValue();
     }
 
+    @FXML
     public void close() {
         System.exit(0);
     }
+
+
 }

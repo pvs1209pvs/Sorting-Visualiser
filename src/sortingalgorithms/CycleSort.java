@@ -62,6 +62,6 @@ public class CycleSort implements Sorter {
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-
+        // INCOMPLETE
     }
 }

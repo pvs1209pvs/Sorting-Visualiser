@@ -26,9 +26,6 @@ public class BubbleSort implements Sorter {
                     bars[i] = bars[i + 1];
                     bars[i + 1] = temp;
 
-//                    bars[i].setFill(Color.RED);
-//                    bars[i+1].setFill(Color.RED);
-
                     TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), bars[i]);
                     a.setByX(-1*gap);
 
@@ -37,8 +34,6 @@ public class BubbleSort implements Sorter {
 
                     trans.add(a);
                     trans.add(b);
-
-
 
                     isSorted = false;
                 }

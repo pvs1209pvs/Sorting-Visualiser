@@ -1,6 +1,8 @@
 import sortingalgorithms.*;
+import visuals.Bar;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Test {
@@ -12,17 +14,18 @@ public class Test {
             Random randomGen = new Random(i);
 
             int n = Math.abs(randomGen.nextInt()) % 100 + 1;
-            Integer[] array = new Integer[n];
+            Bar[] array = new Bar[n];
 
             for (int j = 0; j < array.length; j++) {
-                array[j] = Math.abs(randomGen.nextInt() % 50 + 1);
+                array[j] = new Bar(0, 0, 15, Math.abs(randomGen.nextInt() % 50 + 1));
             }
 
-//            ComparativeSorter<Integer> sort = new SelectionSort<>();
-//            sort.sort(array);
+            Sorter sorter = new QuickSort();
+            sorter.sort(array, new ArrayList<>(),0,0);
 
             if (!isSorted(array)) {
                 System.out.println("Fails at seed " + i);
+                System.exit(0);
             }
         }
 

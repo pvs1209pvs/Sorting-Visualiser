@@ -112,7 +112,7 @@ public class HeapSort<T extends Comparable<T>> implements ComparativeSorter<T> {
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-
+        // INCOMPLETE
     }
 }
 
