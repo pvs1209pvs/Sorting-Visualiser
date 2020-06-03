@@ -10,7 +10,7 @@
 
 ## Categorization of Tasks
 
-###### Algorithms
+__Algorithms__
 
 Param
 * Heap sort
@@ -30,7 +30,7 @@ Fahad
 * Selection sort
 * Quick sort
 
-###### Visualization 
+__Visualization__
 * Fahad: Counting, Bucket, Radix, Cocktail
 * Param:
 * Simar: Heap, Cycle(Done, except issue with bar add in controller)
