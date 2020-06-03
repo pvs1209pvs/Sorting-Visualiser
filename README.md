@@ -28,12 +28,12 @@ Fahad
 * Selection sort
 * Quick sort
 
-Categories(Visualization)
-* A: Counting, Bucket, Radix, Cocktail
-* B:
-* C: Heap, Cycle(Done, except issue with bar add in controller)
+# Visualization:- categorized 
+* Fahad: Counting, Bucket, Radix, Cocktail
+* Param:
+* Simar: Heap, Cycle(Done, except issue with bar add in controller)
 
-In-Progress
+# In-Progress
 * Bucket
 * Cocktail
 * Counting
