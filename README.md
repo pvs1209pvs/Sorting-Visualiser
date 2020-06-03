@@ -8,7 +8,9 @@
  <img src="src/Screenshot%20from%202020-06-02%2015-32-01.png">
 </div>
 
-# Algorithms:- Categorized
+# Categorization of Tasks
+
+# Algorithms
 
 Param
 * Heap sort
@@ -28,7 +30,7 @@ Fahad
 * Selection sort
 * Quick sort
 
-# Visualization:- Categorized 
+# Visualization 
 * Fahad: Counting, Bucket, Radix, Cocktail
 * Param:
 * Simar: Heap, Cycle(Done, except issue with bar add in controller)
