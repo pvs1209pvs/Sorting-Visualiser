@@ -1,7 +1,9 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import sortingalgorithms.CocktailSort;
+import sortingalgorithms.CycleSort;
 import sortingalgorithms.QuickSort;
+import sortingalgorithms.Sorter;
 import visuals.Bar;
 
 import java.util.ArrayList;
@@ -31,8 +33,8 @@ public class SortTest {
             bars[i] = new Bar(0, 0, 1, unsortedArray[i]);
         }
 
-        CocktailSort quickSort = new CocktailSort();
-        quickSort.sort(bars, new ArrayList<>(), 0, 0);
+        Sorter sortingAlgo = new CycleSort();
+        sortingAlgo.sort(bars, new ArrayList<>(), 0, 0);
 
         Integer[] algoSorted = new Integer[bars.length];
         for (int i = 0; i < algoSorted.length; i++) {

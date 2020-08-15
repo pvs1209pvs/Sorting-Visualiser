@@ -31,13 +31,11 @@ Fahad
 * Quick sort
 
 __Visualization__
-* Fahad: Counting, Bucket, Radix, Cocktail
-* Param:
+* Fahad: Counting, Bucket, Radix
 * Simar: Heap, Cycle(Done, except issue with bar add in controller)
 
 ## In-Progress
 * Bucket
-* Cocktail
 * Counting
 * Cycle
 * Heap
