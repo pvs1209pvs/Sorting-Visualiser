@@ -1,68 +1,69 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.List;
 
-public class CocktailSort<T extends Comparable<T>> implements ComparativeSorter<T>  {
-    @Override
-    public void sort(T[] array) {
+public class CocktailSort implements Sorter {
 
+    @Override
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
         int sorted = 0;
 
         while(sorted==0){
             int begin = 0;
-            int end = array.length;
+            int end = bars.length;
 
-            //pass towards right
             sorted = 1;
 
-            for (int i =begin; i < array.length-1 ; ++i) {
-
-                if(array[i].compareTo(array[i+1]) > 0){
-
-                    T swap = array[i+1];
-                    array[i+1] = array[i];
-                    array[i] = swap;
-
+            for (int i =begin; i < bars.length-1 ; ++i) {
+                if(bars[i].compareTo(bars[i+1]) > 0){
+                    Bar swap = bars[i+1];
+                    bars[i+1] = bars[i];
+                    bars[i] = swap;
                     sorted = 0;
 
+                    TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), bars[i+1]);
+                    a.setByX(gap);
+
+                    TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), bars[i]);
+                    b.setByX(-1*gap);
+
+                    trans.add(a);
+                    trans.add(b);
+
                 }
-
             }
+
             if(sorted==1) break;
-
-
-            //pass towards left
 
             end = end -1;
             sorted = 0;
 
-
             for (int i =end-1; i >= begin ; i--) {
-
-                if(array[i].compareTo(array[i+1]) > 0){
-
-                    T swap = array[i+1];
-                    array[i+1] = array[i];
-                    array[i] = swap;
-
+                if(bars[i].compareTo(bars[i+1]) > 0){
+                    Bar swap = bars[i+1];
+                    bars[i+1] = bars[i];
+                    bars[i] = swap;
                     sorted = 0;
 
+                    TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), bars[i+1]);
+                    a.setByX(gap);
+
+                    TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), bars[i]);
+                    b.setByX(-1*gap);
+
+                    trans.add(a);
+                    trans.add(b);
                 }
-
-
             }
 
             ++begin;
 
         }
-
     }
 
-    @Override
-    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-        // INCOMPLETE
-    }
 }

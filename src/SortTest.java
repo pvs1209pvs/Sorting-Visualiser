@@ -1,5 +1,6 @@
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import sortingalgorithms.CocktailSort;
 import sortingalgorithms.QuickSort;
 import visuals.Bar;
 
@@ -30,7 +31,7 @@ public class SortTest {
             bars[i] = new Bar(0, 0, 1, unsortedArray[i]);
         }
 
-        QuickSort quickSort = new QuickSort();
+        CocktailSort quickSort = new CocktailSort();
         quickSort.sort(bars, new ArrayList<>(), 0, 0);
 
         Integer[] algoSorted = new Integer[bars.length];

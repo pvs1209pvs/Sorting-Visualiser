@@ -5,8 +5,6 @@ import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import visuals.Bar;
 
-
-import java.util.Collections;
 import java.util.List;
 
 public class QuickSort implements Sorter {
