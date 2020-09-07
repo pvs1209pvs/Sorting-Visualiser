@@ -1,9 +1,8 @@
+package tests;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import sortingalgorithms.CocktailSort;
-import sortingalgorithms.CycleSort;
-import sortingalgorithms.QuickSort;
-import sortingalgorithms.Sorter;
+import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
@@ -33,13 +32,15 @@ public class SortTest {
             bars[i] = new Bar(0, 0, 1, unsortedArray[i]);
         }
 
-        Sorter sortingAlgo = new CycleSort();
-        sortingAlgo.sort(bars, new ArrayList<>(), 0, 0);
+        SorterFactory.getSorter("quick").sort(bars, new ArrayList<>(), 0, 0);
 
         Integer[] algoSorted = new Integer[bars.length];
         for (int i = 0; i < algoSorted.length; i++) {
             algoSorted[i] = (int) bars[i].getHeight();
         }
+
+        System.out.println(Arrays.toString(sortedArray));
+        System.out.println(Arrays.toString(algoSorted));
 
         assertArrayEquals(sortedArray, algoSorted);
 
@@ -72,7 +73,7 @@ public class SortTest {
         r.ints();
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt();
+            array[i] = r.nextInt()%10000;
         }
 
         return array;

@@ -5,7 +5,7 @@ import visuals.Bar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BucketSort implements Sorter{
+ class BucketSort implements Sorter{
     private Bucket[] list;
 
     @Override

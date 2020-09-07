@@ -2,13 +2,12 @@ package sortingalgorithms;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.List;
 
-public class BubbleSort implements Sorter {
+class BubbleSort implements Sorter {
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {

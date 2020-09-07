@@ -5,12 +5,12 @@ import visuals.Bar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RadixSort implements NonComparativeSorter<Integer> {
+ class RadixSort implements Sorter {
 
     ArrayList<ArrayList<String>> baguette;
     String[] puppet;
 
-    @Override
+
     public void sort(Integer[] array) {
 
         baguette= new ArrayList<ArrayList<String>>();

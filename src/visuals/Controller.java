@@ -69,8 +69,16 @@ public class Controller {
                 bars = new Bar[n];
 
                 for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap + width, width, width, (int) (Math.random() * maxValue() + minValue()) * 15);
+                    bars[i] = new Bar(i * gap + width, width, width, (int) (Math.random() * maxValue() + minValue()) * 15, i);
+                    bars[i] = new Bar(i * gap + width, width, width, i, i);
                 }
+
+                System.out.println("first");
+                Collections.shuffle(Arrays.asList(bars));
+                for (int i = 0; i < bars.length; i++) {
+                    System.out.print(bars[i].string()+", ");
+                }
+                System.out.println();
 
                 break;
             }
@@ -99,6 +107,8 @@ public class Controller {
             }
         }
 
+        //System.out.println(Arrays.toString(bars));
+
         animationSequence = new AnimationSequence();
         animationSequence.getSequenceTransition(sortSelect.getValue().toUpperCase(), bars, gap, 1 / getSpeed()).play();
 
@@ -114,19 +124,17 @@ public class Controller {
         myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * width));
 
         pane.setStyle("-fx-background-color: black");
+
         for (Bar bar : bars) {
-            bar.setFill(Paint.valueOf("#000000"));
+            bar.setFill(Paint.valueOf("#ffffff"));
             bar.setStroke(Paint.valueOf("#ffffff"));
             pane.getChildren().add(bar);
         }
 
-
         Scene myScene = new Scene(vBox);
-
 
         myStage.setScene(myScene);
         myStage.show();
-
 
     }
 

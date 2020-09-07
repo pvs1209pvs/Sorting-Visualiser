@@ -7,7 +7,7 @@ import visuals.Bar;
 
 import java.util.List;
 
-public class ShellSort implements Sorter{
+class ShellSort implements Sorter{
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gaps, double seconds) {
