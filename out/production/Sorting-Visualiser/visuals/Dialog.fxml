@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.util.*?>
+
+<BorderPane fx:controller="visuals.Controller"
+            xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css"
+            style=" -fx-background-color: linear-gradient(to right, black, #626262);">
+
+    <top>
+
+        <VBox alignment="TOP_CENTER">
+            <Label text="Sorting Algorithm" style="-fx-font-size: 16"/>
+            <HBox alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+
+                <ComboBox fx:id="sortSelect"
+                          style="-fx-effect:dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 ) ">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Heap"/>
+                            <String fx:value="Merge"/>
+                            <String fx:value="Shell"/>
+                            <String fx:value="Counting"/>
+                            <String fx:value="Insertion"/>
+                            <String fx:value="Cycle"/>
+                            <String fx:value="Bubble"/>
+                            <String fx:value="Bucket"/>
+                            <String fx:value="Radix"/>
+                            <String fx:value="Cocktail"/>
+                            <String fx:value="Selection"/>
+                            <String fx:value="Quick"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+
+                        <String fx:value="Quick"/>
+                    </value>
+
+                </ComboBox>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+
+        <VBox alignment="CENTER" spacing="10">
+
+            <padding>
+                <Insets top="40" bottom="40" left="20" right="20"/>
+            </padding>
+
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Number of Samples"/>
+
+                <TextField fx:id="samples" promptText="50"/>
+
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="Choose the range of numbers"/>
+                <HBox alignment="CENTER" spacing="10">
+
+                    <TextField fx:id="minValue" promptText="1"/>
+                    <TextField fx:id="maxValue" promptText="10"/>
+
+                </HBox>
+            </VBox>
+
+            <HBox alignment="CENTER" spacing="5">
+
+                <fx:define>
+                    <ToggleGroup fx:id="customInputOptions"/>
+                </fx:define>
+
+                <RadioButton fx:id="fromRandom" text="Randomly generated values" toggleGroup="$customInputOptions"
+                             onAction="#userInputOption"/>
+                <RadioButton fx:id="fromArray" text="Enter values values" toggleGroup="$customInputOptions"
+                             onAction="#userInputOption"/>
+                <RadioButton fx:id="fromFile" text="Open file" toggleGroup="$customInputOptions"
+                             onAction="#userInputOption"/>
+
+            </HBox>
+
+            <HBox fx:id="userCustomInput" alignment="CENTER">
+                <TextField fx:id="numbers" promptText="Enter your input" prefWidth="500" editable="false"/>
+                <Button fx:id="fileSelect" visible="false" text="Select File" onMouseClicked="#playAnim"/>
+            </HBox>
+
+            <Label text="Sorting Speed"/>
+
+            <Slider fx:id="speedSlider" min="1" max="100" showTickMarks="false" minorTickCount="100" snapToTicks="true"
+                    HBox.hgrow="ALWAYS"
+                    maxWidth="200"/>
+
+
+        </VBox>
+
+    </center>
+
+    <bottom>
+        <HBox spacing="5" alignment="BOTTOM_CENTER">
+            <padding>
+                <Insets bottom="20"/>
+            </padding>
+
+            <Button fx:id="Sort" text="Sort" prefWidth="60" onMouseClicked="#playAnim"/>
+            <Button fx:id="Exit" text="Close" prefWidth="60" onAction="#close"/>
+
+        </HBox>
+    </bottom>
+</BorderPane>
