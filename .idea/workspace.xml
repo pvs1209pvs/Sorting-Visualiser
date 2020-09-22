@@ -20,9 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49e40fcc-8110-464c-ab67-20bb0dea4ae7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CocktailSort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CocktailSort.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sortingalgorithms/CycleSort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sortingalgorithms/CycleSort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sorting-Visualiser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Sorting-Visualiser.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/META-INF/Sorting-Visualiser.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/SortTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/BubbleSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/BucketSort$Bucket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/BucketSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CocktailSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/ComparativeSorter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CountingSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CycleSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/HeapSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/InsertionSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/MergeSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/NonComparativeSorter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/QuickSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/RadixSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/SelectionSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/ShellSort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/Sorter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/SorterFactory$ALGORITHMS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/SorterFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/AnimationSequence.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/Bar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +80,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="D:/AnimationTry" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/javafx-sdk-11.0.2/lib" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,7 +88,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -80,10 +104,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.SortTest (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="visuals.Main" />
       <module name="Sorting-Visualiser" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/javafx-sdk-11.0.2/lib --add-modules=javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="visuals.*" />
@@ -94,9 +119,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Test" />
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Sorting-Visualiser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.SortTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -106,6 +150,22 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SortTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SortTest.sorted (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Sorting-Visualiser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.SortTest" />
+      <option name="METHOD_NAME" value="sorted" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,20 +182,22 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Test" />
       <item itemvalue="JUnit.SortTest" />
       <item itemvalue="JUnit.SortTest.sorted" />
+      <item itemvalue="JUnit.SortTest.sorted (1)" />
+      <item itemvalue="JUnit.SortTest (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SortTest (1)" />
+        <item itemvalue="JUnit.SortTest.sorted (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SortTest.sorted" />
         <item itemvalue="JUnit.SortTest" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -159,39 +221,39 @@
       <workItem from="1597343444642" duration="883000" />
       <workItem from="1597470103087" duration="1199000" />
       <workItem from="1600805057537" duration="237000" />
+      <workItem from="1600805544458" duration="675000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="599" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600804526242">
-      <screen x="0" y="30" width="1691" height="921" />
+    <state x="24" y="323" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1600806113314">
+      <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state x="836" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1006@0.27.1920.1006" timestamp="1596769056651" />
+    <state x="24" y="323" width="1084" height="710" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1006@0.27.1920.1006" timestamp="1600806113314" />
     <state x="599" y="176" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.30.1691.921@0.30.1691.921" timestamp="1600804526242" />
     <state x="696" y="382" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1600804314975">
       <screen x="0" y="30" width="1691" height="921" />
     </state>
     <state x="696" y="382" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.30.1691.921@0.30.1691.921" timestamp="1600804314975" />
-    <state x="122" y="329" width="735" height="513" key="FileChooserDialogImpl" timestamp="1600805252263">
-      <screen x="0" y="30" width="1691" height="921" />
+    <state x="139" y="354" width="735" height="513" key="FileChooserDialogImpl" timestamp="1600806190568">
+      <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state x="139" y="354" width="735" height="513" key="FileChooserDialogImpl/0.27.1920.1006@0.27.1920.1006" timestamp="1596500245001" />
+    <state x="139" y="354" width="735" height="513" key="FileChooserDialogImpl/0.27.1920.1006@0.27.1920.1006" timestamp="1600806190568" />
     <state x="122" y="329" key="FileChooserDialogImpl/0.30.1691.921@0.30.1691.921" timestamp="1600805252263" />
     <state width="1648" height="239" key="GridCell.Tab.0.bottom" timestamp="1600805305617">
       <screen x="0" y="30" width="1691" height="921" />
@@ -213,10 +275,10 @@
     </state>
     <state width="914" height="227" key="GridCell.Tab.0.right/0.27.1920.1006@0.27.1920.1006" timestamp="1597470967252" />
     <state width="1648" height="239" key="GridCell.Tab.0.right/0.30.1691.921@0.30.1691.921" timestamp="1600805305617" />
-    <state x="631" y="102" width="1024" height="845" key="SettingsEditor" timestamp="1597289203891">
+    <state x="631" y="102" width="1024" height="845" key="SettingsEditor" timestamp="1600806219660">
       <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state x="631" y="102" width="1024" height="845" key="SettingsEditor/0.27.1920.1006@0.27.1920.1006" timestamp="1597289203891" />
+    <state x="631" y="102" width="1024" height="845" key="SettingsEditor/0.27.1920.1006@0.27.1920.1006" timestamp="1600806219660" />
     <state x="556" y="318" key="com.intellij.ide.util.TipDialog" timestamp="1600805057901">
       <screen x="0" y="30" width="1691" height="921" />
     </state>
