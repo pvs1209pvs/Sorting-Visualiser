@@ -1,4 +1,4 @@
-.idea
-./out
+out/
+.idea/
 Sorting-Visualiser.iml
 *.class
