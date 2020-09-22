@@ -33,12 +33,11 @@ Fahad
 __Visualization__
 * Fahad: Counting, Bucket, Radix, Cocktail
 * Param:
-* Simar: Heap, Cycle(Done, except issue with bar add in controller)
+* Simar: Heap
 
 ## In-Progress
 * Bucket
 * Cocktail
 * Counting
-* Cycle
 * Heap
 * Radix
