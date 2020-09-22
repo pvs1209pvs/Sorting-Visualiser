@@ -2,8 +2,7 @@ package tests;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import sortingalgorithms.CycleSort;
-import sortingalgorithms.QuickSort;
+import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;

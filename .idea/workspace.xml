@@ -19,35 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49e40fcc-8110-464c-ab67-20bb0dea4ae7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sorting-Visualiser.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Sorting-Visualiser.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/META-INF/Sorting-Visualiser.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/SortTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/BubbleSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/BucketSort$Bucket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/BucketSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CocktailSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/ComparativeSorter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CountingSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/CycleSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/HeapSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/InsertionSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/MergeSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/NonComparativeSorter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/QuickSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/RadixSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/SelectionSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/ShellSort.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/Sorter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/SorterFactory$ALGORITHMS.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/sortingalgorithms/SorterFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/AnimationSequence.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/Bar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Sorting-Visualiser/visuals/Main.class" beforeDir="false" />
-    </list>
+    <list default="true" id="49e40fcc-8110-464c-ab67-20bb0dea4ae7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +76,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SortTest (1)">
+  <component name="RunManager" selected="JUnit.SortTest.sorted (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="visuals.Main" />
       <module name="Sorting-Visualiser" />
@@ -119,13 +91,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -189,8 +163,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SortTest (1)" />
         <item itemvalue="JUnit.SortTest.sorted (1)" />
+        <item itemvalue="JUnit.SortTest (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SortTest.sorted" />
         <item itemvalue="JUnit.SortTest" />
@@ -255,25 +229,25 @@
     </state>
     <state x="139" y="354" width="735" height="513" key="FileChooserDialogImpl/0.27.1920.1006@0.27.1920.1006" timestamp="1600806190568" />
     <state x="122" y="329" key="FileChooserDialogImpl/0.30.1691.921@0.30.1691.921" timestamp="1600805252263" />
-    <state width="1648" height="239" key="GridCell.Tab.0.bottom" timestamp="1600805305617">
-      <screen x="0" y="30" width="1691" height="921" />
+    <state width="914" height="213" key="GridCell.Tab.0.bottom" timestamp="1600806622374">
+      <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state width="914" height="227" key="GridCell.Tab.0.bottom/0.27.1920.1006@0.27.1920.1006" timestamp="1597470967253" />
+    <state width="914" height="213" key="GridCell.Tab.0.bottom/0.27.1920.1006@0.27.1920.1006" timestamp="1600806622374" />
     <state width="1648" height="239" key="GridCell.Tab.0.bottom/0.30.1691.921@0.30.1691.921" timestamp="1600805305617" />
-    <state width="1648" height="239" key="GridCell.Tab.0.center" timestamp="1600805305617">
-      <screen x="0" y="30" width="1691" height="921" />
+    <state width="914" height="213" key="GridCell.Tab.0.center" timestamp="1600806622372">
+      <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state width="914" height="227" key="GridCell.Tab.0.center/0.27.1920.1006@0.27.1920.1006" timestamp="1597470967251" />
+    <state width="914" height="213" key="GridCell.Tab.0.center/0.27.1920.1006@0.27.1920.1006" timestamp="1600806622372" />
     <state width="1648" height="239" key="GridCell.Tab.0.center/0.30.1691.921@0.30.1691.921" timestamp="1600805305617" />
-    <state width="1648" height="239" key="GridCell.Tab.0.left" timestamp="1600805305616">
-      <screen x="0" y="30" width="1691" height="921" />
+    <state width="914" height="213" key="GridCell.Tab.0.left" timestamp="1600806622371">
+      <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state width="914" height="227" key="GridCell.Tab.0.left/0.27.1920.1006@0.27.1920.1006" timestamp="1597470967250" />
+    <state width="914" height="213" key="GridCell.Tab.0.left/0.27.1920.1006@0.27.1920.1006" timestamp="1600806622371" />
     <state width="1648" height="239" key="GridCell.Tab.0.left/0.30.1691.921@0.30.1691.921" timestamp="1600805305616" />
-    <state width="1648" height="239" key="GridCell.Tab.0.right" timestamp="1600805305617">
-      <screen x="0" y="30" width="1691" height="921" />
+    <state width="914" height="213" key="GridCell.Tab.0.right" timestamp="1600806622373">
+      <screen x="0" y="27" width="1920" height="1006" />
     </state>
-    <state width="914" height="227" key="GridCell.Tab.0.right/0.27.1920.1006@0.27.1920.1006" timestamp="1597470967252" />
+    <state width="914" height="213" key="GridCell.Tab.0.right/0.27.1920.1006@0.27.1920.1006" timestamp="1600806622373" />
     <state width="1648" height="239" key="GridCell.Tab.0.right/0.30.1691.921@0.30.1691.921" timestamp="1600805305617" />
     <state x="631" y="102" width="1024" height="845" key="SettingsEditor" timestamp="1600806219660">
       <screen x="0" y="27" width="1920" height="1006" />
