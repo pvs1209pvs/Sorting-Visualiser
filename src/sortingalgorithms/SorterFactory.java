@@ -21,12 +21,11 @@ public class SorterFactory {
     }
 
     public static Sorter getSorter(String algorithm) {
-
         ALGORITHMS[] algoArray = ALGORITHMS.values();
         ALGORITHMS algo = null;
 
         for (ALGORITHMS a : algoArray) {
-            if (a.toString().toLowerCase().equals(algorithm)) {
+            if (a.toString().equals(algorithm)) {
                 algo = a;
             }
         }

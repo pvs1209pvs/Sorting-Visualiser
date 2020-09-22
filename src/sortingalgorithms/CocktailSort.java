@@ -7,7 +7,7 @@ import visuals.Bar;
 
 import java.util.List;
 
- class CocktailSort implements Sorter {
+public class CocktailSort implements Sorter {
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
