@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -32,9 +33,7 @@ public class SortTest {
             bars[i] = new Bar(0, 0, 1, unsortedArray[i]);
         }
 
-        // Change algo name here.
-        CycleSort sort = new CycleSort();
-        sort.sort(bars, new ArrayList<>(), 0, 0);
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(bars, new ArrayList<>(), 0, 0));
 
         Integer[] algoSorted = new Integer[bars.length];
         for (int i = 0; i < algoSorted.length; i++) {
