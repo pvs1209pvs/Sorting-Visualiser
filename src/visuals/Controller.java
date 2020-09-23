@@ -9,10 +9,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import sortingalgorithms.SorterFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static visuals.Main.primaryStage;
 
@@ -100,7 +103,11 @@ public class Controller {
         }
 
         animationSequence = new AnimationSequence();
-        animationSequence.getSequenceTransition(sortSelect.getValue().toUpperCase(), bars, gap, 1 / getSpeed()).play();
+        animationSequence.getSequenceTransition(
+                Stream.of(SorterFactory.ALGORITHMS.values()).filter(x->x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
+                bars,
+                gap,
+                1 / getSpeed()).play();
 
         Pane pane = new Pane();
         Button playPause = new Button("Play/Pause");
