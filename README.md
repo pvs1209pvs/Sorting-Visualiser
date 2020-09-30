@@ -36,8 +36,8 @@ __Visualization__
 * Simar: Heap
 
 ## In-Progress
-[] Bucket
-[] Cocktail
-[] Counting
-[] Heap
-[] Radix
+- [] Bucket
+- [] Cocktail
+- [] Counting
+- [] Heap
+- [] Radix
