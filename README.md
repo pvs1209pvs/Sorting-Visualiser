@@ -8,34 +8,7 @@
  <img src="src/Screenshot%20from%202020-06-02%2015-32-01.png">
 </div>
 
-## Categorization of Tasks
-
-__Algorithms__
-
-Param
-* Heap sort
-* Merge sort
-* Shell sort
-* Counting sort
-
-Simar
-* Insertion sort
-* Cycle sort
-* Bubble sort
-* Bucket Sort
-
-Fahad
-* Radix Sort
-* Cocktail sort
-* Selection sort
-* Quick sort
-
-__Visualization__
-* Fahad: Counting, Bucket, Radix, Cocktail
-* Param:
-* Simar: Heap
-
-## In-Progress
+## Algorithm Visualization
 - [x] Quick
 - [x] Merge
 - [x] Insertion
