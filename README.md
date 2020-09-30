@@ -36,8 +36,15 @@ __Visualization__
 * Simar: Heap
 
 ## In-Progress
-- [] Bucket
-- [] Cocktail
-- [] Counting
-- [] Heap
-- [] Radix
+- [x] Quick
+- [x] Merge
+- [x] Insertion
+- [x] Cycle
+- [x] Bubble
+- [x] Shell
+- [ ] Bucket
+- [ ] Counting
+- [ ] Radix
+- [ ] Heap
+- [ ] Cocktail
+
