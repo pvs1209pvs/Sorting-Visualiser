@@ -20,8 +20,3 @@
 - [ ] Radix
 - [ ] Heap
 - [ ] Cocktail
-
-## Authors
-* Fahad Ansar
-* Simar Bhamara
-* Paramvir Singh
