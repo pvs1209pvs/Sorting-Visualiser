@@ -14,11 +14,6 @@
     -fx-background-color: white;
 }
 
-
-.combo-box .list-cell{
-    -fx-background-color: white;
-}
-
 .combo-box-base > .arrow-button {
     -fx-padding: 0 4;
 }

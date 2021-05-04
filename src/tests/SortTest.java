@@ -33,7 +33,7 @@ public class SortTest {
             bars[i] = new Bar(0, 0, 1, unsortedArray[i]);
         }
 
-        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(bars, new ArrayList<>(), 0, 0));
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(bars, new ArrayList<>(), 0, 0);
 
         Integer[] algoSorted = new Integer[bars.length];
         for (int i = 0; i < algoSorted.length; i++) {
