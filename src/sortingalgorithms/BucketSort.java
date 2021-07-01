@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BucketSort implements Sorter{
-    private Bucket[] list;
+
+    private final Bucket[] list;
 
     @Override
     public void sort(Bar[] bars, List trans, int gap, double seconds) {
         // INCOMPLETE
     }
 
-    class Bucket {
+    static class Bucket {
         List<Double> bucket;
-
         Bucket() {
             bucket = new ArrayList<>();
         }
@@ -31,18 +31,18 @@ public class BucketSort implements Sorter{
 
     public void sort(double[] array) {
 
-        for (int i = 0; i < array.length; i++) {
-            list[(int) array[i] * list.length].bucket.add(array[i]);
+        for (double v : array) {
+            list[(int) v * list.length].bucket.add(v);
         }
 
-        for (int i = 0; i < list.length; i++) {
-            innerSort(list[i].bucket);
+        for (Bucket bucket : list) {
+            innerSort(bucket.bucket);
         }
 
         int index = 0;
-        for (int i = 0; i < list.length; i++) {
-            for (int j = 0; j < list[i].bucket.size(); j++) {
-                array[index] = list[i].bucket.get(j);
+        for (Bucket bucket : list) {
+            for (int j = 0; j < bucket.bucket.size(); j++) {
+                array[index] = bucket.bucket.get(j);
                 index++;
             }
         }

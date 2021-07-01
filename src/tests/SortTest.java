@@ -1,81 +1,98 @@
 package tests;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import com.sun.xml.internal.bind.v2.TODO;
 import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Random;
-import java.util.stream.Stream;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.*;
 
-@RunWith(Parameterized.class)
 public class SortTest {
 
-    Integer[] unsortedArray;
-    Integer[] sortedArray;
+    private Bar[] randomBars;
 
-    public SortTest(Integer[] unsortedArray, Integer[] sortedArray) {
-        this.unsortedArray = unsortedArray;
-        this.sortedArray = sortedArray;
+    @org.junit.Before
+    public void fillRandomBars() {
+        randomBars = IntStream
+                .range(0, 10)
+                .mapToObj(x -> new Bar(0, 0, 1, ThreadLocalRandom.current().nextInt(0, 101)))
+                .toArray(Bar[]::new);
     }
-
 
     @org.junit.Test
-    public void sorted() {
-
-        Bar[] bars = new Bar[unsortedArray.length];
-        for (int i = 0; i < bars.length; i++) {
-            bars[i] = new Bar(0, 0, 1, unsortedArray[i]);
-        }
-
-        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(bars, new ArrayList<>(), 0, 0);
-
-        Integer[] algoSorted = new Integer[bars.length];
-        for (int i = 0; i < algoSorted.length; i++) {
-            algoSorted[i] = (int) bars[i].getHeight();
-        }
-
-        assertArrayEquals(sortedArray, algoSorted);
-
+    public void cocktailSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.COCKTAIL).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
     }
 
-    @Parameterized.Parameters
-    public static Collection parameter() {
-
-        Object[][] obj = new Object[10][2];
-
-        for (int i = 0; i < 10; i++) {
-
-            Integer[] unsorted = getRandomArray();
-            Integer[] sorted = Arrays.copyOf(unsorted, unsorted.length);
-            Arrays.sort(sorted);
-
-            obj[i][0] = unsorted;
-            obj[i][1] = sorted;
-        }
-
-        return Arrays.asList(obj);
-
+    @org.junit.Test
+    public void countingSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.COUNTING).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
     }
 
-    private static Integer[] getRandomArray() {
+    @org.junit.Test
+    public void bubbleSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUBBLE).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
 
-        Integer[] array = new Integer[(int) (Math.random() * 100 + 1)];
+    @org.junit.Test
+    public void cycleSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
 
-        Random r = new Random();
-        r.ints();
+    @org.junit.Test
+    public void insertionSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.INSERTION).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = r.nextInt();
-        }
+    @org.junit.Test
+    public void mergeSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.MERGE).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
 
-        return array;
+    @org.junit.Test
+    public void quickSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.QUICK).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
 
+    @org.junit.Test
+    public void shellSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SHELL).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
+
+    @org.junit.Test
+    public void radixSort_randomArray_successfully() {
+//        TODO: Complete radix sort
+//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.RADIX).sort(randomBars, new ArrayList<>(), 0, 0);
+//        sortedArrayAssertion(randomBars);
+    }
+
+    @org.junit.Test
+    public void selectionSort_randomArray_successfully() {
+//        TODO: Complete selection sort
+//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SELECTION).sort(randomBars, new ArrayList<>(), 0, 0);
+//        sortedArrayAssertion(randomBars);
+    }
+
+    @org.junit.Test
+    public void heapSort_randomArray_successfully() {
+//        TODO: Complete heap sort
+//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.HEAP).sort(randomBars, new ArrayList<>(), 0, 0);
+//        sortedArrayAssertion(randomBars);
+    }
+
+    private void sortedArrayAssertion(Bar[] sortedBars){
+        IntStream.range(0, randomBars.length - 1).forEach(i -> assertTrue(randomBars[i].compareTo(randomBars[i + 1]) <= 0));
     }
 
 }
