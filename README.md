@@ -19,5 +19,5 @@
 - [x] Merge
 - [x] Quick
 - [x] Radix
-- [ ] Selection
+- [x] Selection
 - [x] Shell
