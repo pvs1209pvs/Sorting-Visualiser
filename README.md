@@ -11,7 +11,7 @@
 ## Algorithm Visualization
 - [x] Bubble
 - [ ] Bucket
-- [ ] Cocktail
+- [x] Cocktail
 - [x] Counting
 - [x] Cycle
 - [ ] Heap
