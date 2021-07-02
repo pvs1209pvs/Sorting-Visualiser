@@ -1,7 +1,6 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
-import org.jetbrains.annotations.NotNull;
 import visuals.Bar;
 
 import java.util.*;
@@ -36,7 +35,7 @@ public class CountingSort implements Sorter {
         }
     }
 
-    private Integer @NotNull [] getCountingArray(Integer[] array) {
+    private Integer[] getCountingArray(Integer[] array) {
 
         int min = Arrays.stream(array).min(Integer::compareTo).get();
         int max = Arrays.stream(array).max(Integer::compareTo).get();

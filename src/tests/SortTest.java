@@ -30,8 +30,8 @@ public class SortTest {
     @org.junit.Test
     public void bucketSort_randomArray_successfully() {
         //  TODO: Complete selection sort
-//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUCKET).sort(randomBars, new ArrayList<>(), 0, 0);
-//        sortedArrayAssertion(randomBars);
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUCKET).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
     }
 
     @org.junit.Test
@@ -91,7 +91,7 @@ public class SortTest {
 
     @org.junit.Test
     public void selectionSort_randomArray_successfully() {
-      //  TODO: Complete selection sort
+        //  TODO: Complete selection sort
 //        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SELECTION).sort(randomBars, new ArrayList<>(), 0, 0);
 //        sortedArrayAssertion(randomBars);
     }

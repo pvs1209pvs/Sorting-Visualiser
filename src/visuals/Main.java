@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class Main extends Application {
 
     static Stage primaryStage;
@@ -19,7 +21,7 @@ public class Main extends Application {
         
         primaryStage = new Stage();
 
-        Parent pane = FXMLLoader.load(getClass().getResource("Dialog.fxml"));
+        Parent pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Dialog.fxml")));
         primaryStage.setTitle("Sorting Selection");
 
         Scene scene = new Scene(pane, 600, 500);
