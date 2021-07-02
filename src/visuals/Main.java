@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -23,7 +22,7 @@ public class Main extends Application {
         Parent pane = FXMLLoader.load(getClass().getResource("Dialog.fxml"));
         primaryStage.setTitle("Sorting Selection");
 
-        Scene scene = new Scene(pane, 630, 450);
+        Scene scene = new Scene(pane, 600, 500);
 
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);

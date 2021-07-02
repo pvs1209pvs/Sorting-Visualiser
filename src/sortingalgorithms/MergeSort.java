@@ -57,9 +57,7 @@ public class MergeSort implements Sorter {
             size++;
         }
 
-        for (int i = r; i <= y; ++i) {
-            sorte.add(arr[i]);
-        }
+        sorte.addAll(Arrays.asList(arr).subList(r, y + 1));
 
         size = 0;
 
@@ -99,9 +97,9 @@ public class MergeSort implements Sorter {
             }
         }
 
-        for (int i = 0; i < swaps.size(); i++) {
-            TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), barsBefore.get(swaps.get(i)[0]));
-            a.setByX(gap * (swaps.get(i)[1] - swaps.get(i)[0]));
+        for (Integer[] swap : swaps) {
+            TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), barsBefore.get(swap[0]));
+            a.setByX(gap * (swap[1] - swap[0]));
             trans.add(a);
         }
 

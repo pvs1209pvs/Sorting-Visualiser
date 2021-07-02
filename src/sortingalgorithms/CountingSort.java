@@ -5,25 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import visuals.Bar;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class CountingSort implements Sorter {
-
-    CountingSort() {
-        Random random = new Random();
-        Integer[] a = new Integer[1000];
-//        for (int i = 0; i < a.length; i++) {
-//            a[i] = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-//        }
-
-       a =  Arrays.stream(new Integer[10]).map(value -> 10).toArray(Integer[]::new);
-
-      //  System.out.println(Arrays.toString(a));
-        //sort(a);
-
-    }
 
     public Integer[] sort(Integer[] array) {
 
@@ -47,7 +30,7 @@ public class CountingSort implements Sorter {
         countingArray[0] = 0;
     }
 
-    private void rightSummation(Integer[] countingArray) {
+    public static void rightSummation(Integer[] countingArray) {
         for (int i = 1; i < countingArray.length; i++) {
             countingArray[i] += countingArray[i - 1];
         }
@@ -87,7 +70,4 @@ public class CountingSort implements Sorter {
 
     }
 
-    public static void main(String[] args) {
-        new CountingSort();
-    }
 }

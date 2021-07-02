@@ -5,6 +5,7 @@ import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -17,7 +18,7 @@ public class SortTest {
     @org.junit.Before
     public void fillRandomBars() {
         randomBars = IntStream
-                .range(0, 10)
+                .range(0, 250)
                 .mapToObj(x -> new Bar(0, 0, 1, ThreadLocalRandom.current().nextInt(0, 101)))
                 .toArray(Bar[]::new);
     }
@@ -72,14 +73,13 @@ public class SortTest {
 
     @org.junit.Test
     public void radixSort_randomArray_successfully() {
-//        TODO: Complete radix sort
-//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.RADIX).sort(randomBars, new ArrayList<>(), 0, 0);
-//        sortedArrayAssertion(randomBars);
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.RADIX).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
     }
 
     @org.junit.Test
     public void selectionSort_randomArray_successfully() {
-//        TODO: Complete selection sort
+      //  TODO: Complete selection sort
 //        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SELECTION).sort(randomBars, new ArrayList<>(), 0, 0);
 //        sortedArrayAssertion(randomBars);
     }
@@ -92,7 +92,9 @@ public class SortTest {
     }
 
     private void sortedArrayAssertion(Bar[] sortedBars){
-        IntStream.range(0, randomBars.length - 1).forEach(i -> assertTrue(randomBars[i].compareTo(randomBars[i + 1]) <= 0));
+        for (int i = 0; i < sortedBars.length-1; i++) {
+            assertTrue(sortedBars[i].compareTo(sortedBars[i+1]) <= 0);
+        }
     }
 
 }
