@@ -24,18 +24,18 @@
                           style="-fx-effect:dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 ) ">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Heap"/>
-                            <String fx:value="Merge"/>
-                            <String fx:value="Shell"/>
-                            <String fx:value="Counting"/>
-                            <String fx:value="Insertion"/>
-                            <String fx:value="Cycle"/>
                             <String fx:value="Bubble"/>
                             <String fx:value="Bucket"/>
-                            <String fx:value="Radix"/>
                             <String fx:value="Cocktail"/>
-                            <String fx:value="Selection"/>
+                            <String fx:value="Counting"/>
+                            <String fx:value="Cycle"/>
+                            <String fx:value="Heap"/>
+                            <String fx:value="Insertion"/>
+                            <String fx:value="Merge"/>
                             <String fx:value="Quick"/>
+                            <String fx:value="Radix"/>
+                            <String fx:value="Selection"/>
+                            <String fx:value="Shell"/>
                         </FXCollections>
                     </items>
                     <value>

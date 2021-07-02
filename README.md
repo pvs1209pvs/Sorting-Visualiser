@@ -9,14 +9,15 @@
 </div>
 
 ## Algorithm Visualization
-- [x] Quick
-- [x] Merge
-- [x] Insertion
-- [x] Cycle
 - [x] Bubble
-- [x] Shell
 - [ ] Bucket
-- [ ] Counting
-- [ ] Radix
-- [ ] Heap
 - [ ] Cocktail
+- [x] Counting
+- [x] Cycle
+- [ ] Heap
+- [x] Insertion
+- [x] Merge
+- [x] Quick
+- [x] Radix
+- [ ] Selection
+- [x] Shell

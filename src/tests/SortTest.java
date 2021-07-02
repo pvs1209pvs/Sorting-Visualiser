@@ -1,11 +1,9 @@
 package tests;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -24,6 +22,19 @@ public class SortTest {
     }
 
     @org.junit.Test
+    public void bubbleSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUBBLE).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
+    }
+
+    @org.junit.Test
+    public void bucketSort_randomArray_successfully() {
+        //  TODO: Complete selection sort
+//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUCKET).sort(randomBars, new ArrayList<>(), 0, 0);
+//        sortedArrayAssertion(randomBars);
+    }
+
+    @org.junit.Test
     public void cocktailSort_randomArray_successfully() {
         SorterFactory.getSorter(SorterFactory.ALGORITHMS.COCKTAIL).sort(randomBars, new ArrayList<>(), 0, 0);
         sortedArrayAssertion(randomBars);
@@ -36,15 +47,16 @@ public class SortTest {
     }
 
     @org.junit.Test
-    public void bubbleSort_randomArray_successfully() {
-        SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUBBLE).sort(randomBars, new ArrayList<>(), 0, 0);
+    public void cycleSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(randomBars, new ArrayList<>(), 0, 0);
         sortedArrayAssertion(randomBars);
     }
 
     @org.junit.Test
-    public void cycleSort_randomArray_successfully() {
-        SorterFactory.getSorter(SorterFactory.ALGORITHMS.CYCLE).sort(randomBars, new ArrayList<>(), 0, 0);
-        sortedArrayAssertion(randomBars);
+    public void heapSort_randomArray_successfully() {
+//        TODO: Complete heap sort
+//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.HEAP).sort(randomBars, new ArrayList<>(), 0, 0);
+//        sortedArrayAssertion(randomBars);
     }
 
     @org.junit.Test
@@ -66,14 +78,14 @@ public class SortTest {
     }
 
     @org.junit.Test
-    public void shellSort_randomArray_successfully() {
-        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SHELL).sort(randomBars, new ArrayList<>(), 0, 0);
+    public void radixSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.RADIX).sort(randomBars, new ArrayList<>(), 0, 0);
         sortedArrayAssertion(randomBars);
     }
 
     @org.junit.Test
-    public void radixSort_randomArray_successfully() {
-        SorterFactory.getSorter(SorterFactory.ALGORITHMS.RADIX).sort(randomBars, new ArrayList<>(), 0, 0);
+    public void shellSort_randomArray_successfully() {
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SHELL).sort(randomBars, new ArrayList<>(), 0, 0);
         sortedArrayAssertion(randomBars);
     }
 
@@ -81,13 +93,6 @@ public class SortTest {
     public void selectionSort_randomArray_successfully() {
       //  TODO: Complete selection sort
 //        SorterFactory.getSorter(SorterFactory.ALGORITHMS.SELECTION).sort(randomBars, new ArrayList<>(), 0, 0);
-//        sortedArrayAssertion(randomBars);
-    }
-
-    @org.junit.Test
-    public void heapSort_randomArray_successfully() {
-//        TODO: Complete heap sort
-//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.HEAP).sort(randomBars, new ArrayList<>(), 0, 0);
 //        sortedArrayAssertion(randomBars);
     }
 
