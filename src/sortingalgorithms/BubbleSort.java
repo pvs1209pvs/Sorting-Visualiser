@@ -21,15 +21,16 @@ public class BubbleSort implements Sorter {
             for (int i = 0; i < bars.length - 1; i++) {
                 if (bars[i].compareTo(bars[i + 1]) > 0) {
 
-                    Bar temp = bars[i];
-                    bars[i] = bars[i + 1];
-                    bars[i + 1] = temp;
-
                     TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), bars[i]);
-                    a.setByX(-1 * gap);
+                    a.setByX(gap);
+
+                    Bar temp = bars[i];
 
                     TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), bars[i + 1]);
-                    b.setByX(gap);
+                    b.setByX(-1 * gap);
+
+                    bars[i] = bars[i + 1];
+                    bars[i + 1] = temp;
 
                     trans.add(a);
                     trans.add(b);
