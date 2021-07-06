@@ -61,14 +61,13 @@ public class CountingSort implements Sorter {
         Integer[] barsArray = new Integer[bars.length];
         for (int i = 0; i < barsArray.length; i++) {
             barsArray[i] = (int) bars[i].getHeight();
-        }
 
+        }
         Integer[] sortedArray = sort(barsArray);
 
         for (int i = 0; i < bars.length; i++) {
             bars[i].setHeight(sortedArray[i]);
         }
-
     }
 
 }
