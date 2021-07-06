@@ -2,117 +2,63 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
-import sortingalgorithms.ComparativeSorter;
 import visuals.Bar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class HeapSort<T extends Comparable<T>> implements ComparativeSorter<T> {
+public class HeapSort implements Sorter {
 
-    private List<T> minHeap;
-    private int heapSize;
+    HeapSort() {
 
-    public void sort(T[] arr) {
+        heapify(new int[]{5, 6, 7, 1, 8, 3, 4});
+    }
 
-        minHeap = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++) {
-            minHeap.add(null);
-        }
-        heapSize = 0;
+    public void heapify(int[] arr) {
 
-        minHeap.set(0, arr[0]);
-        heapSize++;
+        int heapifyStartIndex = arr.length / 2 - 1;
 
-        for (int i = 1; i < arr.length; ++i) {
-            add_to_heap(arr[i]);
+        for (int i = heapifyStartIndex; i >= 0; --i) {
+            heapify(arr, i);
         }
 
-        for (int l = 0; l < arr.length; ++l) {
-            arr[l] = remove_from_heap(0);
-        }
+        System.out.println(Arrays.toString(arr));
 
     }
 
-    private void add_to_heap(T v) {
-        minHeap.set(heapSize, v);
-        insertion_heapify(heapSize);
-        heapSize++;
-    }
+    private void heapify(int[] arr, int parentIndex) {
 
-    private void insertion_heapify(int c) {
+        int leftChild = arr[2 * parentIndex + 1];
+        int rightChild = arr[2 * parentIndex + 2];
+        int minChild = Math.min(leftChild, rightChild);
 
-        while ((c - 1) / 2 >= 0 &&
-                minHeap.get((c - 1) / 2).compareTo(minHeap.get(c))>0) {
-            swap(c, (c - 1) / 2);
-            c = (c - 1) / 2;
-        }
+        if (minChild < arr[parentIndex]) {
 
-    }
+            int temp = arr[parentIndex];
 
-    private T remove_from_heap(int ele_index) {
+            if (leftChild < rightChild) {
+                arr[parentIndex] = leftChild;
+                arr[2 * parentIndex + 1] = temp;
 
-        T ele = minHeap.get(ele_index); // delete the element
-        T last_ele = minHeap.get(--heapSize); // get the last element
-        minHeap.set(ele_index, last_ele); // save the last ele at the deleted ele's place.
-
-        if (last_ele.compareTo(minHeap.get((ele_index - 1) / 2)) < 0) {
-            heapify_above(ele_index);
-        }
-        else {
-            heapify_below(ele_index);
-        }
-
-        return ele;
-    }
-
-    private void heapify_below(int p) {
-
-        int left = p * 2 + 1;
-        int right = p * 2 + 2;
-        int min = p;
-
-        if (left >= heapSize) return;
-
-        if (minHeap.get(left).compareTo(minHeap.get(right)) <= 0) min = left;
-        if (minHeap.get(right).compareTo(minHeap.get(left)) < 0) min = right;
-
-        if (p == min) return;
-
-        if (minHeap.get(p).compareTo(minHeap.get(min)) > 0) {
-            swap(p, min);
-            heapify_below(min);
-        }
-
-    }
-
-    private void heapify_above(int p) {
-
-        if ((p - 1) / 2 < 0) {
-            return;
-        }
-        else {
-            if (minHeap.get(p).compareTo(minHeap.get((p - 1) / 2))<0) {
-                swap(p, (p - 1) / 2);
-                p = (p - 1) / 2;
-                heapify_above(p);
             }
-            else {
-                return;
+            if (rightChild < leftChild) {
+                arr[parentIndex] = rightChild;
+                arr[2 * parentIndex + 2] = temp;
             }
+
         }
 
     }
 
-    private void swap(int x, int y) {
-        T temp = minHeap.get(x);
-        minHeap.set(x, minHeap.get(y));
-        minHeap.set(y, temp);
-    }
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
         // INCOMPLETE
+    }
+
+    public static void main(String[] args) {
+        new HeapSort();
     }
 }
 
