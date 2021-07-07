@@ -4,6 +4,7 @@ import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -16,7 +17,7 @@ public class SortTest {
     @org.junit.Before
     public void fillRandomBars() {
         randomBars = IntStream
-                .range(0, 250)
+                .range(0, 15)
                 .mapToObj(x -> new Bar(0, 0, 1, ThreadLocalRandom.current().nextInt(0, 101)))
                 .toArray(Bar[]::new);
     }
@@ -29,7 +30,6 @@ public class SortTest {
 
     @org.junit.Test
     public void bucketSort_randomArray_successfully() {
-        //  TODO: Complete selection sort
         SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUCKET).sort(randomBars, new ArrayList<>(), 0, 0);
         sortedArrayAssertion(randomBars);
     }
