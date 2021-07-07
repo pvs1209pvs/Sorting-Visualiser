@@ -54,9 +54,8 @@ public class SortTest {
 
     @org.junit.Test
     public void heapSort_randomArray_successfully() {
-//        TODO: Complete heap sort
-//        SorterFactory.getSorter(SorterFactory.ALGORITHMS.HEAP).sort(randomBars, new ArrayList<>(), 0, 0);
-//        sortedArrayAssertion(randomBars);
+        SorterFactory.getSorter(SorterFactory.ALGORITHMS.HEAP).sort(randomBars, new ArrayList<>(), 0, 0);
+        sortedArrayAssertion(randomBars);
     }
 
     @org.junit.Test

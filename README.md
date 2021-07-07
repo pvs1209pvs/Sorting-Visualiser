@@ -14,12 +14,12 @@
 - [x] Cocktail
 - [x] Counting
 - [x] Cycle
-- [ ] Heap
+- [x] Heap
 - [x] Insertion
 - [x] Merge
 - [x] Quick
 - [x] Radix
-- [x] Selection
+- [ ] Selection
 - [x] Shell
 
 
@@ -34,5 +34,5 @@
 - [x] Merge
 - [x] Quick
 - [ ] Radix
-- [x] Selection
+- [ ] Selection
 - [x] Shell

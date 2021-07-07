@@ -62,18 +62,13 @@ public class CountingSort implements Sorter {
         for (int i = 0; i < barsArray.length; i++) {
             barsArray[i] = (int) bars[i].getHeight();
 
-            System.out.println("input array");
-            System.out.println(Arrays.toString(barsArray));
+        }
+        Integer[] sortedArray = sort(barsArray);
 
-            Integer[] sortedArray = sort(barsArray);
-
-//        for (int i = 0; i < bars.length; i++) {
-//            bars[i].setHeight(sortedArray[i]);
-//        }
-
-            System.out.println("sorted");
-            System.out.println(Arrays.toString(bars));
-
+        for (int i = 0; i < bars.length; i++) {
+            bars[i].setHeight(sortedArray[i]);
         }
 
+
     }
+}

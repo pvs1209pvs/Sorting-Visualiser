@@ -5,43 +5,17 @@ import javafx.animation.Animation;
 import visuals.Bar;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class HeapSort implements Sorter {
 
-    HeapSort() {
 
-        int[] arr = new int[]{1, 9, 8, 9,2,1, 8, 3, 4,};
+    private void makeHeap(Bar[] arr) {
 
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
+        Bar[] heap = new Bar[arr.length];
 
-
-    }
-
-    private boolean isHeap(int[] heap) {
-        for (int i = 0; i < heap.length / 2; i++) {
-
-            if (2 * i + 1 < heap.length) {
-                if (heap[i] < heap[2 * i + 1]) {
-                    return false;
-                }
-            }
-
-            if (2 * i + 2 < heap.length) {
-                if (heap[i] < heap[2 * i + 2]) {
-                    return false;
-                }
-            }
-
-        }
-
-        return true;
-    }
-
-    public void makeHeap(int[] arr) {
-
-        int[] heap = new int[arr.length];
+        Arrays.setAll(heap, i -> new Bar(0, 0, 0, 0));
 
         for (int i = 0; i < arr.length; i++) {
             addToHeap(heap, i, arr[i]);
@@ -51,33 +25,38 @@ public class HeapSort implements Sorter {
 
     }
 
-    private void addToHeap(int[] heap, int size, int value) {
+    private void addToHeap(Bar[] heap, int size, Bar value) {
+
         heap[size] = value;
         heapifyUp(heap, size);
     }
 
-    private void removeRoot(int[] arr, int heapSize) {
-        int temp = arr[0];
+    private void removeRoot(Bar[] arr, int heapSize) {
+        Bar temp = arr[0];
         arr[0] = arr[heapSize - 1];
         arr[heapSize - 1] = temp;
     }
 
-    private void heapifyUp(int[] arr, int parentIndex) {
+    private void heapifyUp(Bar[] arr, int parentIndex) {
 
-        int leftChild = 2 * parentIndex + 1 < arr.length ? arr[2 * parentIndex + 1] : Integer.MIN_VALUE;
-        int rightChild = 2 * parentIndex + 2 < arr.length ? arr[2 * parentIndex + 2] : Integer.MIN_VALUE;
-        int maxChild = Math.max(leftChild, rightChild);
+        Bar leftChild = 2 * parentIndex + 1 < arr.length ? arr[2 * parentIndex + 1] : new Bar(0, 0, 0, 0);
+        Bar rightChild = 2 * parentIndex + 2 < arr.length ? arr[2 * parentIndex + 2] : new Bar(0, 0, 0, 0);
 
-        if (maxChild > arr[parentIndex]) {
+        Bar maxChild = leftChild;
+        if (rightChild.compareTo(leftChild) > 0) {
+            maxChild = rightChild;
+        }
 
-            int temp = arr[parentIndex];
+        if (maxChild.compareTo(arr[parentIndex]) > 0) {
 
-            if (leftChild > rightChild) {
+            Bar temp = arr[parentIndex];
+
+            if (leftChild.compareTo(rightChild) > 0) {
                 arr[parentIndex] = leftChild;
                 arr[2 * parentIndex + 1] = temp;
 
             }
-            if (rightChild > leftChild) {
+            if (rightChild.compareTo(leftChild) > 0) {
                 arr[parentIndex] = rightChild;
                 arr[2 * parentIndex + 2] = temp;
             }
@@ -90,7 +69,7 @@ public class HeapSort implements Sorter {
 
     }
 
-    private void sort(int[] arr) {
+    private void sort(Bar[] arr) {
 
         makeHeap(arr);
 
@@ -101,22 +80,26 @@ public class HeapSort implements Sorter {
 
     }
 
-    private void heapifyBottom(int[] arr, int heapSize, int index) {
+    private void heapifyBottom(Bar[] arr, int heapSize, int index) {
 
         if (index >= heapSize) {
             return;
         }
 
-        int left = 2 * index + 1 < heapSize ? arr[2 * index + 1] : Integer.MIN_VALUE;
-        int right = 2 * index + 2 < heapSize ? arr[2 * index + 2] : Integer.MIN_VALUE;
-        int max = Math.max(left, right);
+        Bar left = 2 * index + 1 < heapSize ? arr[2 * index + 1] : new Bar(0, 0, 0, 0);
+        Bar right = 2 * index + 2 < heapSize ? arr[2 * index + 2] : new Bar(0, 0, 0, 0);
+
+        Bar maxChild = left;
+        if (right.compareTo(left) > 0) {
+            maxChild = right;
+        }
 
 
-        if (max > arr[index]) {
+        if (maxChild.compareTo(arr[index]) > 0) {
 
-            int temp = arr[index];
+            Bar temp = arr[index];
 
-            if (left >= right) {
+            if (left.compareTo(right) >= 0) {
                 arr[index] = left;
                 arr[2 * index + 1] = temp;
                 heapifyBottom(arr, heapSize, 2 * index + 1);
@@ -132,11 +115,7 @@ public class HeapSort implements Sorter {
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-        // INCOMPLETE
-    }
-
-    public static void main(String[] args) {
-        new HeapSort();
+        sort(bars);
     }
 
 }
