@@ -27,7 +27,7 @@
 - [x] Bubble
 - [ ] Bucket
 - [x] Cocktail
-- [x] Counting
+- [ ] Counting
 - [x] Cycle
 - [x] Heap
 - [x] Insertion
