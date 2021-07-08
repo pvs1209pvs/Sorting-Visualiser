@@ -2,14 +2,15 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class HeapSort implements Sorter {
-
 
     private void makeHeap(Bar[] arr) {
 
@@ -69,14 +70,19 @@ public class HeapSort implements Sorter {
 
     }
 
-    private void sort(Bar[] arr) {
+    private Bar[] sort(Bar[] arr) {
 
         makeHeap(arr);
+
+        Bar[] heap = new Bar[arr.length];
+        System.arraycopy(arr, 0, heap, 0, arr.length);
 
         for (int i = arr.length; i >= 1; i--) {
             removeRoot(arr, i);
             heapifyBottom(arr, i - 1, 0);
         }
+
+        return heap;
 
     }
 
@@ -113,9 +119,38 @@ public class HeapSort implements Sorter {
     }
 
 
+    private int findSortedIndex(Bar[] arr, Bar probe) {
+
+        for (int i = 0; i < arr.length; i++) {
+            if (!arr[i].isVisited && arr[i].compareTo(probe) == 0) {
+                arr[i].isVisited = true;
+                return i;
+            }
+        }
+        return -1;
+
+    }
+
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
-        sort(bars);
+
+        Bar[] input = new Bar[bars.length];
+        System.arraycopy(bars, 0, input, 0, bars.length);
+        System.out.println("unsorted " + Arrays.toString(input));
+
+        Bar[] heap = sort(bars);
+        System.out.println("heap " + Arrays.toString(heap));
+
+        for (int i = 0; i < input.length; i++) {
+            int sortedIndex = findSortedIndex(heap, input[i]);
+            System.out.println(i + " " + sortedIndex);
+
+            TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), input[i]);
+            a.setByX((sortedIndex-i)* gap);
+            trans.add(a);
+        }
+
+
     }
 
 }

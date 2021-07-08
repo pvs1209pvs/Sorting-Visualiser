@@ -14,8 +14,7 @@ class AnimationSequence {
 
         List<Animation> trans = new ArrayList<>();
 
-        Sorter s = SorterFactory.getSorter(algorithm);
-        s.sort(bars, trans, gap, sec);
+        SorterFactory.getSorter(algorithm).sort(bars, trans, gap, sec);
 
         return new SequentialTransition(trans.toArray(new Animation[0]));
 

@@ -1,8 +1,6 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
-import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.*;
@@ -69,6 +67,6 @@ public class CountingSort implements Sorter {
             bars[i].setHeight(sortedArray[i]);
         }
 
-
     }
+
 }
