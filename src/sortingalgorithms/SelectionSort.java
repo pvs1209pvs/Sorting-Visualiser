@@ -2,6 +2,7 @@ package sortingalgorithms;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.List;
@@ -26,9 +27,18 @@ public class SelectionSort implements Sorter {
 
         for (int i = 0; i < array.length; i++) {
             int minValIndex = findMin(i, array.length, array)[1];
+
             Bar temp = array[i];
+            a = new TranslateTransition(Duration.seconds(seconds), array[i]);
+            a.setByX(Math.abs(minValIndex - i) * gap);
+
+            b = new TranslateTransition(Duration.seconds(seconds), array[minValIndex]);
+            b.setByX(-1 * Math.abs(minValIndex - i) * gap);
             array[i] = array[minValIndex];
             array[minValIndex] = temp;
+
+            trans.add(a);
+            trans.add(b);
         }
     }
 }
