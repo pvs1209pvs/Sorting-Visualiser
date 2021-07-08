@@ -40,7 +40,7 @@
                     </items>
                     <value>
 
-                        <String fx:value="Quick"/>
+                        <String fx:value="Heap"/>
                     </value>
 
                 </ComboBox>
@@ -59,7 +59,7 @@
             <VBox alignment="CENTER" spacing="10">
                 <Label text="Number of Samples"/>
 
-                <TextField fx:id="samples" promptText="50"/>
+                <TextField fx:id="samples" text="50"/>
 
             </VBox>
 
@@ -67,8 +67,8 @@
                 <Label text="Choose the range of numbers"/>
                 <HBox alignment="CENTER" spacing="10">
 
-                    <TextField fx:id="minValue" promptText="1"/>
-                    <TextField fx:id="maxValue" promptText="10"/>
+                    <TextField fx:id="minValue" text="1"/>
+                    <TextField fx:id="maxValue" text="10"/>
 
                 </HBox>
             </VBox>
@@ -95,7 +95,7 @@
 
             <Label text="Sorting Speed"/>
 
-            <Slider fx:id="speedSlider" min="1" max="100" showTickMarks="false" minorTickCount="100" snapToTicks="true"
+            <Slider fx:id="speedSlider" min="1" value="50" snapToTicks="true"
                     HBox.hgrow="ALWAYS"
                     maxWidth="200"/>
 

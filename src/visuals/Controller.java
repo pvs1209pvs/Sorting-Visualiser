@@ -21,8 +21,6 @@ import static visuals.Main.primaryStage;
 
 public class Controller {
 
-    private AnimationSequence animationSequence;
-
     @FXML
     ComboBox<String> sortSelect;
 
@@ -71,9 +69,7 @@ public class Controller {
                 n = getSampleSize();
                 bars = new Bar[n];
 
-                for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap + width, width, width, (int) (Math.random() * maxValue() + minValue()) * 15);
-                }
+                Arrays.setAll(bars, i -> new Bar(i * gap + width, width, width, (int) (Math.random() * maxValue() + minValue()) * 15));
 
                 break;
             }
@@ -83,9 +79,7 @@ public class Controller {
                 n = nums.length;
                 bars = new Bar[n];
 
-                for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap, 5, width, nums[i] * 15);
-                }
+                Arrays.setAll(bars, i -> new Bar(i * gap, 5, width, nums[i] * 15));
 
                 break;
             }
@@ -95,22 +89,18 @@ public class Controller {
                 n = nums.length;
                 bars = new Bar[n];
 
-                for (int i = 0; i < bars.length; i++) {
-                    bars[i] = new Bar(i * gap, 5, width, nums[i] * 15);
-                }
+                Arrays.setAll(bars, i -> new Bar(i * gap, 5, width, nums[i] * 15));
 
             }
         }
 
-        animationSequence = new AnimationSequence();
-        animationSequence.getSequenceTransition(
-                Stream.of(SorterFactory.ALGORITHMS.values()).filter(x->x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
+        new AnimationSequence().getSequenceTransition(
+                Stream.of(SorterFactory.ALGORITHMS.values()).filter(x -> x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
                 bars,
                 gap,
                 1 / getSpeed()).play();
 
         Pane pane = new Pane();
-        Button playPause = new Button("Play/Pause");
 
         VBox vBox = new VBox(pane);
         vBox.setStyle("-fx-background-color: black");
@@ -121,6 +111,7 @@ public class Controller {
         myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * width));
 
         pane.setStyle("-fx-background-color: black");
+
         for (Bar bar : bars) {
             bar.setFill(Paint.valueOf("#000000"));
             bar.setStroke(Paint.valueOf("#ffffff"));
@@ -129,8 +120,6 @@ public class Controller {
 
 
         Scene myScene = new Scene(vBox);
-
-
         myStage.setScene(myScene);
         myStage.show();
 
