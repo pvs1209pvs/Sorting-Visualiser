@@ -12,24 +12,23 @@ import java.util.stream.IntStream;
 
 public class HeapSort implements Sorter {
 
-    private void makeHeap(Bar[] arr) {
+    private void makeHeap(Bar[] arr, List<Animation> trans, int gap, double seconds) {
 
         Bar[] heap = new Bar[arr.length];
 
         Arrays.setAll(heap, i -> new Bar(0, 0, 0, 0));
 
         for (int i = 0; i < arr.length; i++) {
-            addToHeap(heap, i, arr[i]);
+            addToHeap(heap, i, arr[i],trans,gap,seconds);
         }
 
         System.arraycopy(heap, 0, arr, 0, heap.length);
 
     }
 
-    private void addToHeap(Bar[] heap, int size, Bar value) {
-
+    private void addToHeap(Bar[] heap, int size, Bar value, List<Animation> trans, int gap, double seconds) {
         heap[size] = value;
-        heapifyUp(heap, size);
+        heapifyUp(heap, size,trans,gap,seconds);
     }
 
     private void removeRoot(Bar[] arr, int heapSize) {
@@ -38,7 +37,7 @@ public class HeapSort implements Sorter {
         arr[heapSize - 1] = temp;
     }
 
-    private void heapifyUp(Bar[] arr, int parentIndex) {
+    private void heapifyUp(Bar[] arr, int parentIndex, List<Animation> trans, int gap, double seconds) {
 
         Bar leftChild = 2 * parentIndex + 1 < arr.length ? arr[2 * parentIndex + 1] : new Bar(0, 0, 0, 0);
         Bar rightChild = 2 * parentIndex + 2 < arr.length ? arr[2 * parentIndex + 2] : new Bar(0, 0, 0, 0);
@@ -56,35 +55,38 @@ public class HeapSort implements Sorter {
                 arr[parentIndex] = leftChild;
                 arr[2 * parentIndex + 1] = temp;
 
+                TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), arr[2 * parentIndex + 1]);
+                a.setByX((2 * parentIndex + 1 - parentIndex) * gap);
+
+                TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), arr[parentIndex]);
+                b.setByX((parentIndex - (2 * parentIndex + 1)) * gap);
+
+                trans.add(a);
+                trans.add(b);
+
             }
             if (rightChild.compareTo(leftChild) > 0) {
                 arr[parentIndex] = rightChild;
                 arr[2 * parentIndex + 2] = temp;
+
+                TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), arr[2 * parentIndex + 2]);
+                a.setByX((2 * parentIndex + 2 - parentIndex) * gap);
+
+                TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), arr[parentIndex]);
+                b.setByX((parentIndex - (2 * parentIndex + 2)) * gap);
+
+                trans.add(a);
+                trans.add(b);
             }
 
         }
 
         if (parentIndex != 0) {
-            heapifyUp(arr, (parentIndex - 1) / 2);
+            heapifyUp(arr, (parentIndex - 1) / 2, trans, gap, seconds);
         }
 
     }
 
-    private Bar[] sort(Bar[] arr) {
-
-        makeHeap(arr);
-
-        Bar[] heap = new Bar[arr.length];
-        System.arraycopy(arr, 0, heap, 0, arr.length);
-
-        for (int i = arr.length; i >= 1; i--) {
-            removeRoot(arr, i);
-            heapifyBottom(arr, i - 1, 0);
-        }
-
-        return heap;
-
-    }
 
     private void heapifyBottom(Bar[] arr, int heapSize, int index) {
 
@@ -118,7 +120,6 @@ public class HeapSort implements Sorter {
 
     }
 
-
     private int findSortedIndex(Bar[] arr, Bar probe) {
 
         for (int i = 0; i < arr.length; i++) {
@@ -134,21 +135,17 @@ public class HeapSort implements Sorter {
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
-        Bar[] input = new Bar[bars.length];
-        System.arraycopy(bars, 0, input, 0, bars.length);
-        System.out.println("unsorted " + Arrays.toString(input));
+        makeHeap(bars,trans,gap,seconds);
 
-        Bar[] heap = sort(bars);
-        System.out.println("heap " + Arrays.toString(heap));
+        System.out.println("heap " + Arrays.toString(bars));
 
-        for (int i = 0; i < input.length; i++) {
-            int sortedIndex = findSortedIndex(heap, input[i]);
-            System.out.println(i + " " + sortedIndex);
-
-            TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), input[i]);
-            a.setByX((sortedIndex-i)* gap);
-            trans.add(a);
+        for (int i = bars.length; i >= 1; i--) {
+            removeRoot(bars, i);
+            heapifyBottom(bars, i - 1, 0);
         }
+
+
+
 
 
     }
