@@ -55,8 +55,8 @@ public class Controller {
     @FXML
     public void playAnim() {
 
-        int gap = 20;
-        int width = 10;
+        final int GAP = 20;
+        final int WIDTH = 10;
 
         int n = 0;
         Bar[] bars = new Bar[n];
@@ -68,7 +68,7 @@ public class Controller {
                 n = getSampleSize();
                 bars = new Bar[n];
 
-                Arrays.setAll(bars, i -> new Bar(i * gap + width, width, width, (int) (Math.random() * maxValue() + minValue()) * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, WIDTH, WIDTH, (int) (Math.random() * maxValue() + minValue()) * 15));
 
                 break;
             }
@@ -78,7 +78,7 @@ public class Controller {
                 n = nums.length;
                 bars = new Bar[n];
 
-                Arrays.setAll(bars, i -> new Bar(i * gap, 5, width, nums[i] * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 5, WIDTH, nums[i] * 15));
 
                 break;
             }
@@ -88,7 +88,7 @@ public class Controller {
                 n = nums.length;
                 bars = new Bar[n];
 
-                Arrays.setAll(bars, i -> new Bar(i * gap, 5, width, nums[i] * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 5, WIDTH, nums[i] * 15));
 
             }
         }
@@ -96,7 +96,7 @@ public class Controller {
         new AnimationSequence().getSequenceTransition(
                 Stream.of(SorterFactory.ALGORITHMS.values()).filter(x -> x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
                 bars,
-                gap,
+                GAP,
                 1 / getSpeed()).play();
 
         Pane pane = new Pane();
@@ -106,8 +106,8 @@ public class Controller {
 
         Stage myStage = new Stage();
 
-        myStage.setWidth((gap) * n - width + (2 * width));
-        myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * width));
+        myStage.setWidth((GAP) * n - WIDTH + (2 * WIDTH));
+        myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * WIDTH));
 
         pane.setStyle("-fx-background-color: black");
 
@@ -128,19 +128,14 @@ public class Controller {
     public Integer[] openFile() {
 
         numbers.setDisable(true);
-
-        FileChooser fileChooser = new FileChooser();
-        File inputFile = fileChooser.showOpenDialog(primaryStage);
-
-        return readFromFile(inputFile);
+        return readFromFile(new FileChooser().showOpenDialog(primaryStage));
 
     }
 
     private Integer[] readFromFile(File inputFile) {
 
-        try {
+        try (Scanner scanner = new Scanner(inputFile)) {
 
-            Scanner scanner = new Scanner(inputFile);
             scanner.useDelimiter(" ");
 
             List<Integer> nums = new ArrayList<>();
@@ -148,8 +143,6 @@ public class Controller {
             while (scanner.hasNext()) {
                 nums.add(Integer.parseInt(scanner.next().trim()));
             }
-
-            scanner.close();
 
             return nums.toArray(new Integer[0]);
 
@@ -161,7 +154,10 @@ public class Controller {
     }
 
     private Integer[] userEnteredArray() {
-        return Arrays.stream(numbers.getText().split(" ")).map(Objects::toString).map(Integer::valueOf).toArray(Integer[]::new);
+        return Arrays.stream(numbers.getText().split(" "))
+                .map(Objects::toString)
+                .map(Integer::valueOf)
+                .toArray(Integer[]::new);
     }
 
     @FXML

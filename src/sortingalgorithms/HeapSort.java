@@ -1,4 +1,3 @@
-
 package sortingalgorithms;
 
 import javafx.animation.Animation;
@@ -31,6 +30,7 @@ public class HeapSort implements Sorter {
     }
 
     private void removeRoot(Bar[] arr, int heapSize, List<Animation> trans, int gap, double seconds) {
+
         Bar temp = arr[0];
         arr[0] = arr[heapSize - 1];
         arr[heapSize - 1] = temp;
@@ -43,6 +43,7 @@ public class HeapSort implements Sorter {
 
         trans.add(a);
         trans.add(b);
+
     }
 
     private void heapifyUp(Bar[] arr, int parentIndex, List<Animation> trans, int gap, double seconds) {
@@ -57,14 +58,12 @@ public class HeapSort implements Sorter {
 
         if (maxChild.compareTo(arr[parentIndex]) > 0) {
 
-            Bar temp = arr[parentIndex];
-
             if (leftChild.compareTo(rightChild) > 0) {
-                parentLeftSwap(arr, parentIndex, trans, gap, seconds, leftChild, temp);
+                parentLeftSwap(arr, parentIndex, trans, gap, seconds, leftChild, arr[parentIndex]);
             }
 
             if (rightChild.compareTo(leftChild) > 0) {
-                parentRightSwap(arr, parentIndex, trans, gap, seconds, rightChild, temp);
+                parentRightSwap(arr, parentIndex, trans, gap, seconds, rightChild, arr[parentIndex]);
             }
 
         }
@@ -72,38 +71,6 @@ public class HeapSort implements Sorter {
         if (parentIndex != 0) {
             heapifyUp(arr, (parentIndex - 1) / 2, trans, gap, seconds);
         }
-
-    }
-
-
-
-    private void parentLeftSwap(Bar[] arr, int parentIndex, List<Animation> trans, int gap, double seconds, Bar leftChild, Bar temp) {
-        arr[parentIndex] = leftChild;
-        arr[2 * parentIndex + 1] = temp;
-
-        TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), arr[2 * parentIndex + 1]);
-        a.setByX((2 * parentIndex + 1 - parentIndex) * gap);
-
-        TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), arr[parentIndex]);
-        b.setByX((parentIndex - (2 * parentIndex + 1)) * gap);
-
-        trans.add(a);
-        trans.add(b);
-    }
-
-    private void parentRightSwap(Bar[] arr, int parentIndex, List<Animation> trans, int gap, double seconds, Bar rightChild, Bar temp) {
-
-        arr[parentIndex] = rightChild;
-        arr[2 * parentIndex + 2] = temp;
-
-        TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), arr[2 * parentIndex + 2]);
-        a.setByX((2 * parentIndex + 2 - parentIndex) * gap);
-
-        TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), arr[parentIndex]);
-        b.setByX((parentIndex - (2 * parentIndex + 2)) * gap);
-
-        trans.add(a);
-        trans.add(b);
 
     }
 
@@ -123,18 +90,46 @@ public class HeapSort implements Sorter {
 
         if (maxChild.compareTo(arr[index]) > 0) {
 
-            Bar temp = arr[index];
-
             if (left.compareTo(right) >= 0) {
-                parentLeftSwap(arr, index, trans, gap, seconds, left, temp);
-
+                parentLeftSwap(arr, index, trans, gap, seconds, left, arr[index]);
                 heapifyBottom(arr, heapSize, 2 * index + 1, trans, gap, seconds);
             } else {
-                parentRightSwap(arr, index, trans, gap, seconds, right, temp);
-
+                parentRightSwap(arr, index, trans, gap, seconds, right, arr[index]);
                 heapifyBottom(arr, heapSize, 2 * index + 2, trans, gap, seconds);
             }
         }
+
+    }
+
+    private void parentLeftSwap(Bar[] arr, int parentIndex, List<Animation> trans, int gap, double seconds, Bar leftChild, Bar temp) {
+
+        arr[parentIndex] = leftChild;
+        arr[2 * parentIndex + 1] = temp;
+
+        TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), arr[2 * parentIndex + 1]);
+        a.setByX((2 * parentIndex + 1 - parentIndex) * gap);
+
+        TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), arr[parentIndex]);
+        b.setByX((parentIndex - (2 * parentIndex + 1)) * gap);
+
+        trans.add(a);
+        trans.add(b);
+
+    }
+
+    private void parentRightSwap(Bar[] arr, int parentIndex, List<Animation> trans, int gap, double seconds, Bar rightChild, Bar temp) {
+
+        arr[parentIndex] = rightChild;
+        arr[2 * parentIndex + 2] = temp;
+
+        TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), arr[2 * parentIndex + 2]);
+        a.setByX((2 * parentIndex + 2 - parentIndex) * gap);
+
+        TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), arr[parentIndex]);
+        b.setByX((parentIndex - (2 * parentIndex + 2)) * gap);
+
+        trans.add(a);
+        trans.add(b);
 
     }
 
@@ -148,8 +143,6 @@ public class HeapSort implements Sorter {
             heapifyBottom(bars, i - 1, 0, trans, gap, seconds);
         }
 
-
     }
 
 }
-

@@ -12,26 +12,19 @@ public class SelectionSort implements Sorter {
     @Override
     public void sort(Bar[] array, List<Animation> trans, int gap, double seconds) {
 
-        TranslateTransition a, b;
-        int barShift = 0;
-
-        int y = array.length;
-
-        for (int i = 0; i <y-1 ; i++) {
+        for (int i = 0; i <array.length-1 ; i++) {
             int miniIndex = i;
-            for (int j = i; j <y ; j++) {
-                if(array[j].compareTo(array[i]) > 0){
+            for (int j = i; j <array.length ; j++) {
+                if (array[j].compareTo(array[i]) > 0) {
                     miniIndex = j;
                 }
             }
 
-            barShift = Math.abs(miniIndex-i);
+            TranslateTransition a = new TranslateTransition(Duration.seconds(seconds), array[i]);
+            a.setByX((miniIndex-i) * gap);
 
-            a = new TranslateTransition(Duration.seconds(seconds), array[i]);
-            a.setByX(barShift * gap);
-
-            b = new TranslateTransition(Duration.seconds(seconds), array[miniIndex]);
-            b.setByX(-1*barShift * gap);
+            TranslateTransition b = new TranslateTransition(Duration.seconds(seconds), array[miniIndex]);
+            b.setByX((i-miniIndex)* gap);
 
             trans.add(a);
             trans.add(b);
