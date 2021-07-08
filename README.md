@@ -19,7 +19,7 @@
 - [x] Merge
 - [x] Quick
 - [x] Radix
-- [ ] Selection
+- [x] Selection
 - [x] Shell
 
 
@@ -34,5 +34,5 @@
 - [x] Merge
 - [x] Quick
 - [ ] Radix
-- [ ] Selection
+- [x] Selection
 - [x] Shell
