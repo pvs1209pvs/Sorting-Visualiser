@@ -56,11 +56,9 @@
                 <Insets top="40" bottom="40" left="20" right="20"/>
             </padding>
 
-            <VBox alignment="CENTER" spacing="10">
+            <VBox alignment="CENTER" spacing="10" >
                 <Label text="Number of Samples"/>
-
-                <TextField fx:id="samples" text="50"/>
-
+                <TextField fx:id="samples" text="50" maxWidth="200"/>
             </VBox>
 
             <VBox alignment="CENTER" spacing="10">
@@ -94,7 +92,6 @@
             </HBox>
 
             <Label text="Sorting Speed"/>
-
             <Slider fx:id="speedSlider" min="1" value="50" snapToTicks="true"
                     HBox.hgrow="ALWAYS"
                     maxWidth="200"/>

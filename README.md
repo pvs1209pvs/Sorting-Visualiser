@@ -29,7 +29,7 @@
 - [x] Cocktail
 - [x] Counting
 - [x] Cycle
-- [ ] Heap
+- [x] Heap
 - [x] Insertion
 - [x] Merge
 - [x] Quick
