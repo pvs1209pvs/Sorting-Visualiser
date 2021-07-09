@@ -9,8 +9,8 @@ public class Bar extends Rectangle implements Comparable<Bar> {
 
     public Bar(double x, double y, double w, double h) {
         super(x, y, w, h);
-        setFill(Paint.valueOf("#ffffff"));
-        setStroke(Paint.valueOf("#ffffff"));
+        setFill(Paint.valueOf("#03b6fc"));
+        setStroke(Paint.valueOf("#03b6fc"));
     }
 
     @Override

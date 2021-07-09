@@ -1,9 +1,9 @@
 .label{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .radio-button{
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .combo-box{
@@ -11,7 +11,7 @@
 }
 
 .text-field{
-    -fx-background-color: white;
+    -fx-border-radius: 6;
 }
 
 .combo-box-base > .arrow-button {

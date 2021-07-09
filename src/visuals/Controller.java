@@ -42,7 +42,6 @@ public class Controller {
     @FXML
     Slider speedSlider;
 
-
     @FXML
     public void initialize() {
         (customInputOptions.getToggles().get(0)).setSelected(true);
@@ -57,14 +56,15 @@ public class Controller {
         final int WIDTH = 5;
         final int HEIGHT_SCALING = 10;
 
-        Bar[] bars= new Bar[0];
+        Bar[] bars = new Bar[0];
 
         switch (userInputOption()) {
 
             case "fromRandom": {
 
                 bars = new Bar[getSampleSize()];
-                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, 100, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
+
+                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, 25, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
 
                 break;
             }
@@ -73,7 +73,7 @@ public class Controller {
                 Integer[] nums = userEnteredArray();
                 bars = new Bar[nums.length];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 5, WIDTH, nums[i] * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * 15));
 
                 break;
             }
@@ -82,7 +82,7 @@ public class Controller {
                 Integer[] nums = openFile();
                 bars = new Bar[nums.length];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 5, WIDTH, nums[i] * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * 15));
 
             }
         }
@@ -94,12 +94,14 @@ public class Controller {
                 1 / getSpeed()).play();
 
         Pane pane = new Pane();
-        pane.setStyle("-fx-background-color: black");
+        pane.setStyle("-fx-background-color: white");
 
         Stage sortingAnimPane = new Stage();
+        sortingAnimPane.setWidth((GAP)* (bars.length+4));
+        sortingAnimPane.setHeight(Arrays.stream(bars).max(Bar::compareTo).get().getHeight()+100);
 
-        sortingAnimPane.setWidth(1600);
-        sortingAnimPane.setHeight(900);
+
+        pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
         for (Bar bar : bars) {
             pane.getChildren().add(bar);
