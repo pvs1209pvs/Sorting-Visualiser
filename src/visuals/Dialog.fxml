@@ -40,7 +40,7 @@
                     </items>
                     <value>
 
-                        <String fx:value="Heap"/>
+                        <String fx:value="Counting"/>
                     </value>
 
                 </ComboBox>
@@ -58,7 +58,7 @@
 
             <VBox alignment="CENTER" spacing="10" >
                 <Label text="Number of Samples"/>
-                <TextField fx:id="samples" text="50" maxWidth="200"/>
+                <TextField fx:id="samples" text="10" maxWidth="200"/>
             </VBox>
 
             <VBox alignment="CENTER" spacing="10">

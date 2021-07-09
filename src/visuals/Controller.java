@@ -68,7 +68,8 @@ public class Controller {
                 n = getSampleSize();
                 bars = new Bar[n];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, WIDTH, WIDTH, (int) (Math.random() * maxValue() + minValue()) * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, 100, WIDTH, (int) (Math.random() * maxValue() + minValue()) * 15));
+                //System.out.println("bars ready " + Arrays.toString(bars));
 
                 break;
             }
@@ -99,6 +100,8 @@ public class Controller {
                 GAP,
                 1 / getSpeed()).play();
 
+       // System.out.println("sorted " + Arrays.toString(bars));
+
         Pane pane = new Pane();
 
         VBox vBox = new VBox(pane);
@@ -106,8 +109,11 @@ public class Controller {
 
         Stage myStage = new Stage();
 
-        myStage.setWidth((GAP) * n - WIDTH + (2 * WIDTH));
-        myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * WIDTH));
+        myStage.setWidth(600);
+        myStage.setHeight(600);
+
+//        myStage.setWidth((GAP) * n - WIDTH + (2 * WIDTH));
+//        myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * WIDTH));
 
         pane.setStyle("-fx-background-color: black");
 

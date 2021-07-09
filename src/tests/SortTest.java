@@ -17,7 +17,7 @@ public class SortTest {
     @org.junit.Before
     public void fillRandomBars() {
         randomBars = IntStream
-                .range(0, 4)
+                .range(0, 10)
                 .mapToObj(x -> new Bar(0, 0, 1, ThreadLocalRandom.current().nextInt(0, 101)))
                 .toArray(Bar[]::new);
     }

@@ -1,28 +1,18 @@
 package sortingalgorithms;
 
 import javafx.animation.Animation;
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CountingSort implements Sorter {
-
-    public Integer[] sort(Integer[] array) {
-
-        Integer[] countingArray = getCountingArray(array);
-
-        rightSummation(countingArray);
-        rightShift(countingArray);
-
-        Integer[] sorted = new Integer[array.length];
-        for (Integer num : array) {
-            int min = Arrays.stream(array).min(Integer::compareTo).get();
-            sorted[countingArray[num - min]++] = num;
-        }
-
-        return sorted;
-
-    }
 
     private void rightShift(Integer[] countingArray) {
         System.arraycopy(countingArray, 0, countingArray, 1, countingArray.length - 1);
@@ -35,17 +25,17 @@ public class CountingSort implements Sorter {
         }
     }
 
-    private Integer[] getCountingArray(Integer[] array) {
+    private Integer[] getCountingArray(Bar[] array) {
 
-        int min = Arrays.stream(array).min(Integer::compareTo).get();
-        int max = Arrays.stream(array).max(Integer::compareTo).get();
+        int min = (int) Arrays.stream(array).min(Bar::compareTo).get().getHeight();
+        int max = (int) Arrays.stream(array).max(Bar::compareTo).get().getHeight();
         int offset = max - min;
 
         Integer[] countingArray = new Integer[offset + 1];
         Arrays.fill(countingArray, 0);
 
-        for (int num : array) {
-            countingArray[num - min]++;
+        for (Bar num : array) {
+            countingArray[(int) (num.getHeight() - min)]++;
         }
 
         return countingArray;
@@ -56,16 +46,34 @@ public class CountingSort implements Sorter {
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
-        Integer[] barsArray = new Integer[bars.length];
-        for (int i = 0; i < barsArray.length; i++) {
-            barsArray[i] = (int) bars[i].getHeight();
+        Integer[] countingArray = getCountingArray(bars);
 
+        rightSummation(countingArray);
+        rightShift(countingArray);
+
+        Bar[] sorted = new Bar[bars.length];
+
+        for (Bar num : bars) {
+            int min = (int) Arrays.stream(bars).min(Bar::compareTo).get().getHeight();
+            sorted[countingArray[(int) (num.getHeight() - min)]++] = num;
         }
-        Integer[] sortedArray = sort(barsArray);
+
+        System.out.println(Arrays.toString(bars));
+        System.out.println(Arrays.toString(sorted));
+
 
         for (int i = 0; i < bars.length; i++) {
-            bars[i].setHeight(sortedArray[i]);
+            ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), bars[i]);
+            st.setToY(sorted[i].getHeight() / bars[i].getHeight());
+            trans.add(st);
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), bars[i]);
+            tt.setByY((sorted[i].getHeight() - bars[i].getHeight())/2);
+            trans.add(tt);
         }
+
+
+
 
     }
 
