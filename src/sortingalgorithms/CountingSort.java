@@ -3,15 +3,11 @@ package sortingalgorithms;
 import javafx.animation.Animation;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
-import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+
 
 public class CountingSort implements Sorter {
 

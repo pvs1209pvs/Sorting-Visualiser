@@ -53,8 +53,8 @@ public class Controller {
     @FXML
     public void playAnim() {
 
-        final int GAP = 20;
-        final int WIDTH = 10;
+        final int GAP = 6;
+        final int WIDTH = 5;
         final int HEIGHT_SCALING = 10;
 
         Bar[] bars= new Bar[0];
