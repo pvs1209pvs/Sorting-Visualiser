@@ -65,6 +65,7 @@ public class Controller {
                 bars = new Bar[getSampleSize()];
 
                 Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
+
                 break;
             }
             case "fromArray": {
@@ -87,8 +88,13 @@ public class Controller {
             }
         }
 
-        if (bars.length > 0 && minValue() > 0 && maxValue() > 0) {
-
+        if (bars.length <= 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Empty array cannot be visualised");
+            alert.showAndWait();
+        } else if (minValue() <= 0 || maxValue() <= 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Enter positive numbers.");
+            alert.showAndWait();
+        } else {
             new AnimationSequence().getSequenceTransition(
                     Stream.of(SorterFactory.ALGORITHMS.values()).filter(x -> x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
                     bars,
@@ -113,6 +119,7 @@ public class Controller {
             sortingAnimPane.setScene(myScene);
             sortingAnimPane.show();
         }
+
 
     }
 
@@ -199,12 +206,21 @@ public class Controller {
 
     private int minValue() {
 
+        try {
+            return Integer.parseInt(minValue.getText());
+        } catch (NumberFormatException numberFormatException) {
+            return -1;
+        }
 
-        return Integer.parseInt(minValue.getText());
     }
 
     private int maxValue() {
-        return Integer.parseInt(maxValue.getText());
+
+        try {
+            return Integer.parseInt(maxValue.getText());
+        } catch (NumberFormatException numberFormatException) {
+            return -1;
+        }
     }
 
     @FXML
