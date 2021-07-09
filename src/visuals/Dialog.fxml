@@ -78,11 +78,11 @@
                 </fx:define>
 
                 <RadioButton fx:id="fromRandom" text="Randomly generated values" toggleGroup="$customInputOptions"
-                             onAction="#userInputOption"/>
+                             onAction="#getUserInputOption"/>
                 <RadioButton fx:id="fromArray" text="Enter values" toggleGroup="$customInputOptions"
-                             onAction="#userInputOption"/>
+                             onAction="#getUserInputOption"/>
                 <RadioButton fx:id="fromFile" text="Open file" toggleGroup="$customInputOptions"
-                             onAction="#userInputOption"/>
+                             onAction="#getUserInputOption"/>
 
             </HBox>
 

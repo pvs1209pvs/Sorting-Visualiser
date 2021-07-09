@@ -46,9 +46,12 @@ public class Controller {
     public void initialize() {
         customInputOptions.getToggles().get(0).setSelected(true);
         fileSelect.setVisible(true);
-        userInputOption();
+        getUserInputOption();
     }
 
+    /**
+     * Plays the visualization.
+     */
     @FXML
     public void playAnim() {
 
@@ -58,13 +61,13 @@ public class Controller {
 
         Bar[] bars = new Bar[0];
 
-        switch (userInputOption()) {
+        switch (getUserInputOption()) {
 
             case "fromRandom": {
 
                 bars = new Bar[getSampleSize()];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, (int) (Math.random() * getMaxValue() + getMinValue()) * HEIGHT_SCALING));
 
                 break;
             }
@@ -79,7 +82,7 @@ public class Controller {
             }
             case "fromFile": {
 
-                Integer[] nums = openFile();
+                Integer[] nums = readFromFile();
                 bars = new Bar[nums.length];
 
                 Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
@@ -91,7 +94,7 @@ public class Controller {
         if (bars.length <= 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Empty array cannot be visualised");
             alert.showAndWait();
-        } else if (minValue() <= 0 || maxValue() <= 0) {
+        } else if (getMinValue() <= 0 || getMaxValue() <= 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Enter positive numbers.");
             alert.showAndWait();
         } else {
@@ -108,7 +111,6 @@ public class Controller {
             sortingAnimPane.setWidth(1200);
             sortingAnimPane.setHeight(900);
 
-
             pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
             for (Bar bar : bars) {
@@ -123,12 +125,13 @@ public class Controller {
 
     }
 
-    public Integer[] openFile() {
-        numbers.setDisable(false);
-        return readFromFile(new FileChooser().showOpenDialog(primaryStage));
-    }
+    /**
+     * Reads numbers from a text file.
+     * @return Integer array of number to be sorted. Integer array of size zero is returned if failed to open the file.
+     */
+    private Integer[] readFromFile() {
 
-    private Integer[] readFromFile(File inputFile) {
+        File inputFile = new FileChooser().showOpenDialog(primaryStage);
 
         if (inputFile == null) {
             return new Integer[0];
@@ -153,6 +156,11 @@ public class Controller {
         return new Integer[0];
     }
 
+    /**
+     * Returns the number entered by the user.
+     * @return Integer array of numbers entered by the user. Integer array of size zero is returned if no numbers were
+     * entered by the user.
+     */
     private Integer[] userEnteredArray() {
 
         try {
@@ -166,8 +174,12 @@ public class Controller {
 
     }
 
+    /**
+     * Gets user method of input.
+     * @return Input method selected by the user.
+     */
     @FXML
-    private String userInputOption() {
+    private String getUserInputOption() {
 
         String id = ((RadioButton) customInputOptions.getSelectedToggle()).getId();
 
@@ -204,7 +216,11 @@ public class Controller {
 
     }
 
-    private int minValue() {
+    /**
+     * Minimum value to be in the input array.
+     * @return Minimum value in the array. Returns -1 if non-positive number was entered.
+     */
+    private int getMinValue() {
 
         try {
             return Integer.parseInt(minValue.getText());
@@ -214,7 +230,11 @@ public class Controller {
 
     }
 
-    private int maxValue() {
+    /**
+     * Maximum value to be in the input array.
+     * @return Maximum value in the array. Returns -1 if non-positive number was entered.
+     */
+    private int getMaxValue() {
 
         try {
             return Integer.parseInt(maxValue.getText());
@@ -223,15 +243,26 @@ public class Controller {
         }
     }
 
+    /**
+     * Number of values in the input array.
+     * @return Size of the input array.
+     */
     @FXML
     private int getSampleSize() {
         return Integer.parseInt(samples.getText());
     }
 
+    /**
+     * Sorting speed.
+     * @return Sorting speed.
+     */
     private double getSpeed() {
         return speedSlider.getValue();
     }
 
+    /**
+     * Closes the application with exit code of zero.
+     */
     @FXML
     public void close() {
         System.exit(0);
