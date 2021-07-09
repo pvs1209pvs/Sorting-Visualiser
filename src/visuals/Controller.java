@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
-import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sortingalgorithms.SorterFactory;
@@ -57,27 +55,23 @@ public class Controller {
 
         final int GAP = 20;
         final int WIDTH = 10;
+        final int HEIGHT_SCALING = 10;
 
-        int n = 0;
-        Bar[] bars = new Bar[n];
+        Bar[] bars= new Bar[0];
 
         switch (userInputOption()) {
 
             case "fromRandom": {
 
-                n = getSampleSize();
-                bars = new Bar[n];
-
-                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, 100, WIDTH, (int) (Math.random() * maxValue() + minValue()) * 15));
-                //System.out.println("bars ready " + Arrays.toString(bars));
+                bars = new Bar[getSampleSize()];
+                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, 100, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
 
                 break;
             }
             case "fromArray": {
 
                 Integer[] nums = userEnteredArray();
-                n = nums.length;
-                bars = new Bar[n];
+                bars = new Bar[nums.length];
 
                 Arrays.setAll(bars, i -> new Bar(i * GAP, 5, WIDTH, nums[i] * 15));
 
@@ -86,8 +80,7 @@ public class Controller {
             case "fromFile": {
 
                 Integer[] nums = openFile();
-                n = nums.length;
-                bars = new Bar[n];
+                bars = new Bar[nums.length];
 
                 Arrays.setAll(bars, i -> new Bar(i * GAP, 5, WIDTH, nums[i] * 15));
 
@@ -100,33 +93,21 @@ public class Controller {
                 GAP,
                 1 / getSpeed()).play();
 
-       // System.out.println("sorted " + Arrays.toString(bars));
-
         Pane pane = new Pane();
-
-        VBox vBox = new VBox(pane);
-        vBox.setStyle("-fx-background-color: black");
-
-        Stage myStage = new Stage();
-
-        myStage.setWidth(600);
-        myStage.setHeight(600);
-
-//        myStage.setWidth((GAP) * n - WIDTH + (2 * WIDTH));
-//        myStage.setHeight((int) Math.ceil(Collections.max(Arrays.asList(bars)).getHeight()) + (5 * WIDTH));
-
         pane.setStyle("-fx-background-color: black");
 
+        Stage sortingAnimPane = new Stage();
+
+        sortingAnimPane.setWidth(1600);
+        sortingAnimPane.setHeight(900);
+
         for (Bar bar : bars) {
-            bar.setFill(Paint.valueOf("#000000"));
-            bar.setStroke(Paint.valueOf("#ffffff"));
             pane.getChildren().add(bar);
         }
 
-
-        Scene myScene = new Scene(vBox);
-        myStage.setScene(myScene);
-        myStage.show();
+        Scene myScene = new Scene(pane);
+        sortingAnimPane.setScene(myScene);
+        sortingAnimPane.show();
 
 
     }

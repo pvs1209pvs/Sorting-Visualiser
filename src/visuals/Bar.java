@@ -1,5 +1,6 @@
 package visuals;
 
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 public class Bar extends Rectangle implements Comparable<Bar> {
@@ -8,6 +9,8 @@ public class Bar extends Rectangle implements Comparable<Bar> {
 
     public Bar(double x, double y, double w, double h) {
         super(x, y, w, h);
+        setFill(Paint.valueOf("#ffffff"));
+        setStroke(Paint.valueOf("#ffffff"));
     }
 
     @Override

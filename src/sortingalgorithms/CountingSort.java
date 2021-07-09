@@ -3,6 +3,7 @@ package sortingalgorithms;
 import javafx.animation.Animation;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import visuals.Bar;
 
@@ -58,21 +59,15 @@ public class CountingSort implements Sorter {
             sorted[countingArray[(int) (num.getHeight() - min)]++] = num;
         }
 
-        System.out.println(Arrays.toString(bars));
-        System.out.println(Arrays.toString(sorted));
-
-
         for (int i = 0; i < bars.length; i++) {
-            ScaleTransition st = new ScaleTransition(Duration.seconds(seconds), bars[i]);
-            st.setToY(sorted[i].getHeight() / bars[i].getHeight());
-            trans.add(st);
+            ScaleTransition scaling = new ScaleTransition(Duration.seconds(seconds), bars[i]);
+            scaling.setToY(sorted[i].getHeight() / bars[i].getHeight());
+            trans.add(scaling);
 
             TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), bars[i]);
-            tt.setByY((sorted[i].getHeight() - bars[i].getHeight())/2);
+            tt.setByY((sorted[i].getHeight() - bars[i].getHeight()) / 2);
             trans.add(tt);
         }
-
-
 
 
     }
