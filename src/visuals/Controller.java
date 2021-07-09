@@ -44,7 +44,7 @@ public class Controller {
 
     @FXML
     public void initialize() {
-        (customInputOptions.getToggles().get(0)).setSelected(true);
+        customInputOptions.getToggles().get(0).setSelected(true);
         fileSelect.setVisible(true);
         userInputOption();
     }
@@ -52,9 +52,9 @@ public class Controller {
     @FXML
     public void playAnim() {
 
-        final int GAP = 6;
-        final int WIDTH = 5;
-        final int HEIGHT_SCALING = 10;
+        final int GAP = 4;
+        final int WIDTH = 3;
+        final int HEIGHT_SCALING = 5;
 
         Bar[] bars = new Bar[0];
 
@@ -64,8 +64,7 @@ public class Controller {
 
                 bars = new Bar[getSampleSize()];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP + WIDTH, 25, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
-
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, (int) (Math.random() * maxValue() + minValue()) * HEIGHT_SCALING));
                 break;
             }
             case "fromArray": {
@@ -73,7 +72,7 @@ public class Controller {
                 Integer[] nums = userEnteredArray();
                 bars = new Bar[nums.length];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
 
                 break;
             }
@@ -82,46 +81,51 @@ public class Controller {
                 Integer[] nums = openFile();
                 bars = new Bar[nums.length];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * 15));
+                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
 
+                break;
             }
         }
 
-        new AnimationSequence().getSequenceTransition(
-                Stream.of(SorterFactory.ALGORITHMS.values()).filter(x -> x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
-                bars,
-                GAP,
-                1 / getSpeed()).play();
+        if (bars.length > 0 && minValue() > 0 && maxValue() > 0) {
 
-        Pane pane = new Pane();
-        pane.setStyle("-fx-background-color: white");
+            new AnimationSequence().getSequenceTransition(
+                    Stream.of(SorterFactory.ALGORITHMS.values()).filter(x -> x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
+                    bars,
+                    GAP,
+                    1 / getSpeed()).play();
 
-        Stage sortingAnimPane = new Stage();
-        sortingAnimPane.setWidth((GAP)* (bars.length+4));
-        sortingAnimPane.setHeight(Arrays.stream(bars).max(Bar::compareTo).get().getHeight()+100);
+            Pane pane = new Pane();
+            pane.setStyle("-fx-background-color: white");
+
+            Stage sortingAnimPane = new Stage();
+            sortingAnimPane.setWidth(1200);
+            sortingAnimPane.setHeight(900);
 
 
-        pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
+            pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
-        for (Bar bar : bars) {
-            pane.getChildren().add(bar);
+            for (Bar bar : bars) {
+                pane.getChildren().add(bar);
+            }
+
+            Scene myScene = new Scene(pane);
+            sortingAnimPane.setScene(myScene);
+            sortingAnimPane.show();
         }
-
-        Scene myScene = new Scene(pane);
-        sortingAnimPane.setScene(myScene);
-        sortingAnimPane.show();
-
 
     }
 
     public Integer[] openFile() {
-
-        numbers.setDisable(true);
+        numbers.setDisable(false);
         return readFromFile(new FileChooser().showOpenDialog(primaryStage));
-
     }
 
     private Integer[] readFromFile(File inputFile) {
+
+        if (inputFile == null) {
+            return new Integer[0];
+        }
 
         try (Scanner scanner = new Scanner(inputFile)) {
 
@@ -139,14 +143,20 @@ public class Controller {
             e.printStackTrace();
         }
 
-        return null;
+        return new Integer[0];
     }
 
     private Integer[] userEnteredArray() {
-        return Arrays.stream(numbers.getText().split(" "))
-                .map(Objects::toString)
-                .map(Integer::valueOf)
-                .toArray(Integer[]::new);
+
+        try {
+            return Arrays.stream(numbers.getText().split(" "))
+                    .map(Objects::toString)
+                    .map(Integer::valueOf)
+                    .toArray(Integer[]::new);
+        } catch (NumberFormatException numberFormatException) {
+            return new Integer[0];
+        }
+
     }
 
     @FXML
@@ -188,6 +198,8 @@ public class Controller {
     }
 
     private int minValue() {
+
+
         return Integer.parseInt(minValue.getText());
     }
 
