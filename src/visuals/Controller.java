@@ -108,8 +108,8 @@ public class Controller {
             pane.setStyle("-fx-background-color: white");
 
             Stage sortingAnimPane = new Stage();
-            sortingAnimPane.setWidth(1200);
-            sortingAnimPane.setHeight(900);
+            sortingAnimPane.setWidth((bars.length < 100) ? 450 : (int) (bars.length * 4.5));
+            sortingAnimPane.setHeight((getMaxValue() <= 40) ? 250 : getMaxValue() * 6);
 
             pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
@@ -127,6 +127,7 @@ public class Controller {
 
     /**
      * Reads numbers from a text file.
+     *
      * @return Integer array of number to be sorted. Integer array of size zero is returned if failed to open the file.
      */
     private Integer[] readFromFile() {
@@ -158,6 +159,7 @@ public class Controller {
 
     /**
      * Returns the number entered by the user.
+     *
      * @return Integer array of numbers entered by the user. Integer array of size zero is returned if no numbers were
      * entered by the user.
      */
@@ -176,6 +178,7 @@ public class Controller {
 
     /**
      * Gets user method of input.
+     *
      * @return Input method selected by the user.
      */
     @FXML
@@ -218,6 +221,7 @@ public class Controller {
 
     /**
      * Minimum value to be in the input array.
+     *
      * @return Minimum value in the array. Returns -1 if non-positive number was entered.
      */
     private int getMinValue() {
@@ -232,6 +236,7 @@ public class Controller {
 
     /**
      * Maximum value to be in the input array.
+     *
      * @return Maximum value in the array. Returns -1 if non-positive number was entered.
      */
     private int getMaxValue() {
@@ -245,6 +250,7 @@ public class Controller {
 
     /**
      * Number of values in the input array.
+     *
      * @return Size of the input array.
      */
     @FXML
@@ -254,6 +260,7 @@ public class Controller {
 
     /**
      * Sorting speed.
+     *
      * @return Sorting speed.
      */
     private double getSpeed() {
