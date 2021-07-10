@@ -108,8 +108,8 @@ public class Controller {
             pane.setStyle("-fx-background-color: white");
 
             Stage sortingAnimPane = new Stage();
-            sortingAnimPane.setWidth((bars.length < 100) ? 470 : (int) (bars.length * 5.2));
-            sortingAnimPane.setHeight((getMaxValue() <= 40) ? 250 : getMaxValue() * 6);
+            sortingAnimPane.setWidth((bars.length < 100) ? 470 : (bars.length * 5.08));
+            sortingAnimPane.setHeight((getMaxValue() <= 40) ? 330 : getMaxValue() * 8.2);
 
             pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
