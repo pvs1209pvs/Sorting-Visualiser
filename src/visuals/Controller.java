@@ -55,8 +55,8 @@ public class Controller {
     @FXML
     public void playAnim() {
 
-        final int GAP = 4;
-        final int WIDTH = 3;
+        final int GAP = 5;
+        final int WIDTH = 4;
         final int HEIGHT_SCALING = 5;
 
         Bar[] bars = new Bar[0];
@@ -67,7 +67,7 @@ public class Controller {
 
                 bars = new Bar[getSampleSize()];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, (int) (Math.random() * getMaxValue() + getMinValue()) * HEIGHT_SCALING));
+                Arrays.setAll(bars, i -> new Bar((i + 1) * GAP, 25, WIDTH, (int) (Math.random() * getMaxValue() + getMinValue()) * HEIGHT_SCALING));
 
                 break;
             }
@@ -76,7 +76,7 @@ public class Controller {
                 Integer[] nums = userEnteredArray();
                 bars = new Bar[nums.length];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
+                Arrays.setAll(bars, i -> new Bar((i + 1) * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
 
                 break;
             }
@@ -85,7 +85,7 @@ public class Controller {
                 Integer[] nums = readFromFile();
                 bars = new Bar[nums.length];
 
-                Arrays.setAll(bars, i -> new Bar(i * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
+                Arrays.setAll(bars, i -> new Bar((i + 1) * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
 
                 break;
             }
@@ -108,7 +108,7 @@ public class Controller {
             pane.setStyle("-fx-background-color: white");
 
             Stage sortingAnimPane = new Stage();
-            sortingAnimPane.setWidth((bars.length < 100) ? 450 : (int) (bars.length * 4.5));
+            sortingAnimPane.setWidth((bars.length < 100) ? 470 : (int) (bars.length * 5.2));
             sortingAnimPane.setHeight((getMaxValue() <= 40) ? 250 : getMaxValue() * 6);
 
             pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
