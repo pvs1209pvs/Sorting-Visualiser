@@ -18,6 +18,10 @@ import static visuals.Main.primaryStage;
 
 public class Controller {
 
+    final int GAP = 5;
+    final int WIDTH = 4;
+    final int HEIGHT_SCALING = 5;
+
     @FXML
     ComboBox<String> sortSelect;
 
@@ -49,47 +53,49 @@ public class Controller {
         getUserInputOption();
     }
 
+
+    /**
+     * Make the bars that are to sorted from the input integer array.
+     *
+     * @return Bars array that are sorted.
+     */
+    private Bar[] makeBars() {
+
+        Integer[] input = new Integer[getSampleSize()];
+
+        switch (getUserInputOption()) {
+
+            case "fromRandom":
+                input = Arrays.stream(input).map(value -> (int) (Math.random() * getMaxValue() + getMinValue())).toArray(Integer[]::new);
+                break;
+
+            case "fromArray":
+                input = userEnteredArray();
+                break;
+
+            case "fromFile":
+                input = readFromFile();
+                break;
+
+        }
+
+        Bar[] bars = new Bar[getSampleSize()];
+
+        for (int i = 0; i < bars.length; i++) {
+            bars[i] = new Bar((i + 1) * GAP, 25, WIDTH, input[i] * HEIGHT_SCALING);
+        }
+
+        return bars;
+
+    }
+
     /**
      * Plays the visualization.
      */
     @FXML
     public void playAnim() {
 
-        final int GAP = 5;
-        final int WIDTH = 4;
-        final int HEIGHT_SCALING = 5;
-
-        Bar[] bars = new Bar[0];
-
-        switch (getUserInputOption()) {
-
-            case "fromRandom": {
-
-                bars = new Bar[getSampleSize()];
-
-                Arrays.setAll(bars, i -> new Bar((i + 1) * GAP, 25, WIDTH, (int) (Math.random() * getMaxValue() + getMinValue()) * HEIGHT_SCALING));
-
-                break;
-            }
-            case "fromArray": {
-
-                Integer[] nums = userEnteredArray();
-                bars = new Bar[nums.length];
-
-                Arrays.setAll(bars, i -> new Bar((i + 1) * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
-
-                break;
-            }
-            case "fromFile": {
-
-                Integer[] nums = readFromFile();
-                bars = new Bar[nums.length];
-
-                Arrays.setAll(bars, i -> new Bar((i + 1) * GAP, 25, WIDTH, nums[i] * HEIGHT_SCALING));
-
-                break;
-            }
-        }
+        Bar[] bars = makeBars();
 
         if (bars.length <= 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Empty array cannot be visualised");
@@ -99,29 +105,39 @@ public class Controller {
             alert.showAndWait();
         } else {
             new AnimationSequence().getSequenceTransition(
-                    Stream.of(SorterFactory.ALGORITHMS.values()).filter(x -> x.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
+                    Stream.of(SorterFactory.ALGORITHMS.values()).filter(algo -> algo.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
                     bars,
                     GAP,
                     1 / getSpeed()).play();
 
-            Pane pane = new Pane();
-            pane.setStyle("-fx-background-color: white");
-
-            Stage sortingAnimPane = new Stage();
-            sortingAnimPane.setWidth((bars.length < 100) ? 470 : (bars.length * 5.11));
-            sortingAnimPane.setHeight((getMaxValue() <= 40) ? 330 : getMaxValue() * 8.2);
-
-            pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
-
-            for (Bar bar : bars) {
-                pane.getChildren().add(bar);
-            }
-
-            Scene myScene = new Scene(pane);
-            sortingAnimPane.setScene(myScene);
-            sortingAnimPane.show();
+            showSortingVisualizationPane(bars);
         }
 
+    }
+
+    /**
+     * Display the sorting visualization screen.
+     *
+     * @param bars Input bars array.
+     */
+    private void showSortingVisualizationPane(Bar[] bars) {
+
+        Stage sortingAnimPane = new Stage();
+        sortingAnimPane.setWidth((bars.length < 100) ? 470 : (bars.length * 5.11));
+        sortingAnimPane.setHeight((getMaxValue() <= 40) ? 330 : getMaxValue() * 8.2);
+
+        Pane pane = new Pane();
+        pane.setStyle("-fx-background-color: white");
+
+        pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
+
+        for (Bar bar : bars) {
+            pane.getChildren().add(bar);
+        }
+
+        Scene myScene = new Scene(pane);
+        sortingAnimPane.setScene(myScene);
+        sortingAnimPane.show();
 
     }
 
