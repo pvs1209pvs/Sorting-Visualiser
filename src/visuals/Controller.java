@@ -12,6 +12,7 @@ import sortingalgorithms.SorterFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static visuals.Main.primaryStage;
@@ -61,25 +62,51 @@ public class Controller {
      */
     private Bar[] makeBars() {
 
-        Integer[] input = new Integer[getSampleSize()];
+        int[] input = new int[0];
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
 
         switch (getUserInputOption()) {
 
             case "fromRandom":
-                input = Arrays.stream(input).map(value -> (int) (Math.random() * getMaxValue() + getMinValue())).toArray(Integer[]::new);
+                input = IntStream
+                        .range(0, getSampleSize())
+                        .map(value -> (int) (Math.random() * getMaxValue() + getMinValue()))
+                        .toArray();
                 break;
 
             case "fromArray":
-                input = userEnteredArray();
+                try {
+                    input = userEnteredArray();
+                } catch (NumberFormatException numberFormatException) {
+                    input = new int[0];
+                    alert.setContentText("Please enter integers only.");
+                    alert.showAndWait();
+                } catch (NullPointerException nullPointerException) {
+                    input = new int[0];
+                    alert.setContentText("Input array must contain at least one value.");
+                    alert.showAndWait();
+                }
                 break;
 
             case "fromFile":
-                input = readFromFile();
+                try {
+                    input = readFromFile();
+                } catch (FileNotFoundException fileNotFoundException) {
+                    input = new int[0];
+                    alert.setContentText("Please select a valid text file with space separated integers.");
+                    alert.showAndWait();
+                } catch (NullPointerException nullPointerException) {
+                    input = new int[0];
+                    alert.setContentText("Input file must contain at least one value.");
+                    alert.showAndWait();
+                }
                 break;
+
 
         }
 
-        Bar[] bars = new Bar[getSampleSize()];
+        Bar[] bars = new Bar[input.length];
 
         for (int i = 0; i < bars.length; i++) {
             bars[i] = new Bar((i + 1) * GAP, 25, WIDTH, input[i] * HEIGHT_SCALING);
@@ -97,20 +124,16 @@ public class Controller {
 
         Bar[] bars = makeBars();
 
-        if (bars.length <= 0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Empty array cannot be visualised");
-            alert.showAndWait();
-        } else if (getMinValue() <= 0 || getMaxValue() <= 0) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Enter positive numbers.");
-            alert.showAndWait();
-        } else {
+        if (bars.length > 0) {
+            showSortingVisualizationPane(bars);
+
             new AnimationSequence().getSequenceTransition(
                     Stream.of(SorterFactory.ALGORITHMS.values()).filter(algo -> algo.toString().equals(sortSelect.getValue().toUpperCase())).findFirst().get(),
                     bars,
                     GAP,
                     1 / getSpeed()).play();
 
-            showSortingVisualizationPane(bars);
+
         }
 
     }
@@ -146,31 +169,35 @@ public class Controller {
      *
      * @return Integer array of number to be sorted. Integer array of size zero is returned if failed to open the file.
      */
-    private Integer[] readFromFile() {
+    private int[] readFromFile() throws FileNotFoundException {
 
         File inputFile = new FileChooser().showOpenDialog(primaryStage);
 
         if (inputFile == null) {
-            return new Integer[0];
+            throw new FileNotFoundException();
         }
 
-        try (Scanner scanner = new Scanner(inputFile)) {
+        Scanner scanner = new Scanner(inputFile);
 
-            scanner.useDelimiter(" ");
+        scanner.useDelimiter(" ");
 
-            List<Integer> nums = new ArrayList<>();
+        List<Integer> nums = new ArrayList<>();
 
-            while (scanner.hasNext()) {
-                nums.add(Integer.parseInt(scanner.next().trim()));
-            }
 
-            return nums.toArray(new Integer[0]);
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        while (scanner.hasNext()) {
+            nums.add(Integer.parseInt(scanner.next().trim()));
         }
 
-        return new Integer[0];
+        scanner.close();
+
+        int[] inputArray = nums.stream().mapToInt(value -> value).toArray();
+
+        if (inputArray.length <= 0) {
+            throw new NullPointerException();
+        }
+
+        return inputArray;
+
     }
 
     /**
@@ -179,16 +206,22 @@ public class Controller {
      * @return Integer array of numbers entered by the user. Integer array of size zero is returned if no numbers were
      * entered by the user.
      */
-    private Integer[] userEnteredArray() {
+    private int[] userEnteredArray() throws NullPointerException {
 
-        try {
-            return Arrays.stream(numbers.getText().split(" "))
-                    .map(Objects::toString)
-                    .map(Integer::valueOf)
-                    .toArray(Integer[]::new);
-        } catch (NumberFormatException numberFormatException) {
-            return new Integer[0];
+        String userInputText = numbers.getText();
+
+        if (userInputText.isEmpty()) {
+            throw new NullPointerException();
         }
+
+        int[] userEnteredArray = Arrays.stream(userInputText.split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
+        System.out.println(Arrays.toString(userEnteredArray));
+        System.out.println(userEnteredArray.length);
+
+        return userEnteredArray;
 
     }
 
