@@ -1,10 +1,11 @@
 package sortingalgorithms;
 
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class BucketSort implements Sorter {
@@ -12,7 +13,7 @@ public class BucketSort implements Sorter {
     private final Bucket[] list;
 
     static class Bucket {
-        List<Integer> bucket;
+        List<Bar> bucket;
 
         Bucket() {
             bucket = new ArrayList<>();
@@ -29,65 +30,53 @@ public class BucketSort implements Sorter {
 
     @Override
     public void sort(Bar[] bars, List trans, int gap, double seconds) {
-        Integer[] barsHeight = new Integer[bars.length];
+        int divider = (int) Math.ceil((findMax(bars) + 1) / (double) list.length);
+        Bar[] sortedBars = new Bar[bars.length];
+
+        for (Bar k : bars) {
+            list[(int) Math.floor(k.getHeight() / (double) divider)].bucket.add(k);
+        }
+
+        for (Bucket value : list) {
+            innerSort(value.bucket);
+        }
+
+        int index = 0;
+        for (Bucket bucket : list) {
+            if (!bucket.bucket.isEmpty()) {
+                for (int j = 0; j < bucket.bucket.size(); j++) {
+                    sortedBars[index] = bucket.bucket.get(j);
+                    index++;
+                }
+            }
+        }
+
         for (int i = 0; i < bars.length; i++) {
-            barsHeight[i] = (int) bars[i].getHeight();
-        }
+            ScaleTransition scaling = new ScaleTransition(Duration.seconds(seconds), bars[i]);
+            scaling.setToY(sortedBars[i].getHeight() / bars[i].getHeight());
+            trans.add(scaling);
 
-        int divider = (int) Math.ceil(((Collections.max(Arrays.asList(barsHeight))) + 1) / (double) list.length);
-
-        for (int k : barsHeight) {
-            list[(int) Math.floor(k / (double) divider)].bucket.add(k);
-        }
-
-        for (Bucket value : list) {
-            innerSort(value.bucket);
-        }
-
-        int index = 0;
-        for (Bucket bucket : list) {
-            if (!bucket.bucket.isEmpty()) {
-                for (int j = 0; j < bucket.bucket.size(); j++) {
-                    barsHeight[index] = bucket.bucket.get(j);
-                    index++;
-                }
-            }
-        }
-
-        for (int i = 0; i < barsHeight.length; i++) {
-            bars[i].setHeight(barsHeight[i]);
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), bars[i]);
+            tt.setByY((sortedBars[i].getHeight() - bars[i].getHeight()) / 2);
+            trans.add(tt);
         }
     }
 
-    public void sort(int[] array) {
-        int divider = (int) Math.ceil(((Arrays.stream(array).max().getAsInt()) + 1) / (double) list.length);
-
-        for (int k : array) {
-            list[(int) Math.floor(k / (double) divider)].bucket.add(k);
-        }
-
-        for (Bucket value : list) {
-            innerSort(value.bucket);
-        }
-
-        int index = 0;
-        for (Bucket bucket : list) {
-            if (!bucket.bucket.isEmpty()) {
-                for (int j = 0; j < bucket.bucket.size(); j++) {
-                    array[index] = bucket.bucket.get(j);
-                    index++;
-                }
+    private int findMax(Bar[] arr) {
+        int max = (int) arr[0].getHeight();
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].getHeight() > max) {
+                max = (int) arr[i].getHeight();
             }
         }
-
-        for (int k : array) System.out.println(k);
+        return max;
     }
 
-    void innerSort(List<Integer> array) {
+    private void innerSort(List<Bar> array) {
         for (int i = 1; i < array.size(); i++) {
-            int temp = array.get(i);
+            Bar temp = array.get(i);
             int j = i - 1;
-            while (j >= 0 && array.get(j) > temp) {
+            while (j >= 0 && array.get(j).compareTo(temp) > 0) {
                 array.set(j + 1, array.get(j));
                 j--;
             }
