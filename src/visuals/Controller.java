@@ -65,6 +65,8 @@ public class Controller {
         int[] input = new int[0];
 
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setGraphic(null);
 
         switch (getUserInputOption()) {
 
@@ -154,9 +156,11 @@ public class Controller {
 
         pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
-        for (Bar bar : bars) {
-            pane.getChildren().add(bar);
-        }
+        Arrays.stream(bars).forEach(bar -> pane.getChildren().add(bar));
+
+//        for (Bar bar : bars) {
+//            pane.getChildren().add(bar);
+//        }
 
         Scene myScene = new Scene(pane);
         sortingAnimPane.setScene(myScene);

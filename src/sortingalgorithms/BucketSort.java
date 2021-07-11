@@ -1,11 +1,13 @@
 package sortingalgorithms;
 
+import javafx.animation.Animation;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BucketSort implements Sorter {
@@ -18,6 +20,7 @@ public class BucketSort implements Sorter {
         Bucket() {
             bucket = new ArrayList<>();
         }
+
     }
 
     public BucketSort() {
@@ -29,7 +32,7 @@ public class BucketSort implements Sorter {
     }
 
     @Override
-    public void sort(Bar[] bars, List trans, int gap, double seconds) {
+    public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
         int divider = (int) Math.ceil((findMax(bars) + 1) / (double) list.length);
         Bar[] sortedBars = new Bar[bars.length];
 
@@ -63,13 +66,7 @@ public class BucketSort implements Sorter {
     }
 
     private int findMax(Bar[] arr) {
-        int max = (int) arr[0].getHeight();
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i].getHeight() > max) {
-                max = (int) arr[i].getHeight();
-            }
-        }
-        return max;
+        return (int) Arrays.stream(arr).max(Bar::compareTo).get().getHeight();
     }
 
     private void innerSort(List<Bar> array) {
