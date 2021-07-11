@@ -1,5 +1,8 @@
 package sortingalgorithms;
 
+import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 import visuals.Bar;
 
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class BucketSort implements Sorter {
     @Override
     public void sort(Bar[] bars, List trans, int gap, double seconds) {
         int divider = (int) Math.ceil((findMax(bars) + 1) / (double) list.length);
+        Bar[] sortedBars = new Bar[bars.length];
 
         for (Bar k : bars) {
             list[(int) Math.floor(k.getHeight() / (double) divider)].bucket.add(k);
@@ -41,10 +45,20 @@ public class BucketSort implements Sorter {
         for (Bucket bucket : list) {
             if (!bucket.bucket.isEmpty()) {
                 for (int j = 0; j < bucket.bucket.size(); j++) {
-                    bars[index] = bucket.bucket.get(j);
+                    sortedBars[index] = bucket.bucket.get(j);
                     index++;
                 }
             }
+        }
+
+        for (int i = 0; i < bars.length; i++) {
+            ScaleTransition scaling = new ScaleTransition(Duration.seconds(seconds), bars[i]);
+            scaling.setToY(sortedBars[i].getHeight() / bars[i].getHeight());
+            trans.add(scaling);
+
+            TranslateTransition tt = new TranslateTransition(Duration.seconds(seconds), bars[i]);
+            tt.setByY((sortedBars[i].getHeight() - bars[i].getHeight()) / 2);
+            trans.add(tt);
         }
     }
 
