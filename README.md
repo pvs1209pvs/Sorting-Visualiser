@@ -25,9 +25,9 @@
 
 ## Algorithm Visualization
 - [x] Bubble
-- [ ] Bucket
+- [X] Bucket
 - [x] Cocktail
-- [ ] Counting
+- [X] Counting
 - [x] Cycle
 - [x] Heap
 - [x] Insertion
