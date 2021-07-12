@@ -12,7 +12,7 @@ public class RadixSort implements Sorter {
     RadixSort() {
     }
 
-    public void sort(int[] array, int digitLen) {
+    public void sort(Bar[] array, int digitLen) {
 
         for (int i = 0; i < digitLen; i++) {
             sortIteration(array, i);
@@ -20,12 +20,12 @@ public class RadixSort implements Sorter {
 
     }
 
-    private Map<Integer, List<Integer>> getDigitGroup(int[] array) {
+    private Map<Integer, List<Bar>> getDigitGroup(Bar[] array) {
 
-        Map<Integer, List<Integer>> digitGroup = new HashMap<>();
+        Map<Integer, List<Bar>> digitGroup = new HashMap<>();
 
-        for (int number : array) {
-            int digitLen = getDigitCount(number);
+        for (Bar number : array) {
+            int digitLen = getDigitCount((int) number.getHeight());
             digitGroup.putIfAbsent(digitLen, new ArrayList<>());
             digitGroup.get(digitLen).add(number);
         }
@@ -34,30 +34,53 @@ public class RadixSort implements Sorter {
 
     }
 
-    private void sortIteration(int[] array, int iteration) {
+    private void sortIteration(Bar[] array, int iteration) {
 
         int[] countingArray = getDigitArray(array, iteration);
         rightSummation(countingArray);
 
-        int[] temp = new int[array.length];
+        Bar[] temp = new Bar[array.length];
         for (int i = array.length - 1; i >= 0; --i) {
-            temp[--countingArray[getDigit(array[i], iteration)]] = array[i];
+            temp[--countingArray[getDigit((int) array[i].getHeight(), iteration)]] = array[i];
         }
 
         System.arraycopy(temp, 0, array, 0, temp.length);
 
     }
 
-    private int[] getDigitArray(int[] array, int iteration) {
+    private int[] getDigitArray(Bar[] array, int iteration) {
 
         int[] digitArray = new int[10];
         Arrays.fill(digitArray, 0);
 
-        for (int integer : array) {
-            ++digitArray[getDigit(integer, iteration)];
+        for (Bar bar : array) {
+            ++digitArray[getDigit((int) bar.getHeight(), iteration)];
         }
 
         return digitArray;
+
+    }
+
+    /**
+     * Does the final sorting.
+     *
+     * @param array Input array.
+     * @return Sorted array.
+     */
+    private Bar[] sortDigitWise(Bar[] array) {
+
+        List<Bar> sorted = new LinkedList<>();
+
+        for (Map.Entry<Integer, List<Bar>> pair : getDigitGroup(array).entrySet()) {
+
+            Bar[] digitLenWiseSorted = pair.getValue().toArray(new Bar[0]);
+            sort(digitLenWiseSorted, pair.getKey());
+
+            sorted.addAll(Arrays.asList(digitLenWiseSorted));
+
+        }
+
+        return sorted.toArray(new Bar[0]);
 
     }
 
@@ -105,48 +128,9 @@ public class RadixSort implements Sorter {
         }
     }
 
-    private int[] sortDigitWise(int[] array) {
-
-       List<Integer> sorted = new LinkedList<>();
-
-        for (Map.Entry<Integer, List<Integer>> pair : getDigitGroup(array).entrySet()) {
-
-            int[] digitLenWiseSorted = pair.getValue().stream().mapToInt(value->value).toArray();
-            sort(digitLenWiseSorted, pair.getKey());
-
-            Arrays.stream(digitLenWiseSorted).forEach(sorted::add);
-
-        }
-
-        return sorted.stream().mapToInt(value->value).toArray();
-
-    }
-
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
-        int[] barHeight = new int[bars.length];
-        for (int i = 0; i < barHeight.length; i++) {
-            barHeight[i] = (int) bars[i].getHeight();
-        }
-
-        int[] sorted = sortDigitWise(barHeight);
-
-        for (int i = 0; i < barHeight.length; i++) {
-            try {
-
-                bars[i].setHeight(sorted[i]);
-            } catch (NullPointerException e) {
-                System.out.println("sorted");
-                for (int j = 0; j < sorted.length; j++) {
-                    System.out.print(j+":"+sorted[j] + "  ");
-                }
-                System.out.println("\nbars");
-                for (int j = 0; j < bars.length; j++) {
-                    System.out.print(j+":"+bars[j] + "  ");
-                }
-                System.out.println();
-            }
-        }
+        System.arraycopy(sortDigitWise(bars), 0, bars, 0, bars.length);
 
 
     }
