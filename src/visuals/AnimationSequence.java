@@ -2,7 +2,6 @@ package visuals;
 
 import javafx.animation.Animation;
 import javafx.animation.SequentialTransition;
-import sortingalgorithms.Sorter;
 import sortingalgorithms.SorterFactory;
 
 import java.util.ArrayList;

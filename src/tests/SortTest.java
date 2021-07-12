@@ -4,7 +4,6 @@ import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 

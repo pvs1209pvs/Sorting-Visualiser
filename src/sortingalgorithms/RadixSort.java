@@ -4,21 +4,15 @@ import javafx.animation.Animation;
 import visuals.Bar;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static sortingalgorithms.CountingSort.*;
 
 public class RadixSort implements Sorter {
 
     RadixSort() {
-
-//        Integer[] array = new Integer[]{92, 88, 65, 12, 96, 87, 85, 59, 81};
-////        sortDigitWise(array);
-//        sort(array, 2);
-//        System.out.println(Arrays.toString(array));
     }
 
-    public void sort(Integer[] array, int digitLen) {
+    public void sort(int[] array, int digitLen) {
 
         for (int i = 0; i < digitLen; i++) {
             sortIteration(array, i);
@@ -26,13 +20,12 @@ public class RadixSort implements Sorter {
 
     }
 
-    private Map<Integer, List<Integer>> getDigitGroup(Integer[] array) {
+    private Map<Integer, List<Integer>> getDigitGroup(int[] array) {
 
-        Map<Integer, List<Integer>> digitGroup = new TreeMap<>();
+        Map<Integer, List<Integer>> digitGroup = new HashMap<>();
 
-        for (Integer number : array) {
+        for (int number : array) {
             int digitLen = getDigitCount(number);
-
             digitGroup.putIfAbsent(digitLen, new ArrayList<>());
             digitGroup.get(digitLen).add(number);
         }
@@ -41,12 +34,12 @@ public class RadixSort implements Sorter {
 
     }
 
-    private void sortIteration(Integer[] array, int iteration) {
+    private void sortIteration(int[] array, int iteration) {
 
-        Integer[] countingArray = getDigitArray(array, iteration);
+        int[] countingArray = getDigitArray(array, iteration);
         rightSummation(countingArray);
 
-        Integer[] temp = new Integer[array.length];
+        int[] temp = new int[array.length];
         for (int i = array.length - 1; i >= 0; --i) {
             temp[--countingArray[getDigit(array[i], iteration)]] = array[i];
         }
@@ -55,12 +48,12 @@ public class RadixSort implements Sorter {
 
     }
 
-    private Integer[] getDigitArray(Integer[] array, int iteration) {
+    private int[] getDigitArray(int[] array, int iteration) {
 
-        Integer[] digitArray = new Integer[10];
+        int[] digitArray = new int[10];
         Arrays.fill(digitArray, 0);
 
-        for (Integer integer : array) {
+        for (int integer : array) {
             ++digitArray[getDigit(integer, iteration)];
         }
 
@@ -68,7 +61,7 @@ public class RadixSort implements Sorter {
 
     }
 
-    private int getDigit(Integer value, int iteration) {
+    private int getDigit(int value, int iteration) {
         return (value / (int) Math.pow(10, iteration)) % 10;
     }
 
@@ -112,30 +105,31 @@ public class RadixSort implements Sorter {
         }
     }
 
-
-    private Integer[] sortDigitWise(Integer[] array) {
+    private int[] sortDigitWise(int[] array) {
 
        List<Integer> sorted = new LinkedList<>();
 
         for (Map.Entry<Integer, List<Integer>> pair : getDigitGroup(array).entrySet()) {
 
-            Integer[] digitLenwiseSorted = pair.getValue().toArray(new Integer[0]);
-            sort(digitLenwiseSorted, pair.getKey());
+            int[] digitLenWiseSorted = pair.getValue().stream().mapToInt(value->value).toArray();
+            sort(digitLenWiseSorted, pair.getKey());
 
-            sorted.addAll(Arrays.stream(digitLenwiseSorted).collect(Collectors.toList()));
+            Arrays.stream(digitLenWiseSorted).forEach(sorted::add);
+
         }
 
-        return sorted.toArray(new Integer[0]);
+        return sorted.stream().mapToInt(value->value).toArray();
+
     }
 
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
-        Integer[] barHeight = new Integer[bars.length];
+        int[] barHeight = new int[bars.length];
         for (int i = 0; i < barHeight.length; i++) {
             barHeight[i] = (int) bars[i].getHeight();
         }
 
-        Integer[] sorted = sortDigitWise(barHeight);
+        int[] sorted = sortDigitWise(barHeight);
 
         for (int i = 0; i < barHeight.length; i++) {
             try {

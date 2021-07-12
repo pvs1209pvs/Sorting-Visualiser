@@ -71,10 +71,14 @@ public class Controller {
         switch (getUserInputOption()) {
 
             case "fromRandom":
-                input = IntStream
-                        .range(0, getSampleSize())
-                        .map(value -> (int) (Math.random() * getMaxValue() + getMinValue()))
-                        .toArray();
+                try{
+                    input = IntStream
+                            .range(0, getSampleSize())
+                            .map(value -> (int) (Math.random() * getMaxValue() + getMinValue()))
+                            .toArray();
+                } catch (NumberFormatException numberFormatException){
+                    alert.setContentText("Please enter a valid positive integer.");
+                }
                 break;
 
             case "fromArray":
@@ -156,11 +160,7 @@ public class Controller {
 
         pane.getChildren().add(new Label(" " + sortSelect.getValue() + " Sort"));
 
-        Arrays.stream(bars).forEach(bar -> pane.getChildren().add(bar));
-
-//        for (Bar bar : bars) {
-//            pane.getChildren().add(bar);
-//        }
+        Arrays.stream(bars).forEach(pane.getChildren()::add);
 
         Scene myScene = new Scene(pane);
         sortingAnimPane.setScene(myScene);
@@ -186,7 +186,6 @@ public class Controller {
         scanner.useDelimiter(" ");
 
         List<Integer> nums = new ArrayList<>();
-
 
         while (scanner.hasNext()) {
             nums.add(Integer.parseInt(scanner.next().trim()));
@@ -277,13 +276,15 @@ public class Controller {
      *
      * @return Minimum value in the array. Returns -1 if non-positive number was entered.
      */
-    private int getMinValue() {
+    private int getMinValue() throws NumberFormatException {
 
-        try {
-            return Integer.parseInt(minValue.getText());
-        } catch (NumberFormatException numberFormatException) {
-            return -1;
+        int min = Integer.parseInt(minValue.getText());
+
+        if (min <= 0) {
+            throw new NumberFormatException();
         }
+
+        return min;
 
     }
 
@@ -292,13 +293,16 @@ public class Controller {
      *
      * @return Maximum value in the array. Returns -1 if non-positive number was entered.
      */
-    private int getMaxValue() {
+    private int getMaxValue() throws NumberFormatException {
 
-        try {
-            return Integer.parseInt(maxValue.getText());
-        } catch (NumberFormatException numberFormatException) {
-            return -1;
+        int max = Integer.parseInt(maxValue.getText());
+
+        if (max <= 0) {
+            throw new NumberFormatException();
         }
+
+        return max;
+
     }
 
     /**
@@ -308,7 +312,9 @@ public class Controller {
      */
     @FXML
     private int getSampleSize() {
-        return Integer.parseInt(samples.getText());
+
+       return  Integer.parseInt(samples.getText());
+
     }
 
     /**

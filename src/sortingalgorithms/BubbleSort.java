@@ -38,6 +38,8 @@ public class BubbleSort implements Sorter {
                     isSorted = false;
                 }
             }
+
         }
+
     }
 }

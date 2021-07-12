@@ -11,24 +11,24 @@ import java.util.*;
 
 public class CountingSort implements Sorter {
 
-    private void rightShift(Integer[] countingArray) {
+    private void rightShift(int[] countingArray) {
         System.arraycopy(countingArray, 0, countingArray, 1, countingArray.length - 1);
         countingArray[0] = 0;
     }
 
-    public static void rightSummation(Integer[] countingArray) {
+    public static void rightSummation(int[] countingArray) {
         for (int i = 1; i < countingArray.length; i++) {
             countingArray[i] += countingArray[i - 1];
         }
     }
 
-    private Integer[] getCountingArray(Bar[] array) {
+    private int[] getCountingArray(Bar[] array) {
 
         int min = (int) Arrays.stream(array).min(Bar::compareTo).get().getHeight();
         int max = (int) Arrays.stream(array).max(Bar::compareTo).get().getHeight();
         int offset = max - min;
 
-        Integer[] countingArray = new Integer[offset + 1];
+        int[] countingArray = new int[offset + 1];
         Arrays.fill(countingArray, 0);
 
         for (Bar num : array) {
@@ -43,7 +43,7 @@ public class CountingSort implements Sorter {
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
-        Integer[] countingArray = getCountingArray(bars);
+        int[] countingArray = getCountingArray(bars);
 
         rightSummation(countingArray);
         rightShift(countingArray);
