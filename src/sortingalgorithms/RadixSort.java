@@ -37,7 +37,7 @@ public class RadixSort implements Sorter {
             System.arraycopy(digitLenWiseSorted, 0, sorted, sortedArraySize, digitLenWiseSorted.length);
 
             // this only exist because numbers are being saved in sorted array while the input array is still in the middle of the sort.
-            sortedArraySize += digitLenWiseSorted.length; 
+            sortedArraySize += digitLenWiseSorted.length;
 
             System.out.println("num digit " + digitLenArrayPair.getKey() + " " + Arrays.toString(sorted));
 

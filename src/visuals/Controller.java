@@ -138,8 +138,6 @@ public class Controller {
                     bars,
                     GAP,
                     1 / getSpeed()).play();
-
-
         }
 
     }

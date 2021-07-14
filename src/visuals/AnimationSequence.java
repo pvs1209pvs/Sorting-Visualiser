@@ -11,6 +11,14 @@ class AnimationSequence {
 
     SequentialTransition getSequenceTransition(SorterFactory.ALGORITHMS algorithm, Bar[] bars, int gap, double sec) {
 
+        if(gap <= 0){
+            throw new IllegalArgumentException("gap must be positive.");
+        }
+
+        if(sec <= 0){
+            throw new IllegalArgumentException("sec must be positive.");
+        }
+
         List<Animation> trans = new ArrayList<>();
 
         SorterFactory.getSorter(algorithm).sort(bars, trans, gap, sec);
