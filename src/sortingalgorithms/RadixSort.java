@@ -11,7 +11,41 @@ import java.util.*;
 import static sortingalgorithms.CountingSort.*;
 
 public class RadixSort implements Sorter {
+
     private double seconds;
+
+    //TODO: Or Probably try animation here
+    // TODO: try starting animation from the bottom
+    /**
+     * Does the final sorting.
+     *
+     * @param array Input array.
+     * @return Sorted array.
+     */
+    private Bar[] sort(Bar[] array) {
+
+        Bar[] sorted = Arrays.stream(array).toArray(Bar[]::new);
+        int sortedArraySize = 0;
+
+        for (Map.Entry<Integer, List<Bar>> digitLenArrayPair : getDigitGroup(array).entrySet()) {
+
+            // sorts the input array digitwise. 1 digit numbers, then 2 digits and so on.
+            Bar[] digitLenWiseSorted = digitLenArrayPair.getValue().toArray(new Bar[0]);
+            sort(digitLenWiseSorted, digitLenArrayPair.getKey(), array); //This does the internal sorting
+
+            // saves the numbers sorted by digit in the 'sorted' array because input array is still being sorted.
+            System.arraycopy(digitLenWiseSorted, 0, sorted, sortedArraySize, digitLenWiseSorted.length);
+
+            // this only exist because numbers are being saved in sorted array while the input array is still in the middle of the sort.
+            sortedArraySize += digitLenWiseSorted.length; 
+
+            System.out.println("num digit " + digitLenArrayPair.getKey() + " " + Arrays.toString(sorted));
+
+        }
+
+        return sorted;
+
+    }
 
     //Probably pass the original array as well for swapping
     public void sort(Bar[] array, int digitLen, Bar[] original) {
@@ -19,20 +53,6 @@ public class RadixSort implements Sorter {
         for (int i = 0; i < digitLen; i++) {
             sortIteration(array, i, original);
         }
-
-    }
-
-    private Map<Integer, List<Bar>> getDigitGroup(Bar[] array) {
-
-        Map<Integer, List<Bar>> digitGroup = new HashMap<>();
-
-        for (Bar number : array) {
-            int digitLen = getDigitCount((int) number.getHeight());
-            digitGroup.putIfAbsent(digitLen, new ArrayList<>());
-            digitGroup.get(digitLen).add(number);
-        }
-
-        return digitGroup;
 
     }
 
@@ -76,30 +96,20 @@ public class RadixSort implements Sorter {
 
     }
 
-    //TODO: Or Probably try animation here
+    private Map<Integer, List<Bar>> getDigitGroup(Bar[] array) {
 
-    /**
-     * Does the final sorting.
-     *
-     * @param array Input array.
-     * @return Sorted array.
-     */
-    private Bar[] sortDigitWise(Bar[] array) {
+        Map<Integer, List<Bar>> digitGroup = new HashMap<>();
 
-        List<Bar> sorted = new LinkedList<>();
-
-        for (Map.Entry<Integer, List<Bar>> pair : getDigitGroup(array).entrySet()) {
-
-            Bar[] digitLenWiseSorted = pair.getValue().toArray(new Bar[0]);
-            sort(digitLenWiseSorted, pair.getKey(), array); //This does the internal sorting
-
-            sorted.addAll(Arrays.asList(digitLenWiseSorted));
-
+        for (Bar number : array) {
+            int digitLen = getDigitCount((int) number.getHeight());
+            digitGroup.putIfAbsent(digitLen, new ArrayList<>());
+            digitGroup.get(digitLen).add(number);
         }
 
-        return sorted.toArray(new Bar[0]);
+        return digitGroup;
 
     }
+
 
     private int getDigit(int value, int iteration) {
         return (value / (int) Math.pow(10, iteration)) % 10;
@@ -148,7 +158,7 @@ public class RadixSort implements Sorter {
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
 
         this.seconds = seconds;
-        Bar[] sorted = sortDigitWise(bars);
+        Bar[] sorted = sort(bars);
 
         for (int i = 0; i < bars.length; i++) {
             ScaleTransition scaling = new ScaleTransition(Duration.seconds(seconds), bars[i]);

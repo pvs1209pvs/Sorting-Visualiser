@@ -21,7 +21,7 @@ public class Controller {
 
     final int GAP = 5;
     final int WIDTH = 4;
-    final int HEIGHT_SCALING = 5;
+    final int HEIGHT_SCALING = 1;
 
     @FXML
     ComboBox<String> sortSelect;
@@ -217,14 +217,9 @@ public class Controller {
             throw new NullPointerException();
         }
 
-        int[] userEnteredArray = Arrays.stream(userInputText.split(" "))
+        return Arrays.stream(userInputText.split(" "))
                 .mapToInt(Integer::parseInt)
                 .toArray();
-
-        System.out.println(Arrays.toString(userEnteredArray));
-        System.out.println(userEnteredArray.length);
-
-        return userEnteredArray;
 
     }
 

@@ -20,6 +20,6 @@ public class Bar extends Rectangle implements Comparable<Bar> {
 
     @Override
     public String toString() {
-        return String.valueOf(super.getHeight());
+        return String.valueOf((int) super.getHeight());
     }
 }
