@@ -7,7 +7,7 @@ import visuals.Bar;
 
 import java.util.List;
 
-public class QuickSort implements Sorter {
+ class QuickSort implements Sorter {
 
     private void quickSort(Bar[] arr, int l, int h, List<Animation> trans, int gap, double seconds) {
         if (l < h) {

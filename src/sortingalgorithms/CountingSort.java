@@ -9,7 +9,7 @@ import visuals.Bar;
 import java.util.*;
 
 
-public class CountingSort implements Sorter {
+ class CountingSort implements Sorter {
 
     private void rightShift(int[] countingArray) {
         System.arraycopy(countingArray, 0, countingArray, 1, countingArray.length - 1);

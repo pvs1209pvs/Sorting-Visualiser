@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BucketSort implements Sorter {
+ class BucketSort implements Sorter {
 
     private final Bucket[] list;
 

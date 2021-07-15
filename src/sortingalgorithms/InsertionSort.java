@@ -1,6 +1,5 @@
 package sortingalgorithms;
 
-
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
@@ -8,7 +7,7 @@ import visuals.Bar;
 
 import java.util.List;
 
-public class InsertionSort implements Sorter{
+ class InsertionSort implements Sorter{
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {

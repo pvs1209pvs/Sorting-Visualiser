@@ -7,7 +7,7 @@ import visuals.Bar;
 
 import java.util.List;
 
-public class SelectionSort implements Sorter {
+ class SelectionSort implements Sorter {
 
     private int[] findMin(int i, int j, Bar[] arr) {
         int[] min = {(int) arr[i].getHeight(), i};

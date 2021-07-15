@@ -10,7 +10,7 @@ import java.util.*;
 
 import static sortingalgorithms.CountingSort.*;
 
-public class RadixSort implements Sorter {
+ class RadixSort implements Sorter {
 
     private double seconds;
 

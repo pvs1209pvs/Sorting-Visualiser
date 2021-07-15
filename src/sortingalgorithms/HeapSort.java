@@ -8,7 +8,7 @@ import visuals.Bar;
 import java.util.Arrays;
 import java.util.List;
 
-public class HeapSort implements Sorter {
+ class HeapSort implements Sorter {
 
     private void makeHeap(Bar[] arr, List<Animation> trans, int gap, double seconds) {
 

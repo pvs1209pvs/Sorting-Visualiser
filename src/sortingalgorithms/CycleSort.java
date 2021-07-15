@@ -8,7 +8,7 @@ import visuals.Bar;
 
 import java.util.List;
 
-public class CycleSort implements Sorter {
+ class CycleSort implements Sorter {
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
