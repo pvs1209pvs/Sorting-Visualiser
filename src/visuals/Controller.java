@@ -21,7 +21,7 @@ public class Controller {
 
     final int GAP = 5;
     final int WIDTH = 4;
-    final int HEIGHT_SCALING = 1;
+    final int HEIGHT_SCALING = 5;
 
     @FXML
     ComboBox<String> sortSelect;
