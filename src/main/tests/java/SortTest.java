@@ -1,9 +1,8 @@
-package tests;
-
 import sortingalgorithms.*;
 import visuals.Bar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
@@ -30,6 +29,7 @@ public class SortTest {
     @org.junit.Test
     public void bucketSort_randomArray_successfully() {
         SorterFactory.getSorter(SorterFactory.ALGORITHMS.BUCKET).sort(randomBars, new ArrayList<>(), 0, 0);
+        System.out.println("random bars " + Arrays.toString(randomBars));
         sortedArrayAssertion(randomBars);
     }
 
@@ -42,6 +42,7 @@ public class SortTest {
     @org.junit.Test
     public void countingSort_randomArray_successfully() {
         SorterFactory.getSorter(SorterFactory.ALGORITHMS.COUNTING).sort(randomBars, new ArrayList<>(), 0, 0);
+
         sortedArrayAssertion(randomBars);
     }
 

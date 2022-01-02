@@ -55,6 +55,8 @@ import java.util.*;
             sorted[countingArray[(int) (num.getHeight() - min)]++] = num;
         }
 
+        System.arraycopy(sorted, 0, bars, 0, bars.length);
+
         for (int i = 0; i < bars.length; i++) {
             ScaleTransition scaling = new ScaleTransition(Duration.seconds(seconds), bars[i]);
             scaling.setToY(sorted[i].getHeight() / bars[i].getHeight());

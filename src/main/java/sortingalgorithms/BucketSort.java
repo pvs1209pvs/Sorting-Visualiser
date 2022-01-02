@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
- class BucketSort implements Sorter {
+class BucketSort implements Sorter {
 
     private final Bucket[] list;
 
     static class Bucket {
+
         List<Bar> bucket;
 
         Bucket() {
@@ -33,6 +34,7 @@ import java.util.List;
 
     @Override
     public void sort(Bar[] bars, List<Animation> trans, int gap, double seconds) {
+
         int divider = (int) Math.ceil((findMax(bars) + 1) / (double) list.length);
         Bar[] sortedBars = new Bar[bars.length];
 
@@ -54,6 +56,8 @@ import java.util.List;
             }
         }
 
+        System.arraycopy(sortedBars, 0, bars, 0, bars.length);
+
         for (int i = 0; i < bars.length; i++) {
             ScaleTransition scaling = new ScaleTransition(Duration.seconds(seconds), bars[i]);
             scaling.setToY(sortedBars[i].getHeight() / bars[i].getHeight());
@@ -63,6 +67,8 @@ import java.util.List;
             tt.setByY((sortedBars[i].getHeight() - bars[i].getHeight()) / 2);
             trans.add(tt);
         }
+
+        System.out.println("inside " + Arrays.toString(sortedBars));
     }
 
     private int findMax(Bar[] arr) {
